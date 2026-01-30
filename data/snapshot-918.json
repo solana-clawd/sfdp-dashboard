@@ -14541,6 +14541,172 @@
       "medianStakeSOL": 51846.572404870996,
       "estAnnualRewardSOL": 3370.027206316615,
       "validatorsInProgram": 446
-    }
+    },
+    "stakeSourcesByValidator": {
+      "shft7Fry1js37Hm9wq4dfwcZSp2DyKszeWMvEpjYCQ1": {
+        "Other/Direct": 1723180.7481761314,
+        "SFDP (FiRep)": 1525057.3787698029
+      },
+      "2NxEEbhqqj1Qptq5LXLbDTP5tLa9f7PqkU8zNgxbGU9P": {
+        "Other/Direct": 1417006.709114875,
+        "SFDP (FiRep)": 503098.951933869
+      },
+      "juicQdAnksqZ5Yb8NQwCLjLWhykvXGktxnQCDvMe6Nx": {
+        "Other/Direct": 162049.84479251705,
+        "SFDP (mpa4)": 56938.503583793,
+        "SFDP (FiRep)": 424290.524798598
+      },
+      "DsiG71AvUHUEo9rMMHqM9NAWQ6ptguRAHyot6wGzLJjx": {
+        "Other/Direct": 749149.8758134758,
+        "SFDP (FiRep)": 425537.83880108
+      },
+      "CooLbbZy5Xmdt7DiHPQ3ss2uRXawnTXXVgpMS8E8jDzr": {
+        "Other/Direct": 469417.75568153814,
+        "SFDP (FiRep)": 339451.880276081,
+        "SFDP (mpa4)": 64180.775328235
+      },
+      "A9mzXPB6sRNUXcDF9L91oV1EvmeYQe7WzSfEL7fBdysh": {
+        "SFDP (FiRep)": 375228.993698666
+      },
+      "Ha1VoTEPWFQp1wZjbQhBNXJftuHvimu1ruzF3xKYRPDQ": {
+        "Other/Direct": 489274.048073155,
+        "SFDP (mpa4)": 64057.217159627,
+        "SFDP (FiRep)": 304680.510222781
+      },
+      "HJmfKJjKiyuuxFUuXgecgD5gdD312apCpHwZt6ETuRMU": {
+        "Other/Direct": 57935.771573312006,
+        "SFDP (mpa4)": 61379.830784226,
+        "SFDP (FiRep)": 203286.26226744
+      },
+      "A5ed2x2wEuHW8KsuhbSaTFU4CYT3WgHfQcwyQXz5SdDw": {
+        "SFDP (mpa4)": 64184.169388128,
+        "Other/Direct": 2.017145209,
+        "SFDP (FiRep)": 198725.726004784
+      },
+      "R4spmF6oFW6wMQHv9L3PCEKumkspN3nveQihWyDAdRy": {
+        "Other/Direct": 25096.457310713,
+        "SFDP (FiRep)": 170549.863171879,
+        "SFDP (mpa4)": 64160.220313795
+      },
+      "4PL2ZFoZJHgkbZ54US4qNC58X69Fa1FKtY4CaVKeuQPg": {
+        "Other/Direct": 44.338407673000006,
+        "SFDP (mpa4)": 64185.855493782,
+        "SFDP (FiRep)": 120668.173030732
+      },
+      "masvNDXtxVVMrYSV84RMry97JyHXAFcdfTZJ5VzpSYR": {
+        "Other/Direct": 9421.520742122002,
+        "SFDP (mpa4)": 64179.737267455,
+        "SFDP (FiRep)": 106951.634838116
+      },
+      "GA2t11gJcmuZ4y7pShTzgYDkxVaJaVQJqkVUqojhPPsT": {
+        "SFDP (mpa4)": 64122.641784299,
+        "Other/Direct": 74388.47968566301,
+        "SFDP (FiRep)": 106990.063126089
+      },
+      "gridZ5cMHjWGktAQt6o36NtF7XSv19nJBrW83zmo7BM": {
+        "Other/Direct": 65804.52423094401,
+        "SFDP (mpa4)": 64187.281744149,
+        "SFDP (FiRep)": 106772.538133548
+      },
+      "radYEig9KGrMTMWbWRFV7LStotQbnLgPaEFHVDsudQz": {
+        "Other/Direct": 97953.89957239901,
+        "SFDP (FiRep)": 106749.129013159,
+        "SFDP (mpa4)": 64175.021978686
+      },
+      "DzQHN1oTdN85Sbku2bc9Fu9yEwrgRMiu2XbRcntZ31yb": {
+        "Other/Direct": 19414.020031191,
+        "SFDP (mpa4)": 64059.907699842995,
+        "SFDP (FiRep)": 106807.113800616
+      },
+      "punK4RDD3pFbcum79ACHatYPLLE1hr5UNnQVUGNfeyP": {
+        "Other/Direct": 220004.17715303492,
+        "SFDP (FiRep)": 106668.478045208,
+        "SFDP (mpa4)": 64021.135843373
+      },
+      "phz34EcgWRCT9otPzRS2JtSzVHxQJk4SovqJvV1TQk8": {
+        "Other/Direct": 73908.39730931101,
+        "SFDP (mpa4)": 63864.501056441004,
+        "SFDP (FiRep)": 106795.063575998
+      },
+      "Ehdn9LdjTAURQSMoDPERXLehtvzy7QD762wwPkzGT7RS": {
+        "Other/Direct": 21978.758125548004,
+        "SFDP (FiRep)": 106732.035878584,
+        "SFDP (mpa4)": 63740.130855301
+      },
+      "25quQGzrtcU224Kk7G5YDJ9oJXgYsiur8pZ7pAnCMhhV": {
+        "Other/Direct": 18619.615739908,
+        "SFDP (FiRep)": 113521.789825745,
+        "SFDP (mpa4)": 56914.30343090199
+      },
+      "VotESBSkLKU8vebS6wTR2rzWWJsLc6YThYS6tebPxXq": {
+        "Other/Direct": 57510.82729875299,
+        "SFDP (mpa4)": 64175.504722938,
+        "SFDP (FiRep)": 106257.368983948
+      },
+      "CAf8jfgqhia5VNrEF4A7Y9VLD3numMq9DVSceq7cPhNY": {
+        "Other/Direct": 315611.0032532163,
+        "SFDP (mpa4)": 64082.170588728,
+        "SFDP (FiRep)": 106252.343488681
+      },
+      "tri1cHBy47fPyhCvrCf6FnR7Mz6XdSoSBah2FsZVQeT": {
+        "Other/Direct": 44804.78279183599,
+        "SFDP (mpa4)": 63033.31328339,
+        "SFDP (FiRep)": 106768.546084723
+      },
+      "MkyLHecSHN7TBdWgnh2J8KCsEHnsqqbVYSxtGmsshrk": {
+        "SFDP (mpa4)": 64180.111212634,
+        "SFDP (FiRep)": 100340.062273578,
+        "Other/Direct": 42730.094696151
+      },
+      "57GUg9QH2LFMV11oaduuoqVJ5qHDEp7EGJ2xgkGiqAum": {
+        "Other/Direct": 29800.838429256997,
+        "SFDP (mpa4)": 64158.195226516,
+        "SFDP (FiRep)": 85273.238017217
+      },
+      "fdvtuDvWJZ89Z7TmeLjCwxgoLcmoEWNxruV48DvJtfm": {
+        "Other/Direct": 19392.223274394,
+        "SFDP (FiRep)": 85273.480519505,
+        "SFDP (mpa4)": 64152.936330756
+      },
+      "BH2PMb9vuHxkVFMMHbH8iudCoBfUoX5tVaHfnEkKJ2gQ": {
+        "Other/Direct": 177885.714212152,
+        "SFDP (FiRep)": 85148.332462352,
+        "SFDP (mpa4)": 64190.767347707
+      },
+      "6q1VNp8Vy2Go12vb8CwbjUqqj2SXr2JYftJRWs71sW23": {
+        "SFDP (FiRep)": 84756.695946254,
+        "Other/Direct": 279012.200139448,
+        "SFDP (mpa4)": 64007.635350182994
+      },
+      "Cer1umMkC6cvRGKKLP3QwxsdxsgxmC1EhqMhB1mqVvYZ": {
+        "BlazeStake": 5109.176023597999,
+        "SFDP (mpa4)": 62087.324363689004,
+        "Other/Direct": 23574.005132617,
+        "SFDP (FiRep)": 85233.951725096
+      },
+      "AAAAQwH5KManM6mbxGLc1m1XnWcRBFDmdUgpZ4Ww621j": {
+        "Other/Direct": 10044.004541867,
+        "SFDP (FiRep)": 85273.056232688,
+        "SFDP (mpa4)": 61813.131315882994
+      }
+    },
+    "stakeSources": [
+      {
+        "name": "Other/Direct",
+        "stake": 6695016.652448413
+      },
+      {
+        "name": "SFDP (FiRep)",
+        "stake": 6489141.024946819
+      },
+      {
+        "name": "SFDP (mpa4)",
+        "stake": 1644232.3234544587
+      },
+      {
+        "name": "BlazeStake",
+        "stake": 5109.176023597999
+      }
+    ]
   }
 }
