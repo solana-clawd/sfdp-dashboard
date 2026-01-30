@@ -268,6 +268,46 @@ async function main() {
   let cNak = 0, cRun = 0;
   for (const v of combinedSorted) { cRun += v.totalStake; cNak++; if (cRun >= combinedTotal / 3) break; }
 
+  // Infrastructure concentration (ASN-level)
+  const combinedASNs = {};
+  for (const v of combinedSorted) {
+    const a = v.asn || 'Unknown';
+    if (!combinedASNs[a]) combinedASNs[a] = { name: a, count: 0, stake: 0 };
+    combinedASNs[a].count++;
+    combinedASNs[a].stake += v.totalStake;
+  }
+  const asnSorted = Object.values(combinedASNs).sort((a, b) => b.stake - a.stake);
+  // Top 3 ASN concentration
+  const top3ASNStake = asnSorted.slice(0, 3).reduce((s, a) => s + a.stake, 0);
+
+  // Commission compliance
+  const allCombinedVals = combinedSorted.filter(v => v.totalStake > 0);
+  const highCommission = allCombinedVals.filter(v => v.commission > 10);
+  const jitoOverCap = []; // validators with jito commission > 10% (1000 bps)
+  for (const [key, data] of Object.entries(result.accounts)) {
+    for (const v of data.validators) {
+      if (v.isJito && v.jitoCommission > 1000 && v.activeStake > 0) {
+        jitoOverCap.push({ voter: v.voter, name: v.name, jitoCommission: v.jitoCommission, stake: v.activeStake });
+      }
+    }
+  }
+
+  // Foundation stake as % of network
+  let totalNetworkStake = 0;
+  const seenVoters = new Set();
+  for (const [key, data] of Object.entries(result.accounts)) {
+    for (const v of data.validators) {
+      if (!seenVoters.has(v.voter) && v.totalNetworkStake > 0) {
+        totalNetworkStake += v.totalNetworkStake;
+        seenVoters.add(v.voter);
+      }
+    }
+  }
+
+  // Validator economics
+  const medianStake = result.accounts.mpa4.stakeStats.median;
+  const estAnnualRewardSOL = medianStake * 0.065; // ~6.5% APY
+
   result.combined = {
     totalActiveStake: combinedTotal,
     uniqueValidators: combinedSorted.length,
@@ -275,6 +315,29 @@ async function main() {
     topValidators: combinedSorted.slice(0, 50).map(v => ({
       ...v, pctOfTotal: (v.totalStake / combinedTotal * 100).toFixed(2),
     })),
+    infraConcentration: {
+      topASNs: asnSorted.slice(0, 15).map(a => ({
+        ...a, pct: (a.stake / combinedTotal * 100).toFixed(2),
+      })),
+      top3ASNPct: (top3ASNStake / combinedTotal * 100).toFixed(1),
+      uniqueASNs: asnSorted.length,
+    },
+    commissionCompliance: {
+      highCommissionCount: highCommission.length,
+      highCommission: highCommission.map(v => ({ voter: v.voter, name: v.name, commission: v.commission, stake: v.totalStake })),
+      jitoOverCapCount: jitoOverCap.length,
+      jitoOverCap,
+    },
+    foundationVsNetwork: {
+      sfdpStake: combinedTotal,
+      trackedNetworkStake: totalNetworkStake,
+      sfdpPctOfTracked: totalNetworkStake > 0 ? (combinedTotal / totalNetworkStake * 100).toFixed(1) : null,
+    },
+    validatorEconomics: {
+      medianStakeSOL: medianStake,
+      estAnnualRewardSOL: estAnnualRewardSOL,
+      validatorsInProgram: combinedSorted.filter(v => v.totalStake > 0).length,
+    },
   };
 
   fs.writeFileSync(path.join(DATA_DIR, "latest.json"), JSON.stringify(result, null, 2));

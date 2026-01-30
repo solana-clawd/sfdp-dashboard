@@ -273,13 +273,21 @@ function renderCombined() {
   const el = $('view-combined');
   const f = D.accounts.firep, m = D.accounts.mpa4, c = D.combined;
 
+  const infra = c.infraConcentration || {};
+  const compliance = c.commissionCompliance || {};
+  const fvn = c.foundationVsNetwork || {};
+  const econ = c.validatorEconomics || {};
+
   let html = makeCards([
     {t:'Total SFDP Stake',v:fmtS(c.totalActiveStake),s:`FiRep: ${fmtS(f.totalActive)} · mpa4: ${fmtS(m.totalActive)}`},
     {t:'Total Validators',v:c.uniqueValidators,s:`FiRep: ${f.activeValidators} · mpa4: ${m.activeValidators} · Network: ${D.networkValidators}`},
     {t:'Combined Nakamoto',v:c.nakamotoCoeff33,s:`FiRep: ${f.decentralization.nakamotoCoeff33} · mpa4: ${m.decentralization.nakamotoCoeff33}`},
+    {t:'SFDP % of Network',v:(fvn.sfdpPctOfTracked||'?')+'%',s:`${fmtS(fvn.trackedNetworkStake||0)} tracked network stake`},
+    {t:'Top 3 ASN Concentration',v:(infra.top3ASNPct||'?')+'%',s:`${infra.uniqueASNs||'?'} unique ASNs`},
+    {t:'Commission Compliance',v:compliance.highCommissionCount===0?'<span class="badge badge-green">✓ All ≤10%</span>':`<span class="badge badge-red">${compliance.highCommissionCount} over 10%</span>`,
+      s:`Jito >10% cap: ${compliance.jitoOverCapCount||0} validators`},
     {t:'Deactivating',v:fmtS(f.totalDeactivating+m.totalDeactivating),s:`FiRep: ${fmtS(f.totalDeactivating)} · mpa4: ${fmtS(m.totalDeactivating)}`},
-    {t:'SFDP vs Network',v:pct(c.totalActiveStake, D.networkValidators>0?0:1),s:`${D.networkValidators} total network validators`},
-    {t:'Jito Coverage',v:`${f.jitoStats.pct}% / ${m.jitoStats.pct}%`,s:'FiRep / mpa4'},
+    {t:'Validator Economics',v:fmtS(econ.medianStakeSOL||0)+' median',s:`Est. ${fmtS(econ.estAnnualRewardSOL||0)}/yr reward · ${econ.validatorsInProgram||0} in program`},
   ]);
 
   html += `<div class="row2">
@@ -298,6 +306,16 @@ function renderCombined() {
     <div class="chart-box"><h3>💰 Commission Comparison</h3><canvas id="c-commissions"></canvas></div>
     <div class="chart-box"><h3>📊 Decentralization Comparison</h3><canvas id="c-decent"></canvas></div>
   </div>`;
+
+  // Infrastructure concentration alerts
+  html += `<div class="chart-box"><h3>🏗️ Infrastructure Concentration Risk</h3>
+    <div id="c-infra-table"></div></div>`;
+
+  // Commission compliance
+  if (compliance.highCommissionCount > 0 || compliance.jitoOverCapCount > 0) {
+    html += `<div class="chart-box" style="border-color:var(--red)"><h3>⚠️ Commission Compliance Flags</h3>
+      <div id="c-compliance"></div></div>`;
+  }
 
   html += `<div class="chart-box"><h3>Top 30 Combined Validators</h3><div id="c-top30-list"></div></div>`;
 
@@ -428,6 +446,33 @@ function renderCombined() {
     {label:'FiRep Validators',data:commList.map(c=>fCommMap[c]||0),backgroundColor:'#58a6ff'},
     {label:'mpa4 Validators',data:commList.map(c=>mCommMap[c]||0),backgroundColor:'#bc8cff'},
   ],{stacked:true, isCount:true, xLabel:'Commission Rate', yLabel:'Number of Validators'});
+
+  // Infrastructure concentration table
+  if (infra.topASNs) {
+    const totalS = c.totalActiveStake;
+    $('c-infra-table').innerHTML = `<table><thead><tr>
+      <th>Hosting Provider / ASN</th><th>Validators</th><th>Stake</th><th>% of SFDP</th><th>Risk</th>
+    </tr></thead><tbody>${infra.topASNs.map(a => {
+      const p = parseFloat(a.pct);
+      const risk = p > 15 ? '<span class="badge badge-red">HIGH</span>' : p > 10 ? '<span class="badge" style="background:rgba(210,153,34,.15);color:var(--orange)">MEDIUM</span>' : '<span class="badge badge-green">LOW</span>';
+      return `<tr><td>${a.name}</td><td>${a.count}</td><td>${fmt(a.stake)} SOL</td><td>${a.pct}%<span class="bar" style="width:${Math.max(2,p*3)}px;background:${p>15?'var(--red)':p>10?'var(--orange)':'var(--green)'}"></span></td><td>${risk}</td></tr>`;
+    }).join('')}</tbody></table>`;
+  }
+
+  // Compliance flags
+  if (compliance.highCommissionCount > 0 || compliance.jitoOverCapCount > 0) {
+    let compHtml = '';
+    if (compliance.highCommission?.length) {
+      compHtml += '<p style="color:var(--red);margin-bottom:8px"><b>Validators exceeding 10% commission:</b></p>';
+      compHtml += compliance.highCommission.map(v => `<span class="mono">${v.voter.slice(0,16)}…</span> ${v.name||''} — ${v.commission}% commission, ${fmt(v.stake)} SOL`).join('<br>');
+    }
+    if (compliance.jitoOverCap?.length) {
+      compHtml += '<p style="color:var(--orange);margin:8px 0"><b>Jito validators exceeding 10% (1000 bps) Jito commission:</b></p>';
+      compHtml += compliance.jitoOverCap.map(v => `<span class="mono">${v.voter.slice(0,16)}…</span> ${v.name||''} — ${v.jitoCommission} bps, ${fmt(v.stake)} SOL`).join('<br>');
+    }
+    const compEl = $('c-compliance');
+    if (compEl) compEl.innerHTML = compHtml;
+  }
 
   const t30 = c.topValidators.slice(0,30);
   $('c-top30-list').innerHTML = `<div class="tw"><table><thead><tr>
