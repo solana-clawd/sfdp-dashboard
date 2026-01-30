@@ -3,379 +3,279 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SFDP Stake Dashboard</title>
+<title>SFDP Stake Decentralization Dashboard</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 <style>
-  :root {
-    --bg: #0d1117; --surface: #161b22; --border: #30363d;
-    --text: #e6edf3; --text-secondary: #8b949e;
-    --accent: #58a6ff; --green: #3fb950; --red: #f85149;
-    --purple: #bc8cff; --orange: #d29922;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
-  .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
-  header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; flex-wrap: wrap; gap: 12px; }
-  h1 { font-size: 24px; font-weight: 600; }
-  h1 span { color: var(--accent); }
-  .meta { color: var(--text-secondary); font-size: 13px; }
-  .tabs { display: flex; gap: 4px; margin-bottom: 24px; }
-  .tab { padding: 8px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; color: var(--text-secondary); font-size: 14px; transition: all 0.2s; }
-  .tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-  .tab:hover:not(.active) { color: var(--text); border-color: var(--text-secondary); }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 24px; }
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
-  .card h3 { font-size: 13px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
-  .card .value { font-size: 28px; font-weight: 700; }
-  .card .sub { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
-  .card .delta { font-size: 14px; font-weight: 500; }
-  .delta.good { color: var(--green); }
-  .delta.bad { color: var(--red); }
-  .chart-container { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 24px; }
-  .chart-container h3 { font-size: 15px; margin-bottom: 16px; }
-  .chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
-  @media (max-width: 900px) { .chart-row { grid-template-columns: 1fr; } }
-  canvas { max-height: 350px; }
-  table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  th { text-align: left; padding: 10px 12px; border-bottom: 2px solid var(--border); color: var(--text-secondary); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; position: sticky; top: 0; background: var(--surface); }
-  td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
-  tr:hover td { background: rgba(88, 166, 255, 0.05); }
-  .mono { font-family: 'SF Mono', Monaco, Consolas, monospace; font-size: 13px; }
-  .pct-bar { display: inline-block; height: 6px; border-radius: 3px; background: var(--accent); min-width: 2px; vertical-align: middle; margin-left: 6px; }
-  .table-wrapper { max-height: 600px; overflow-y: auto; border-radius: 12px; }
-  .search { padding: 8px 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 14px; width: 300px; margin-bottom: 12px; }
-  .search:focus { outline: none; border-color: var(--accent); }
-  .legend-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
-  .section-title { font-size: 18px; font-weight: 600; margin: 32px 0 16px; }
-  .alert { background: rgba(248,81,73,0.1); border: 1px solid var(--red); border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; font-size: 14px; }
-  .info { background: rgba(88,166,255,0.1); border: 1px solid var(--accent); border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; font-size: 14px; }
+:root{--bg:#0d1117;--surface:#161b22;--border:#30363d;--text:#e6edf3;--dim:#8b949e;--accent:#58a6ff;--green:#3fb950;--red:#f85149;--purple:#bc8cff;--orange:#d29922;--yellow:#e3b341}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+.container{max-width:1440px;margin:0 auto;padding:24px}
+header{margin-bottom:24px}
+h1{font-size:22px;font-weight:600}
+h1 span{color:var(--accent)}
+.meta{color:var(--dim);font-size:12px;margin-top:4px}
+.tabs{display:flex;gap:4px;margin-bottom:20px;flex-wrap:wrap}
+.tab{padding:7px 14px;background:var(--surface);border:1px solid var(--border);border-radius:6px;cursor:pointer;color:var(--dim);font-size:13px}
+.tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.tab:hover:not(.active){color:var(--text);border-color:var(--dim)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:20px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px}
+.card h3{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.card .val{font-size:24px;font-weight:700}
+.card .sub{font-size:12px;color:var(--dim);margin-top:2px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:20px}
+@media(max-width:900px){.row2,.row3{grid-template-columns:1fr}}
+.chart-box{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:16px}
+.chart-box h3{font-size:14px;margin-bottom:12px}
+canvas{max-height:320px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;padding:8px 10px;border-bottom:2px solid var(--border);color:var(--dim);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.3px;position:sticky;top:0;background:var(--surface)}
+td{padding:6px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:rgba(88,166,255,.04)}
+.mono{font-family:'SF Mono',Monaco,Consolas,monospace;font-size:12px}
+.bar{display:inline-block;height:5px;border-radius:3px;background:var(--accent);min-width:2px;vertical-align:middle;margin-left:4px}
+.tw{max-height:500px;overflow-y:auto;border-radius:10px}
+.search{padding:6px 12px;background:var(--surface);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:13px;width:280px;margin-bottom:8px}
+.search:focus{outline:none;border-color:var(--accent)}
+.section{font-size:16px;font-weight:600;margin:28px 0 12px}
+.badge{display:inline-block;padding:2px 6px;border-radius:4px;font-size:11px;font-weight:500}
+.badge-green{background:rgba(63,185,80,.15);color:var(--green)}
+.badge-red{background:rgba(248,81,73,.15);color:var(--red)}
+.badge-blue{background:rgba(88,166,255,.15);color:var(--accent)}
+.hidden{display:none}
 </style>
 </head>
 <body>
 <div class="container">
-  <header>
-    <div>
-      <h1>🏛️ Solana Foundation <span>Delegation Program</span> Dashboard</h1>
-      <div class="meta" id="meta"></div>
-    </div>
-  </header>
+<header>
+<h1>🏛️ Solana Foundation <span>Delegation Program</span> — Decentralization Dashboard</h1>
+<div class="meta" id="meta"></div>
+</header>
 
-  <div class="tabs">
-    <div class="tab active" onclick="showTab('combined')">Combined</div>
-    <div class="tab" onclick="showTab('firep')">FiRep (Main)</div>
-    <div class="tab" onclick="showTab('mpa4')">mpa4 (Matching)</div>
-  </div>
+<div class="tabs" id="tabs"></div>
 
-  <div id="combined-view">
-    <div class="grid" id="combined-cards"></div>
-    <div class="chart-row">
-      <div class="chart-container">
-        <h3>Stake Distribution by Source</h3>
-        <canvas id="sourceChart"></canvas>
-      </div>
-      <div class="chart-container">
-        <h3>Decentralization Comparison</h3>
-        <canvas id="decentChart"></canvas>
-      </div>
-    </div>
-    <div class="chart-container">
-      <h3>Combined Top 25 Validators by SFDP Stake</h3>
-      <canvas id="combinedTopChart"></canvas>
-    </div>
-    <div class="card" style="margin-bottom:24px">
-      <h3>All Validators</h3>
-      <input type="text" class="search" id="searchCombined" placeholder="Search validator vote key..." oninput="filterTable('combinedTable', this.value)">
-      <div class="table-wrapper">
-        <table id="combinedTable"></table>
-      </div>
-    </div>
-  </div>
-
-  <div id="firep-view" style="display:none">
-    <div class="grid" id="firep-cards"></div>
-    <div class="chart-row">
-      <div class="chart-container">
-        <h3>FiRep Stake Distribution</h3>
-        <canvas id="firepDistChart"></canvas>
-      </div>
-      <div class="chart-container">
-        <h3>FiRep Stake Buckets</h3>
-        <canvas id="firepBucketChart"></canvas>
-      </div>
-    </div>
-    <div class="card">
-      <h3>FiRep Validators</h3>
-      <input type="text" class="search" id="searchFirep" placeholder="Search..." oninput="filterTable('firepTable', this.value)">
-      <div class="table-wrapper">
-        <table id="firepTable"></table>
-      </div>
-    </div>
-  </div>
-
-  <div id="mpa4-view" style="display:none">
-    <div class="grid" id="mpa4-cards"></div>
-    <div class="chart-row">
-      <div class="chart-container">
-        <h3>mpa4 Stake Distribution</h3>
-        <canvas id="mpa4DistChart"></canvas>
-      </div>
-      <div class="chart-container">
-        <h3>mpa4 Stake Buckets</h3>
-        <canvas id="mpa4BucketChart"></canvas>
-      </div>
-    </div>
-    <div class="card">
-      <h3>mpa4 Validators</h3>
-      <input type="text" class="search" id="searchMpa4" placeholder="Search..." oninput="filterTable('mpa4Table', this.value)">
-      <div class="table-wrapper">
-        <table id="mpa4Table"></table>
-      </div>
-    </div>
-  </div>
+<div id="view-combined"></div>
+<div id="view-firep" class="hidden"></div>
+<div id="view-mpa4" class="hidden"></div>
 </div>
 
 <script>
-let DATA = null;
-
-async function loadData() {
-  const res = await fetch('data/latest.json');
-  DATA = await res.json();
-  render();
-}
-
-function fmt(n, d=2) {
-  if (n >= 1e6) return (n/1e6).toFixed(d) + 'M';
-  if (n >= 1e3) return (n/1e3).toFixed(d) + 'K';
-  return n.toFixed(d);
-}
-
-function fmtSol(n) { return fmt(n) + ' SOL'; }
+let D;
+const $ = id => document.getElementById(id);
+const fmt = (n,d=1) => n>=1e6?(n/1e6).toFixed(d)+'M':n>=1e3?(n/1e3).toFixed(d)+'K':n.toFixed(d);
+const fmtS = n => fmt(n)+' SOL';
+const pct = (a,b) => b>0?((a/b)*100).toFixed(2)+'%':'0%';
 
 function showTab(tab) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  event.target.classList.add('active');
-  ['combined','firep','mpa4'].forEach(v => {
-    document.getElementById(v+'-view').style.display = v === tab ? '' : 'none';
+  ['combined','firep','mpa4'].forEach(t => {
+    $('view-'+t).classList.toggle('hidden', t!==tab);
+  });
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab===tab));
+}
+
+function makeCards(items) {
+  return '<div class="grid">'+items.map(c=>`<div class="card"><h3>${c.t}</h3><div class="val">${c.v}</div><div class="sub">${c.s||''}</div></div>`).join('')+'</div>';
+}
+
+function makeTable(id, headers, rows) {
+  return `<input class="search" placeholder="Search..." oninput="filterT('${id}',this.value)">
+<div class="tw"><table id="${id}"><thead><tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead>
+<tbody>${rows.map(r=>'<tr>'+r.map(c=>`<td>${c}</td>`).join('')+'</tr>').join('')}</tbody></table></div>`;
+}
+
+function filterT(id,q) {
+  document.querySelectorAll('#'+id+' tbody tr').forEach(r=>{
+    r.style.display=r.textContent.toLowerCase().includes(q.toLowerCase())?'':'none';
   });
 }
 
-function filterTable(tableId, query) {
-  const rows = document.getElementById(tableId).querySelectorAll('tbody tr');
-  rows.forEach(r => {
-    r.style.display = r.textContent.toLowerCase().includes(query.toLowerCase()) ? '' : 'none';
-  });
+function pieChart(canvasId, labels, data, colors) {
+  new Chart($(canvasId),{type:'doughnut',data:{labels,datasets:[{data,backgroundColor:colors||palette(labels.length),borderWidth:0}]},
+    options:{responsive:true,plugins:{legend:{position:'right',labels:{color:'#e6edf3',font:{size:11},boxWidth:12}}}}});
 }
 
-function renderCards(containerId, data) {
-  const c = document.getElementById(containerId);
-  const cards = [
-    { title: 'Total Active Stake', value: fmtSol(data.totalActive), sub: `${fmtSol(data.totalDeactivating)} deactivating` },
-    { title: 'Active Validators', value: data.activeValidators, sub: `${data.totalAccounts} stake accounts` },
-    { title: 'Nakamoto Coefficient', value: data.decentralization.nakamotoCoeff33, sub: 'validators to reach 33% of stake' },
-    { title: 'HHI', value: data.decentralization.hhi.toFixed(6), sub: `Gini: ${data.decentralization.gini.toFixed(4)}` },
-    { title: 'Mean Stake', value: fmtSol(data.stakeStats.mean), sub: `Median: ${fmtSol(data.stakeStats.median)}` },
-    { title: 'Stake Range', value: `${fmtSol(data.stakeStats.min)} - ${fmtSol(data.stakeStats.max)}`, sub: `P10: ${fmtSol(data.stakeStats.p10)} | P90: ${fmtSol(data.stakeStats.p90)}` },
-  ];
-  c.innerHTML = cards.map(card => `
-    <div class="card">
-      <h3>${card.title}</h3>
-      <div class="value">${card.value}</div>
-      <div class="sub">${card.sub}</div>
-    </div>
-  `).join('');
+function barChart(canvasId, labels, datasets, opts={}) {
+  new Chart($(canvasId),{type:'bar',data:{labels,datasets},
+    options:{responsive:true,indexAxis:opts.horizontal?'y':'x',
+      scales:{x:{stacked:opts.stacked,ticks:{color:'#8b949e',callback:opts.fmtX||(v=>v)},grid:{color:'#30363d22'}},
+              y:{stacked:opts.stacked,ticks:{color:'#8b949e',callback:opts.fmtY||(v=>v)},grid:{color:'#30363d22'}}},
+      plugins:{legend:{display:datasets.length>1,labels:{color:'#e6edf3',font:{size:11}}}}}});
 }
 
-function renderValidatorTable(tableId, validators, totalStake) {
-  const t = document.getElementById(tableId);
-  t.innerHTML = `
-    <thead><tr>
-      <th>#</th><th>Vote Account</th><th>Active Stake (SOL)</th><th>% of Total</th><th>Accounts</th>
-    </tr></thead>
-    <tbody>${validators.map((v, i) => {
-      const pct = (v.activeStake / totalStake * 100);
-      return `<tr>
-        <td>${i+1}</td>
-        <td class="mono">${v.voter}</td>
-        <td>${v.activeStake.toLocaleString(undefined, {maximumFractionDigits:2})}</td>
-        <td>${pct.toFixed(2)}% <span class="pct-bar" style="width:${Math.max(2, pct*3)}px"></span></td>
-        <td>${v.stakeAccounts}</td>
-      </tr>`;
-    }).join('')}</tbody>
-  `;
+const palette = n => {
+  const p=['#58a6ff','#3fb950','#bc8cff','#d29922','#f85149','#39d353','#f778ba','#79c0ff','#56d364','#e3b341','#ff7b72','#a5d6ff','#7ee787','#d2a8ff','#ffa657'];
+  return Array.from({length:n},(_,i)=>p[i%p.length]);
+};
+
+function renderAccountView(containerId, data, color) {
+  const el = $(containerId);
+  const dec = data.decentralization;
+  const ss = data.stakeStats;
+
+  let html = makeCards([
+    {t:'Active Stake',v:fmtS(data.totalActive),s:`${fmtS(data.totalDeactivating)} deactivating`},
+    {t:'Active Validators',v:data.activeValidators,s:`${data.totalAccounts} stake accounts`},
+    {t:'Nakamoto Coefficient',v:dec.nakamotoCoeff33,s:'validators for 33% stake'},
+    {t:'HHI Index',v:dec.hhi.toFixed(6),s:dec.hhi<0.01?'<span class="badge badge-green">Low concentration</span>':'<span class="badge badge-red">Concentrated</span>'},
+    {t:'Gini Coefficient',v:dec.gini.toFixed(4),s:dec.gini<0.3?'<span class="badge badge-green">Fairly equal</span>':'Moderate inequality'},
+    {t:'Top Validator Share',v:dec.topValidatorPct.toFixed(1)+'%',s:`Top 10: ${dec.top10Pct.toFixed(1)}%`},
+    {t:'Mean / Median Stake',v:fmtS(ss.mean),s:`Median: ${fmtS(ss.median)}`},
+    {t:'Jito Validators',v:`${data.jitoStats.validators} (${data.jitoStats.pct}%)`,s:`${fmtS(data.jitoStats.stake)} staked`},
+  ]);
+
+  // Charts row: geo + commission
+  const cid = containerId.replace('view-','');
+  html += `<div class="row3">
+    <div class="chart-box"><h3>🌍 Country Distribution</h3><canvas id="${cid}-country"></canvas></div>
+    <div class="chart-box"><h3>🏢 ASN Distribution (Top 10)</h3><canvas id="${cid}-asn"></canvas></div>
+    <div class="chart-box"><h3>💰 Commission Distribution</h3><canvas id="${cid}-commission"></canvas></div>
+  </div>`;
+
+  html += `<div class="row2">
+    <div class="chart-box"><h3>📊 Stake Buckets</h3><canvas id="${cid}-buckets"></canvas></div>
+    <div class="chart-box"><h3>🖥️ Software Versions</h3><canvas id="${cid}-versions"></canvas></div>
+  </div>`;
+
+  // Top validators horizontal bar
+  html += `<div class="chart-box"><h3>Top 25 Validators by Stake</h3><canvas id="${cid}-top25"></canvas></div>`;
+
+  // Validator table
+  const vrows = data.validators.filter(v=>v.activeStake>0).sort((a,b)=>b.activeStake-a.activeStake).map((v,i)=>[
+    i+1,
+    `<span class="mono">${v.voter.slice(0,12)}…</span>`,
+    v.name||'—',
+    v.activeStake.toLocaleString(undefined,{maximumFractionDigits:0}),
+    v.pctOfPool.toFixed(2)+'%<span class="bar" style="width:'+Math.max(2,v.pctOfPool*4)+'px"></span>',
+    v.commission!=null?v.commission+'%':'—',
+    v.country||'—',
+    v.asnOrg?v.asnOrg.slice(0,20):'—',
+    v.version||'—',
+    v.skipRate!=null?v.skipRate.toFixed(1)+'%':'—',
+    v.isJito?'✅':'—',
+    v.delinquent?'<span class="badge badge-red">Yes</span>':'—',
+  ]);
+
+  html += `<div class="chart-box"><h3>All Validators</h3>`+
+    makeTable(cid+'-table',['#','Vote Account','Name','Active Stake','% Pool','Comm.','Country','ASN','Version','Skip%','Jito','Delinq.'],vrows)+
+    '</div>';
+
+  el.innerHTML = html;
+
+  // Render charts
+  const geo = data.geographic;
+  pieChart(`${cid}-country`, geo.countries.slice(0,12).map(c=>c.name), geo.countries.slice(0,12).map(c=>c.stake));
+
+  const topASN = geo.topASNs.slice(0,10);
+  barChart(`${cid}-asn`, topASN.map(a=>a.name.slice(0,18)), [{label:'Stake',data:topASN.map(a=>a.stake),backgroundColor:color||'#58a6ff'}], {horizontal:true,fmtX:v=>fmt(v,0)});
+
+  const comm = data.commissionDistribution;
+  pieChart(`${cid}-commission`, comm.map(c=>c.name+'%'), comm.map(c=>c.stake));
+
+  const bk = data.stakeBuckets;
+  barChart(`${cid}-buckets`, bk.map(b=>b.label), [
+    {label:'Validators',data:bk.map(b=>b.count),backgroundColor:'#58a6ff'},
+  ]);
+
+  const ver = data.software.versions;
+  pieChart(`${cid}-versions`, ver.map(v=>v.name), ver.map(v=>v.stake));
+
+  const t25 = data.validators.filter(v=>v.activeStake>0).sort((a,b)=>b.activeStake-a.activeStake).slice(0,25);
+  barChart(`${cid}-top25`, t25.map(v=>(v.name||v.voter.slice(0,8)+'…').slice(0,14)),
+    [{label:'Stake',data:t25.map(v=>v.activeStake),backgroundColor:color||'#58a6ff'}],
+    {horizontal:true,fmtX:v=>fmt(v,0)});
 }
 
-function renderCombinedTable(validators) {
-  const t = document.getElementById('combinedTable');
-  const total = DATA.combined.totalActiveStake;
-  t.innerHTML = `
-    <thead><tr>
-      <th>#</th><th>Vote Account</th><th>Total SFDP Stake</th><th>FiRep</th><th>mpa4</th><th>% of Total</th>
-    </tr></thead>
-    <tbody>${validators.map((v, i) => {
-      const pct = (v.totalStake / total * 100);
-      return `<tr>
-        <td>${i+1}</td>
-        <td class="mono">${v.voter}</td>
-        <td>${v.totalStake.toLocaleString(undefined, {maximumFractionDigits:2})}</td>
-        <td>${(v.sources?.firep || 0).toLocaleString(undefined, {maximumFractionDigits:2})}</td>
-        <td>${(v.sources?.mpa4 || 0).toLocaleString(undefined, {maximumFractionDigits:2})}</td>
-        <td>${pct.toFixed(2)}% <span class="pct-bar" style="width:${Math.max(2, pct*3)}px"></span></td>
-      </tr>`;
-    }).join('')}</tbody>
-  `;
+function renderCombined() {
+  const el = $('view-combined');
+  const f = D.accounts.firep, m = D.accounts.mpa4, c = D.combined;
+
+  let html = makeCards([
+    {t:'Total SFDP Stake',v:fmtS(c.totalActiveStake),s:`FiRep: ${fmtS(f.totalActive)} · mpa4: ${fmtS(m.totalActive)}`},
+    {t:'Total Validators',v:c.uniqueValidators,s:`FiRep: ${f.activeValidators} · mpa4: ${m.activeValidators} · Network: ${D.networkValidators}`},
+    {t:'Combined Nakamoto',v:c.nakamotoCoeff33,s:`FiRep: ${f.decentralization.nakamotoCoeff33} · mpa4: ${m.decentralization.nakamotoCoeff33}`},
+    {t:'Deactivating',v:fmtS(f.totalDeactivating+m.totalDeactivating),s:`FiRep: ${fmtS(f.totalDeactivating)} · mpa4: ${fmtS(m.totalDeactivating)}`},
+    {t:'SFDP vs Network',v:pct(c.totalActiveStake, D.networkValidators>0?0:1),s:`${D.networkValidators} total network validators`},
+    {t:'Jito Coverage',v:`${f.jitoStats.pct}% / ${m.jitoStats.pct}%`,s:'FiRep / mpa4'},
+  ]);
+
+  html += `<div class="row2">
+    <div class="chart-box"><h3>Stake by Source</h3><canvas id="c-source"></canvas></div>
+    <div class="chart-box"><h3>Decentralization Comparison</h3><canvas id="c-decent"></canvas></div>
+  </div>`;
+
+  html += `<div class="row2">
+    <div class="chart-box"><h3>🌍 Country Comparison</h3><canvas id="c-countries"></canvas></div>
+    <div class="chart-box"><h3>💰 Commission Comparison</h3><canvas id="c-commissions"></canvas></div>
+  </div>`;
+
+  html += `<div class="chart-box"><h3>Top 30 Combined Validators</h3><canvas id="c-top30"></canvas></div>`;
+
+  const rows = c.topValidators.map((v,i)=>[
+    i+1,
+    `<span class="mono">${v.voter.slice(0,16)}…</span>`,
+    v.name||'—',
+    v.totalStake.toLocaleString(undefined,{maximumFractionDigits:0}),
+    (v.sources?.firep||0).toLocaleString(undefined,{maximumFractionDigits:0}),
+    (v.sources?.mpa4||0).toLocaleString(undefined,{maximumFractionDigits:0}),
+    v.pctOfTotal+'%<span class="bar" style="width:'+Math.max(2,parseFloat(v.pctOfTotal)*3)+'px"></span>',
+    v.country||'—',
+    v.commission!=null?v.commission+'%':'—',
+  ]);
+  html += `<div class="chart-box"><h3>All Combined Validators</h3>`+
+    makeTable('c-table',['#','Vote Account','Name','Total Stake','FiRep','mpa4','% Total','Country','Comm.'],rows)+'</div>';
+
+  el.innerHTML = html;
+
+  pieChart('c-source',['FiRep (Main)','mpa4 (Matching/Residual)'],[f.totalActive,m.totalActive],['#58a6ff','#bc8cff']);
+
+  barChart('c-decent',['Nakamoto','Validators','HHI×10k','Gini×100'],[
+    {label:'FiRep',data:[f.decentralization.nakamotoCoeff33,f.activeValidators,f.decentralization.hhi*10000,f.decentralization.gini*100],backgroundColor:'#58a6ff'},
+    {label:'mpa4',data:[m.decentralization.nakamotoCoeff33,m.activeValidators,m.decentralization.hhi*10000,m.decentralization.gini*100],backgroundColor:'#bc8cff'},
+  ]);
+
+  // Country comparison
+  const allCountries = new Set([...f.geographic.countries.map(c=>c.name),...m.geographic.countries.map(c=>c.name)]);
+  const cList = [...allCountries].sort();
+  const fCountryMap = Object.fromEntries(f.geographic.countries.map(c=>[c.name,c.stake]));
+  const mCountryMap = Object.fromEntries(m.geographic.countries.map(c=>[c.name,c.stake]));
+  barChart('c-countries', cList, [
+    {label:'FiRep',data:cList.map(c=>fCountryMap[c]||0),backgroundColor:'#58a6ff'},
+    {label:'mpa4',data:cList.map(c=>mCountryMap[c]||0),backgroundColor:'#bc8cff'},
+  ],{stacked:true,fmtY:v=>fmt(v,0)});
+
+  // Commission comparison
+  const allComm = new Set([...f.commissionDistribution.map(c=>c.name),...m.commissionDistribution.map(c=>c.name)]);
+  const commList = [...allComm].sort((a,b)=>Number(a)-Number(b));
+  const fCommMap = Object.fromEntries(f.commissionDistribution.map(c=>[c.name,c.count]));
+  const mCommMap = Object.fromEntries(m.commissionDistribution.map(c=>[c.name,c.count]));
+  barChart('c-commissions', commList.map(c=>c+'%'), [
+    {label:'FiRep',data:commList.map(c=>fCommMap[c]||0),backgroundColor:'#58a6ff'},
+    {label:'mpa4',data:commList.map(c=>mCommMap[c]||0),backgroundColor:'#bc8cff'},
+  ],{stacked:true});
+
+  const t30 = c.topValidators.slice(0,30);
+  barChart('c-top30', t30.map(v=>(v.name||v.voter.slice(0,8)+'…').slice(0,14)), [
+    {label:'FiRep',data:t30.map(v=>v.sources?.firep||0),backgroundColor:'#58a6ff'},
+    {label:'mpa4',data:t30.map(v=>v.sources?.mpa4||0),backgroundColor:'#bc8cff'},
+  ],{stacked:true,horizontal:true,fmtX:v=>fmt(v,0)});
 }
 
-function chartColors(n) {
-  const palette = ['#58a6ff','#3fb950','#bc8cff','#d29922','#f85149','#39d353','#f778ba','#79c0ff','#56d364','#e3b341'];
-  const colors = [];
-  for (let i = 0; i < n; i++) colors.push(palette[i % palette.length] + (i >= palette.length ? '99' : ''));
-  return colors;
+async function init() {
+  D = await (await fetch('data/latest.json')).json();
+  $('meta').textContent = `Epoch ${D.epoch} (${D.epochPct}%) · ${new Date(D.timestamp).toLocaleString()} · Slot ${D.slot.toLocaleString()} · ${D.networkValidators} network validators`;
+
+  $('tabs').innerHTML = ['Combined','FiRep (Main)','mpa4 (Matching)'].map((l,i)=>{
+    const k = ['combined','firep','mpa4'][i];
+    return `<div class="tab${i===0?' active':''}" data-tab="${k}" onclick="showTab('${k}')">${l}</div>`;
+  }).join('');
+
+  renderCombined();
+  renderAccountView('view-firep', D.accounts.firep, '#58a6ff');
+  renderAccountView('view-mpa4', D.accounts.mpa4, '#bc8cff');
 }
 
-function render() {
-  const d = DATA;
-  document.getElementById('meta').textContent = `Epoch ${d.epoch} (${d.epochPct}%) · Collected ${new Date(d.timestamp).toLocaleString()} · Slot ${d.slot.toLocaleString()}`;
-
-  const firep = d.accounts.firep;
-  const mpa4 = d.accounts.mpa4;
-
-  // Combined cards
-  const combinedCards = document.getElementById('combined-cards');
-  combinedCards.innerHTML = [
-    { title: 'Total SFDP Stake', value: fmtSol(d.combined.totalActiveStake), sub: `FiRep: ${fmtSol(firep.totalActive)} + mpa4: ${fmtSol(mpa4.totalActive)}` },
-    { title: 'Total Validators', value: d.combined.uniqueValidators, sub: `FiRep: ${firep.activeValidators} | mpa4: ${mpa4.activeValidators}` },
-    { title: 'Combined Nakamoto', value: d.combined.nakamotoCoeff33, sub: `FiRep: ${firep.decentralization.nakamotoCoeff33} | mpa4: ${mpa4.decentralization.nakamotoCoeff33}` },
-    { title: 'Deactivating', value: fmtSol(firep.totalDeactivating + mpa4.totalDeactivating), sub: `FiRep: ${fmtSol(firep.totalDeactivating)} | mpa4: ${fmtSol(mpa4.totalDeactivating)}` },
-  ].map(c => `<div class="card"><h3>${c.title}</h3><div class="value">${c.value}</div><div class="sub">${c.sub}</div></div>`).join('');
-
-  // Source pie chart
-  new Chart(document.getElementById('sourceChart'), {
-    type: 'doughnut',
-    data: {
-      labels: ['FiRep (Main)', 'mpa4 (Matching/Residual)'],
-      datasets: [{ data: [firep.totalActive, mpa4.totalActive], backgroundColor: ['#58a6ff', '#bc8cff'], borderWidth: 0 }]
-    },
-    options: { responsive: true, plugins: { legend: { position: 'bottom', labels: { color: '#e6edf3' } } } }
-  });
-
-  // Decentralization comparison
-  new Chart(document.getElementById('decentChart'), {
-    type: 'bar',
-    data: {
-      labels: ['Nakamoto Coeff', 'Active Validators', 'HHI (×10000)', 'Gini (×100)'],
-      datasets: [
-        { label: 'FiRep', data: [firep.decentralization.nakamotoCoeff33, firep.activeValidators, firep.decentralization.hhi*10000, firep.decentralization.gini*100], backgroundColor: '#58a6ff' },
-        { label: 'mpa4', data: [mpa4.decentralization.nakamotoCoeff33, mpa4.activeValidators, mpa4.decentralization.hhi*10000, mpa4.decentralization.gini*100], backgroundColor: '#bc8cff' },
-      ]
-    },
-    options: {
-      responsive: true,
-      scales: { x: { ticks: { color: '#8b949e' }, grid: { color: '#30363d' } }, y: { ticks: { color: '#8b949e' }, grid: { color: '#30363d' } } },
-      plugins: { legend: { labels: { color: '#e6edf3' } } }
-    }
-  });
-
-  // Combined top validators
-  const top25 = d.combined.topValidators.slice(0, 25);
-  new Chart(document.getElementById('combinedTopChart'), {
-    type: 'bar',
-    data: {
-      labels: top25.map(v => v.voter.slice(0, 8) + '...'),
-      datasets: [
-        { label: 'FiRep Stake', data: top25.map(v => v.sources?.firep || 0), backgroundColor: '#58a6ff' },
-        { label: 'mpa4 Stake', data: top25.map(v => v.sources?.mpa4 || 0), backgroundColor: '#bc8cff' },
-      ]
-    },
-    options: {
-      responsive: true,
-      scales: { x: { stacked: true, ticks: { color: '#8b949e', maxRotation: 45 }, grid: { display: false } }, y: { stacked: true, ticks: { color: '#8b949e', callback: v => fmt(v,0) }, grid: { color: '#30363d' } } },
-      plugins: { legend: { labels: { color: '#e6edf3' } } }
-    }
-  });
-
-  // Combined table
-  renderCombinedTable(d.combined.topValidators);
-
-  // FiRep view
-  renderCards('firep-cards', firep);
-  renderValidatorTable('firepTable', firep.allValidators, firep.totalActive);
-
-  // FiRep distribution chart
-  new Chart(document.getElementById('firepDistChart'), {
-    type: 'bar',
-    data: {
-      labels: firep.topValidators.map(v => v.voter.slice(0, 8) + '...'),
-      datasets: [{ label: 'Active Stake (SOL)', data: firep.topValidators.map(v => v.activeStake), backgroundColor: '#58a6ff' }]
-    },
-    options: {
-      responsive: true, indexAxis: 'y',
-      scales: { x: { ticks: { color: '#8b949e', callback: v => fmt(v,0) }, grid: { color: '#30363d' } }, y: { ticks: { color: '#8b949e', font: { size: 11 } }, grid: { display: false } } },
-      plugins: { legend: { display: false } }
-    }
-  });
-
-  // FiRep buckets
-  new Chart(document.getElementById('firepBucketChart'), {
-    type: 'bar',
-    data: {
-      labels: firep.stakeBuckets.map(b => b.label),
-      datasets: [
-        { label: 'Validators', data: firep.stakeBuckets.map(b => b.count), backgroundColor: '#58a6ff', yAxisID: 'y' },
-        { label: 'Total Stake', data: firep.stakeBuckets.map(b => b.stake), backgroundColor: '#3fb95066', yAxisID: 'y1' },
-      ]
-    },
-    options: {
-      responsive: true,
-      scales: {
-        y: { position: 'left', ticks: { color: '#8b949e' }, grid: { color: '#30363d' }, title: { display: true, text: 'Count', color: '#8b949e' } },
-        y1: { position: 'right', ticks: { color: '#8b949e', callback: v => fmt(v,0) }, grid: { display: false }, title: { display: true, text: 'Stake', color: '#8b949e' } },
-        x: { ticks: { color: '#8b949e' }, grid: { display: false } }
-      },
-      plugins: { legend: { labels: { color: '#e6edf3' } } }
-    }
-  });
-
-  // mpa4 view
-  renderCards('mpa4-cards', mpa4);
-  renderValidatorTable('mpa4Table', mpa4.allValidators, mpa4.totalActive);
-
-  // mpa4 distribution chart (top 25)
-  new Chart(document.getElementById('mpa4DistChart'), {
-    type: 'bar',
-    data: {
-      labels: mpa4.topValidators.map(v => v.voter.slice(0, 8) + '...'),
-      datasets: [{ label: 'Active Stake (SOL)', data: mpa4.topValidators.map(v => v.activeStake), backgroundColor: '#bc8cff' }]
-    },
-    options: {
-      responsive: true, indexAxis: 'y',
-      scales: { x: { ticks: { color: '#8b949e', callback: v => fmt(v,0) }, grid: { color: '#30363d' } }, y: { ticks: { color: '#8b949e', font: { size: 11 } }, grid: { display: false } } },
-      plugins: { legend: { display: false } }
-    }
-  });
-
-  // mpa4 buckets
-  new Chart(document.getElementById('mpa4BucketChart'), {
-    type: 'bar',
-    data: {
-      labels: mpa4.stakeBuckets.map(b => b.label),
-      datasets: [
-        { label: 'Validators', data: mpa4.stakeBuckets.map(b => b.count), backgroundColor: '#bc8cff', yAxisID: 'y' },
-        { label: 'Total Stake', data: mpa4.stakeBuckets.map(b => b.stake), backgroundColor: '#3fb95066', yAxisID: 'y1' },
-      ]
-    },
-    options: {
-      responsive: true,
-      scales: {
-        y: { position: 'left', ticks: { color: '#8b949e' }, grid: { color: '#30363d' }, title: { display: true, text: 'Count', color: '#8b949e' } },
-        y1: { position: 'right', ticks: { color: '#8b949e', callback: v => fmt(v,0) }, grid: { display: false }, title: { display: true, text: 'Stake', color: '#8b949e' } },
-        x: { ticks: { color: '#8b949e' }, grid: { display: false } }
-      },
-      plugins: { legend: { labels: { color: '#e6edf3' } } }
-    }
-  });
-}
-
-loadData();
+init();
 </script>
 </body>
 </html>
