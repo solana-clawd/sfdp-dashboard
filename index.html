@@ -5,11 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SFDP Stake Decentralization Dashboard</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
-<!-- map libs removed -->
 <style>
-
-</style>
 <style>
 :root{--bg:#0d1117;--surface:#161b22;--border:#30363d;--text:#e6edf3;--dim:#8b949e;--accent:#58a6ff;--green:#3fb950;--red:#f85149;--purple:#bc8cff;--orange:#d29922;--yellow:#e3b341}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -341,21 +337,25 @@ function renderCombined() {
   }
   const rows = c.topValidators.map((v,i)=>{
     const netStake = netStakeMap[v.voter] || 0;
+    const extStake = Math.max(0, netStake - v.totalStake);
     const sfdpPctOfVal = netStake > 0 ? (v.totalStake / netStake * 100).toFixed(1) + '%' : 'N/A';
+    const indepStatus = netStake === 0 ? '—' : extStake >= 50000 ? '<span class="badge badge-green">Independent</span>' : extStake >= 10000 ? '<span class="badge badge-orange">Emerging</span>' : '<span class="badge badge-red">Dependent</span>';
     return [
       i+1,
       `<span class="mono" style="cursor:pointer;user-select:all" title="Click to select">${v.voter}</span>`,
       (v.name && v.name !== 'null') ? v.name : '—',
       fmt(v.totalStake) + ' SOL',
       netStake > 0 ? fmt(netStake) + ' SOL' : 'N/A',
+      netStake > 0 ? fmt(extStake) + ' SOL' : 'N/A',
       sfdpPctOfVal,
+      indepStatus,
       v.pctOfTotal + '%<span class="bar" style="width:' + Math.max(2, parseFloat(v.pctOfTotal)*3) + 'px"></span>',
       (v.country && v.country !== 'null') ? v.country : 'N/A',
       v.commission != null ? v.commission + '%' : 'N/A',
     ];
   });
   html += `<div class="chart-box"><h3>All Combined Validators</h3>`+
-    makeTable('c-table',['#','Vote Account','Name','SFDP Stake','Network Stake','SFDP % of Validator','% of SFDP Pool','Country','Comm.'],rows)+'</div>';
+    makeTable('c-table',['#','Vote Account','Name','SFDP Stake','Network Stake','External Stake','SFDP %','Status','% of Pool','Country','Comm.'],rows)+'</div>';
 
   el.innerHTML = html;
 
