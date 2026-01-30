@@ -60,11 +60,7 @@ tr:hover td{background:rgba(88,166,255,.04)}
 <div class="meta" id="meta"></div>
 </header>
 
-<div class="tabs" id="tabs"></div>
-
 <div id="view-combined"></div>
-<div id="view-firep" class="hidden"></div>
-<div id="view-mpa4" class="hidden"></div>
 </div>
 
 <script>
@@ -87,13 +83,6 @@ const COUNTRY_ISO = {
 const fmt = (n,d=1) => n>=1e6?(n/1e6).toFixed(d)+'M':n>=1e3?(n/1e3).toFixed(d)+'K':n.toFixed(d);
 const fmtS = n => fmt(n)+' SOL';
 const pct = (a,b) => b>0?((a/b)*100).toFixed(2)+'%':'0%';
-
-function showTab(tab) {
-  ['combined','firep','mpa4'].forEach(t => {
-    $('view-'+t).classList.toggle('hidden', t!==tab);
-  });
-  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab===tab));
-}
 
 function makeCards(items) {
   return '<div class="grid">'+items.map(c=>`<div class="card"><h3>${c.t}</h3><div class="val">${c.v}</div><div class="sub">${c.s||''}</div></div>`).join('')+'</div>';
@@ -426,14 +415,7 @@ async function init() {
   D = await (await fetch('data/latest.json')).json();
   $('meta').textContent = `Epoch ${D.epoch} (${D.epochPct}%) · ${new Date(D.timestamp).toLocaleString()} · Slot ${D.slot.toLocaleString()} · ${D.networkValidators} network validators`;
 
-  $('tabs').innerHTML = ['Combined','FiRep (Main)','mpa4 (Matching)'].map((l,i)=>{
-    const k = ['combined','firep','mpa4'][i];
-    return `<div class="tab${i===0?' active':''}" data-tab="${k}" onclick="showTab('${k}')">${l}</div>`;
-  }).join('');
-
   renderCombined();
-  renderAccountView('view-firep', D.accounts.firep, '#58a6ff');
-  renderAccountView('view-mpa4', D.accounts.mpa4, '#bc8cff');
 }
 
 init();
