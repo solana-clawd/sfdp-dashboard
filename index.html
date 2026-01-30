@@ -10,6 +10,9 @@
 <script src="https://unpkg.com/jsvectormap@1.6.0/dist/maps/world.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/jsvectormap@1.6.0/dist/css/jsvectormap.min.css">
 <style>
+.jvm-tooltip { background: #161b22 !important; border: 1px solid #58a6ff !important; color: #e6edf3 !important; font-family: inherit !important; font-size: 13px !important; padding: 8px 12px !important; border-radius: 8px !important; box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important; line-height: 1.6 !important; }
+</style>
+<style>
 :root{--bg:#0d1117;--surface:#161b22;--border:#30363d;--text:#e6edf3;--dim:#8b949e;--accent:#58a6ff;--green:#3fb950;--red:#f85149;--purple:#bc8cff;--orange:#d29922;--yellow:#e3b341}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
@@ -221,8 +224,18 @@ function renderAccountView(containerId, data, color) {
     series: { regions: [{ values: cStakes, scale: ['#2ea043', '#f0e442', '#e5534b'], normalizeFunction: 'polynomial' }] },
     onRegionTooltipShow(evt, tip, code) {
       const s = cStakes[code];
-      if (s) tip.text(tip.text() + ': ' + fmt(s) + ' SOL (' + (s/data.totalActive*100).toFixed(1) + '%)');
-      else tip.text(tip.text() + ': No SFDP stake');
+      const name = tip.text();
+      if (s) {
+        const pctVal = (s/data.totalActive*100).toFixed(1);
+        const cEntry = geo.countries.find(c=>COUNTRY_ISO[c.name]===code);
+        const valCount = cEntry ? cEntry.count : '?';
+        let html = '<b>'+name+'</b><br>';
+        html += 'Stake: <b>'+fmt(s)+' SOL</b> ('+pctVal+'%)<br>';
+        html += 'Validators: '+valCount;
+        tip.text(html, true);
+      } else {
+        tip.text('<b>'+name+'</b><br>No SFDP stake', true);
+      }
     },
   });
   // Country legend
@@ -333,8 +346,19 @@ function renderCombined() {
     },
     onRegionTooltipShow(evt, tip, code) {
       const s = countryStakes[code];
-      if (s) tip.text(tip.text() + ': ' + fmt(s) + ' SOL (' + (s/c.totalActiveStake*100).toFixed(1) + '%)');
-      else tip.text(tip.text() + ': No SFDP stake');
+      const name = tip.text();
+      if (s) {
+        const pctVal = (s/c.totalActiveStake*100).toFixed(1);
+        const fVal = Object.entries(fCountryMap).find(([n])=>COUNTRY_ISO[n]===code);
+        const mVal = Object.entries(mCountryMap).find(([n])=>COUNTRY_ISO[n]===code);
+        let html = '<b>'+name+'</b><br>';
+        html += '🔵 Total: <b>'+fmt(s)+' SOL</b> ('+pctVal+'%)<br>';
+        if (fVal) html += '  FiRep: '+fmt(fVal[1])+' SOL<br>';
+        if (mVal) html += '  mpa4: '+fmt(mVal[1])+' SOL';
+        tip.text(html, true);
+      } else {
+        tip.text('<b>'+name+'</b><br>No SFDP stake', true);
+      }
     },
   });
 
