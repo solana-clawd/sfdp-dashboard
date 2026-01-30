@@ -96,11 +96,30 @@ function pieChart(canvasId, labels, data, colors) {
 }
 
 function barChart(canvasId, labels, datasets, opts={}) {
+  const fmtSOL = (v) => typeof v==='number'? fmt(v,0)+' SOL' : v;
+  const fmtNum = (v) => typeof v==='number'? fmt(v,0) : v;
+  const fmtCount = (v) => typeof v==='number'? v.toLocaleString() : v;
+  // Pick smart default formatters based on data
+  const defaultFmt = opts.isCount ? fmtCount : fmtSOL;
   new Chart($(canvasId),{type:'bar',data:{labels,datasets},
     options:{responsive:true,indexAxis:opts.horizontal?'y':'x',
-      scales:{x:{stacked:opts.stacked,ticks:{color:'#8b949e',callback:opts.fmtX||(v=>v)},grid:{color:'#30363d22'}},
-              y:{stacked:opts.stacked,ticks:{color:'#8b949e',callback:opts.fmtY||(v=>v)},grid:{color:'#30363d22'}}},
-      plugins:{legend:{display:datasets.length>1,labels:{color:'#e6edf3',font:{size:11}}}}}});
+      scales:{
+        x:{stacked:opts.stacked,
+          title:{display:!!opts.xLabel,text:opts.xLabel||'',color:'#8b949e'},
+          ticks:{color:'#8b949e',callback:opts.fmtX||(opts.horizontal?defaultFmt:undefined),maxRotation:opts.horizontal?0:45},
+          grid:{color:'#30363d22'}},
+        y:{stacked:opts.stacked,
+          title:{display:!!opts.yLabel,text:opts.yLabel||'',color:'#8b949e'},
+          ticks:{color:'#8b949e',callback:opts.fmtY||(opts.horizontal?undefined:defaultFmt)},
+          grid:{color:'#30363d22'}}
+      },
+      plugins:{
+        legend:{display:datasets.length>1,labels:{color:'#e6edf3',font:{size:11}}},
+        tooltip:{callbacks:{label:(ctx)=>{
+          const v = ctx.parsed[opts.horizontal?'x':'y'];
+          return ctx.dataset.label+': '+(opts.isCount?v.toLocaleString():fmt(v,1)+' SOL');
+        }}}
+      }}});
 }
 
 const palette = n => {
@@ -167,23 +186,23 @@ function renderAccountView(containerId, data, color) {
   pieChart(`${cid}-country`, geo.countries.slice(0,12).map(c=>c.name), geo.countries.slice(0,12).map(c=>c.stake));
 
   const topASN = geo.topASNs.slice(0,10);
-  barChart(`${cid}-asn`, topASN.map(a=>a.name.slice(0,18)), [{label:'Stake',data:topASN.map(a=>a.stake),backgroundColor:color||'#58a6ff'}], {horizontal:true,fmtX:v=>fmt(v,0)});
+  barChart(`${cid}-asn`, topASN.map(a=>a.name.length>22?a.name.slice(0,20)+'…':a.name), [{label:'Stake (SOL)',data:topASN.map(a=>a.stake),backgroundColor:color||'#58a6ff'}], {horizontal:true,xLabel:'Stake (SOL)'});
 
   const comm = data.commissionDistribution;
   pieChart(`${cid}-commission`, comm.map(c=>c.name+'%'), comm.map(c=>c.stake));
 
   const bk = data.stakeBuckets;
-  barChart(`${cid}-buckets`, bk.map(b=>b.label), [
-    {label:'Validators',data:bk.map(b=>b.count),backgroundColor:'#58a6ff'},
-  ]);
+  barChart(`${cid}-buckets`, bk.map(b=>b.label+' SOL'), [
+    {label:'Validator Count',data:bk.map(b=>b.count),backgroundColor:'#58a6ff'},
+  ], {isCount:true, xLabel:'Stake Range', yLabel:'Number of Validators'});
 
   const ver = data.software.versions;
   pieChart(`${cid}-versions`, ver.map(v=>v.name), ver.map(v=>v.stake));
 
   const t25 = data.validators.filter(v=>v.activeStake>0).sort((a,b)=>b.activeStake-a.activeStake).slice(0,25);
-  barChart(`${cid}-top25`, t25.map(v=>(v.name||v.voter.slice(0,8)+'…').slice(0,14)),
-    [{label:'Stake',data:t25.map(v=>v.activeStake),backgroundColor:color||'#58a6ff'}],
-    {horizontal:true,fmtX:v=>fmt(v,0)});
+  barChart(`${cid}-top25`, t25.map(v=>(v.name||v.voter.slice(0,8)+'…').slice(0,20)),
+    [{label:'Active Stake (SOL)',data:t25.map(v=>v.activeStake),backgroundColor:color||'#58a6ff'}],
+    {horizontal:true,xLabel:'Active Stake (SOL)'});
 }
 
 function renderCombined() {
@@ -229,10 +248,10 @@ function renderCombined() {
 
   pieChart('c-source',['FiRep (Main)','mpa4 (Matching/Residual)'],[f.totalActive,m.totalActive],['#58a6ff','#bc8cff']);
 
-  barChart('c-decent',['Nakamoto','Validators','HHI×10k','Gini×100'],[
+  barChart('c-decent',['Nakamoto Coeff\n(# validators for 33%)','Active\nValidators','HHI × 10,000\n(lower = more spread)','Gini × 100\n(lower = more equal)'],[
     {label:'FiRep',data:[f.decentralization.nakamotoCoeff33,f.activeValidators,f.decentralization.hhi*10000,f.decentralization.gini*100],backgroundColor:'#58a6ff'},
     {label:'mpa4',data:[m.decentralization.nakamotoCoeff33,m.activeValidators,m.decentralization.hhi*10000,m.decentralization.gini*100],backgroundColor:'#bc8cff'},
-  ]);
+  ], {isCount:true, yLabel:'Value'});
 
   // Country comparison
   const allCountries = new Set([...f.geographic.countries.map(c=>c.name),...m.geographic.countries.map(c=>c.name)]);
@@ -240,25 +259,25 @@ function renderCombined() {
   const fCountryMap = Object.fromEntries(f.geographic.countries.map(c=>[c.name,c.stake]));
   const mCountryMap = Object.fromEntries(m.geographic.countries.map(c=>[c.name,c.stake]));
   barChart('c-countries', cList, [
-    {label:'FiRep',data:cList.map(c=>fCountryMap[c]||0),backgroundColor:'#58a6ff'},
-    {label:'mpa4',data:cList.map(c=>mCountryMap[c]||0),backgroundColor:'#bc8cff'},
-  ],{stacked:true,fmtY:v=>fmt(v,0)});
+    {label:'FiRep Stake',data:cList.map(c=>fCountryMap[c]||0),backgroundColor:'#58a6ff'},
+    {label:'mpa4 Stake',data:cList.map(c=>mCountryMap[c]||0),backgroundColor:'#bc8cff'},
+  ],{stacked:true, xLabel:'Country', yLabel:'Stake (SOL)'});
 
   // Commission comparison
   const allComm = new Set([...f.commissionDistribution.map(c=>c.name),...m.commissionDistribution.map(c=>c.name)]);
   const commList = [...allComm].sort((a,b)=>Number(a)-Number(b));
   const fCommMap = Object.fromEntries(f.commissionDistribution.map(c=>[c.name,c.count]));
   const mCommMap = Object.fromEntries(m.commissionDistribution.map(c=>[c.name,c.count]));
-  barChart('c-commissions', commList.map(c=>c+'%'), [
-    {label:'FiRep',data:commList.map(c=>fCommMap[c]||0),backgroundColor:'#58a6ff'},
-    {label:'mpa4',data:commList.map(c=>mCommMap[c]||0),backgroundColor:'#bc8cff'},
-  ],{stacked:true});
+  barChart('c-commissions', commList.map(c=>c+'% commission'), [
+    {label:'FiRep Validators',data:commList.map(c=>fCommMap[c]||0),backgroundColor:'#58a6ff'},
+    {label:'mpa4 Validators',data:commList.map(c=>mCommMap[c]||0),backgroundColor:'#bc8cff'},
+  ],{stacked:true, isCount:true, xLabel:'Commission Rate', yLabel:'Number of Validators'});
 
   const t30 = c.topValidators.slice(0,30);
-  barChart('c-top30', t30.map(v=>(v.name||v.voter.slice(0,8)+'…').slice(0,14)), [
-    {label:'FiRep',data:t30.map(v=>v.sources?.firep||0),backgroundColor:'#58a6ff'},
-    {label:'mpa4',data:t30.map(v=>v.sources?.mpa4||0),backgroundColor:'#bc8cff'},
-  ],{stacked:true,horizontal:true,fmtX:v=>fmt(v,0)});
+  barChart('c-top30', t30.map(v=>(v.name||v.voter.slice(0,8)+'…').slice(0,20)), [
+    {label:'FiRep Stake',data:t30.map(v=>v.sources?.firep||0),backgroundColor:'#58a6ff'},
+    {label:'mpa4 Stake',data:t30.map(v=>v.sources?.mpa4||0),backgroundColor:'#bc8cff'},
+  ],{stacked:true,horizontal:true,xLabel:'Total SFDP Stake (SOL)'});
 }
 
 async function init() {
