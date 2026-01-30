@@ -2,7 +2,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const RPC = "https://api.mainnet-beta.solana.com";
+const RPC = process.env.HELIUS_RPC || "https://api.mainnet-beta.solana.com";
 const DATA_DIR = path.join(__dirname, "data");
 
 const AUTHORITIES = {
