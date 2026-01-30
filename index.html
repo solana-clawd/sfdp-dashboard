@@ -288,7 +288,7 @@ function renderCombined() {
     <div class="chart-box"><h3>💰 Commission Comparison</h3><canvas id="c-commissions"></canvas></div>
   </div>`;
 
-  html += `<div class="chart-box"><h3>Top 30 Combined Validators</h3><canvas id="c-top30"></canvas></div>`;
+  html += `<div class="chart-box"><h3>Top 30 Combined Validators</h3><div id="c-top30-list"></div></div>`;
 
   const rows = c.topValidators.map((v,i)=>[
     i+1,
@@ -378,10 +378,30 @@ function renderCombined() {
   ],{stacked:true, isCount:true, xLabel:'Commission Rate', yLabel:'Number of Validators'});
 
   const t30 = c.topValidators.slice(0,30);
-  barChart('c-top30', t30.map(v=>(v.name||v.voter.slice(0,8)+'…').slice(0,20)), [
-    {label:'FiRep Stake',data:t30.map(v=>v.sources?.firep||0),backgroundColor:'#58a6ff'},
-    {label:'mpa4 Stake',data:t30.map(v=>v.sources?.mpa4||0),backgroundColor:'#bc8cff'},
-  ],{stacked:true,horizontal:true,xLabel:'Total SFDP Stake (SOL)'});
+  $('c-top30-list').innerHTML = `<div class="tw"><table><thead><tr>
+    <th>#</th><th>Validator</th><th>Total Stake</th><th style="width:200px">Distribution</th><th>FiRep</th><th>mpa4</th><th>% Total</th><th>Country</th><th>Comm.</th>
+  </tr></thead><tbody>${t30.map((v,i)=>{
+    const fp = v.sources?.firep||0, mp = v.sources?.mpa4||0;
+    const fpPct = v.totalStake>0?(fp/v.totalStake*100):0;
+    const mpPct = v.totalStake>0?(mp/v.totalStake*100):0;
+    return `<tr>
+      <td>${i+1}</td>
+      <td>${v.name?'<b>'+v.name+'</b><br>':''}<span class="mono">${v.voter.slice(0,16)}…</span></td>
+      <td><b>${fmt(v.totalStake)} SOL</b></td>
+      <td><div style="display:flex;height:14px;border-radius:3px;overflow:hidden;background:#1b1f24">
+        <div style="width:${fpPct}%;background:#58a6ff" title="FiRep ${fmt(fp)} SOL"></div>
+        <div style="width:${mpPct}%;background:#bc8cff" title="mpa4 ${fmt(mp)} SOL"></div>
+      </div><div style="font-size:11px;color:var(--dim);margin-top:2px">
+        <span style="color:#58a6ff">■</span> FiRep ${fpPct.toFixed(0)}%
+        <span style="color:#bc8cff;margin-left:6px">■</span> mpa4 ${mpPct.toFixed(0)}%
+      </div></td>
+      <td>${fp>0?fmt(fp)+' SOL':'—'}</td>
+      <td>${mp>0?fmt(mp)+' SOL':'—'}</td>
+      <td>${v.pctOfTotal}%</td>
+      <td>${v.country||'—'}</td>
+      <td>${v.commission!=null?v.commission+'%':'—'}</td>
+    </tr>`;
+  }).join('')}</tbody></table></div>`;
 }
 
 async function init() {
