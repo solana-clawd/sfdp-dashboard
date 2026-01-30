@@ -283,8 +283,8 @@ function renderCombined() {
   ]);
 
   html += `<div class="row2">
-    <div class="chart-box"><h3>Stake by Source</h3><canvas id="c-source"></canvas></div>
-    <div class="chart-box"><h3>Decentralization Comparison</h3><canvas id="c-decent"></canvas></div>
+    <div class="chart-box"><h3>🖥️ Software Versions</h3><canvas id="c-versions"></canvas></div>
+    <div class="chart-box"><h3>⚡ Jito vs Non-Jito</h3><canvas id="c-jito"></canvas></div>
   </div>`;
 
   html += `<div class="chart-box"><h3>🌍 Geographic Distribution — Combined SFDP Stake</h3><div id="c-map" style="width:100%;height:360px"></div>
@@ -317,12 +317,26 @@ function renderCombined() {
 
   el.innerHTML = html;
 
-  pieChart('c-source',['FiRep (Main)','mpa4 (Matching/Residual)'],[f.totalActive,m.totalActive],['#58a6ff','#bc8cff']);
+  // Software versions - combined
+  const allVersions = {};
+  for (const v of [...f.software.versions, ...m.software.versions]) {
+    allVersions[v.name] = (allVersions[v.name]||0) + v.stake;
+  }
+  const verSorted = Object.entries(allVersions).sort((a,b)=>b[1]-a[1]);
+  pieChart('c-versions',
+    verSorted.map(([n,s])=>n+' ('+( s/c.totalActiveStake*100).toFixed(1)+'%)'),
+    verSorted.map(([,s])=>s));
 
-  barChart('c-decent',['Nakamoto Coeff\n(# validators for 33%)','Active\nValidators','HHI × 10,000\n(lower = more spread)','Gini × 100\n(lower = more equal)'],[
-    {label:'FiRep',data:[f.decentralization.nakamotoCoeff33,f.activeValidators,f.decentralization.hhi*10000,f.decentralization.gini*100],backgroundColor:'#58a6ff'},
-    {label:'mpa4',data:[m.decentralization.nakamotoCoeff33,m.activeValidators,m.decentralization.hhi*10000,m.decentralization.gini*100],backgroundColor:'#bc8cff'},
-  ], {isCount:true, yLabel:'Value'});
+  // Jito breakdown
+  const jitoStake = parseFloat(f.jitoStats.stake) + parseFloat(m.jitoStats.stake);
+  const nonJitoStake = c.totalActiveStake - jitoStake;
+  const jitoCount = f.jitoStats.validators + m.jitoStats.validators;
+  const nonJitoCount = c.uniqueValidators - jitoCount;
+  pieChart('c-jito',
+    [`Jito (${jitoCount} validators, ${(jitoStake/c.totalActiveStake*100).toFixed(1)}%)`,
+     `Non-Jito (${nonJitoCount} validators, ${(nonJitoStake/c.totalActiveStake*100).toFixed(1)}%)`],
+    [jitoStake, nonJitoStake],
+    ['#3fb950','#30363d']);
 
   // Country map — combined stake
   const fCountryMap = Object.fromEntries(f.geographic.countries.map(c=>[c.name,c.stake]));
