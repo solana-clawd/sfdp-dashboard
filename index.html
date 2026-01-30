@@ -307,7 +307,8 @@ function renderCombined() {
     <div class="chart-box"><h3>🌍 Stake by Country</h3><canvas id="c-country-pie"></canvas></div>
     <div class="chart-box"><h3>🏢 ASN Distribution (Top 10)</h3><canvas id="c-asn-pie"></canvas></div>
   </div>
-  <div class="row2">
+  <div class="row3">
+    <div class="chart-box"><h3>📥 Stake Sources (Top 30 Validators)</h3><canvas id="c-stake-sources"></canvas></div>
     <div class="chart-box"><h3>💰 Commission Comparison</h3><canvas id="c-commissions"></canvas></div>
     <div class="chart-box"><h3>📊 Decentralization Comparison</h3><canvas id="c-decent"></canvas></div>
   </div>`;
@@ -452,6 +453,15 @@ function renderCombined() {
   pieChart('c-asn-pie',
     asnSorted.map(([n,s]) => (n.length>25?n.slice(0,23)+'…':n) + ' (' + (s/c.totalActiveStake*100).toFixed(1) + '%)'),
     asnSorted.map(([,s]) => s));
+
+  // Stake sources pie
+  if (c.stakeSources && c.stakeSources.length > 0) {
+    const srcTotal = c.stakeSources.reduce((s,v) => s + v.stake, 0);
+    pieChart('c-stake-sources',
+      c.stakeSources.map(s => s.name + ' (' + (s.stake/srcTotal*100).toFixed(1) + '%)'),
+      c.stakeSources.map(s => s.stake),
+      ['#58a6ff','#3fb950','#bc8cff','#d29922','#f85149','#39d353']);
+  }
 
   // Commission comparison
   const allComm = new Set([...f.commissionDistribution.map(c=>c.name),...m.commissionDistribution.map(c=>c.name)]);
