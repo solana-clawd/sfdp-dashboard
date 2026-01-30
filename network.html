@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Solana Network Decentralization Dashboard</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
-<script src="https://unpkg.com/jsvectormap@1.6.0/dist/jsvectormap.min.js"></script>
-<script src="https://unpkg.com/jsvectormap@1.6.0/dist/maps/world.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/jsvectormap@1.6.0/dist/css/jsvectormap.min.css">
+<!-- map libs removed -->
 <style>
 :root{--bg:#0d1117;--surface:#161b22;--border:#30363d;--text:#e6edf3;--dim:#8b949e;--accent:#58a6ff;--green:#3fb950;--red:#f85149;--purple:#bc8cff;--orange:#d29922}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -44,7 +42,7 @@ tr:hover td{background:rgba(88,166,255,.04)}
 .badge-green{background:rgba(63,185,80,.15);color:var(--green)}
 .badge-red{background:rgba(248,81,73,.15);color:var(--red)}
 .badge-orange{background:rgba(210,153,34,.15);color:var(--orange)}
-.jvm-tooltip{background:#161b22!important;border:1px solid #58a6ff!important;color:#e6edf3!important;font-family:inherit!important;font-size:13px!important;padding:8px 12px!important;border-radius:8px!important;line-height:1.6!important}
+
 </style>
 </head>
 <body>
@@ -58,7 +56,6 @@ tr:hover td{background:rgba(88,166,255,.04)}
 </div>
 <script>
 const $=id=>document.getElementById(id);
-const COUNTRY_ISO={'United States':'US','Germany':'DE','Netherlands':'NL','France':'FR','United Kingdom':'GB','Canada':'CA','Japan':'JP','Singapore':'SG','Ireland':'IE','Sweden':'SE','Norway':'NO','Brazil':'BR','Poland':'PL','Ukraine':'UA','Romania':'RO','Spain':'ES','Hong Kong':'HK','Argentina':'AR','Austria':'AT','Bulgaria':'BG','Chile':'CL','Czech Republic':'CZ','Estonia':'EE','Latvia':'LV','Luxembourg':'LU','Mexico':'MX','Russia':'RU','Republic of Lithuania':'LT','Slovak Republic':'SK','South Africa':'ZA','Australia':'AU','India':'IN','South Korea':'KR','Italy':'IT','Switzerland':'CH','Finland':'FI','Denmark':'DK','Belgium':'BE','Portugal':'PT','Turkey':'TR','Thailand':'TH','Indonesia':'ID','Colombia':'CO','Taiwan':'TW','Philippines':'PH','Vietnam':'VN','Israel':'IL','New Zealand':'NZ','Lithuania':'LT'};
 const fmt=(n,d=1)=>n>=1e6?(n/1e6).toFixed(d)+'M':n>=1e3?(n/1e3).toFixed(d)+'K':n.toFixed(d);
 const fmtS=n=>fmt(n)+' SOL';
 const palette=n=>{const p=['#58a6ff','#3fb950','#bc8cff','#d29922','#f85149','#39d353','#f778ba','#79c0ff','#56d364','#e3b341','#ff7b72','#a5d6ff','#7ee787','#d2a8ff','#ffa657'];return Array.from({length:n},(_,i)=>p[i%p.length])};
@@ -96,19 +93,15 @@ async function init(){
   ];
   html+=cards.map(c=>`<div class="card"><h3>${c.t}</h3><div class="val">${c.v}</div><div class="sub">${c.s||''}</div></div>`).join('')+'</div>';
 
-  // Charts row 1: versions + jito
+  // Charts row 1: clients + jito breakdown
   html+=`<div class="row2">
-    <div class="chart-box"><h3>🖥️ Software Versions</h3><canvas id="n-versions"></canvas></div>
-    <div class="chart-box"><h3>⚡ Jito vs Non-Jito</h3><canvas id="n-jito"></canvas></div>
+    <div class="chart-box"><h3>🖥️ Client Distribution (by Stake)</h3><canvas id="n-clients"></canvas></div>
+    <div class="chart-box"><h3>⚡ Jito Adoption by Client</h3><canvas id="n-jito-clients"></canvas></div>
   </div>`;
 
-  // Map
-  html+=`<div class="chart-box"><h3>🌍 Geographic Distribution — All Network Stake</h3><div id="n-map" style="width:100%;height:400px"></div></div>`;
-
   // Geo row
-  html+=`<div class="row3">
+  html+=`<div class="row2">
     <div class="chart-box"><h3>🌍 Stake by Continent</h3><canvas id="n-continent"></canvas></div>
-    <div class="chart-box"><h3>🌍 Stake by Country (Top 15)</h3><canvas id="n-country"></canvas></div>
     <div class="chart-box"><h3>🏢 ASN Distribution (Top 12)</h3><canvas id="n-asn"></canvas></div>
   </div>`;
 
@@ -150,30 +143,19 @@ async function init(){
   el.innerHTML=html;
 
   // Render charts
-  const ver=D.software.versions;
-  pieChart('n-versions',ver.slice(0,8).map(v=>v.name+' ('+v.pct+'%)'),ver.slice(0,8).map(v=>v.stake));
+  // Client distribution pie
+  const clients=D.software.clients||[];
+  pieChart('n-clients',clients.map(c=>c.name+' ('+c.pct+'%)'),clients.map(c=>c.stake));
 
-  const nonJito=D.totalStake-D.jitoStats.stake;
-  pieChart('n-jito',[`Jito (${D.jitoStats.validators}, ${D.jitoStats.pct}%)`,`Non-Jito (${D.totalValidators-D.jitoStats.validators})`],[D.jitoStats.stake,nonJito],['#3fb950','#30363d']);
-
-  // Map
-  const cStakes={};
-  D.geographic.countries.forEach(c=>{const iso=COUNTRY_ISO[c.name];if(iso)cStakes[iso]=c.stake});
-  new jsVectorMap({selector:'#n-map',map:'world',backgroundColor:'transparent',
-    regionStyle:{initial:{fill:'#1b1f24',stroke:'#444c56',strokeWidth:0.5},hover:{fill:'#2d333b',cursor:'pointer'}},
-    series:{regions:[{values:cStakes,scale:['#2ea043','#f0e442','#e5534b'],normalizeFunction:'polynomial'}]},
-    onRegionTooltipShow(evt,tip,code){
-      const s=cStakes[code];const name=tip.text();
-      tip.text(s?'<b>'+name+'</b><br>'+fmt(s)+' SOL ('+(s/D.totalStake*100).toFixed(1)+'%)':'<b>'+name+'</b><br>No stake',true);
-    }});
+  // Jito adoption per client — stacked bar
+  barChart('n-jito-clients',clients.map(c=>c.name),[
+    {label:'Jito',data:clients.map(c=>c.jito),backgroundColor:'#3fb950'},
+    {label:'Non-Jito',data:clients.map(c=>c.nonJito),backgroundColor:'#30363d'}
+  ],{stacked:true,isCount:true,xLabel:'Client',yLabel:'Validators'});
 
   // Continent
   const cont=D.geographic.continents;
   pieChart('n-continent',cont.map(c=>c.name+' ('+c.pct+'%)'),cont.map(c=>c.stake));
-
-  // Country
-  const ctry=D.geographic.countries.slice(0,15);
-  pieChart('n-country',ctry.map(c=>c.name+' ('+c.pct+'%)'),ctry.map(c=>c.stake));
 
   // ASN
   const asn=D.geographic.topASNs.slice(0,12);

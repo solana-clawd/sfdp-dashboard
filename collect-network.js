@@ -165,6 +165,27 @@ async function main() {
     }
   }
 
+  // Client distribution
+  const classifyClient = (ver) => {
+    if (!ver || ver === 'Unknown' || ver === 'unknown') return 'Unknown';
+    if (/^3\./.test(ver)) return 'Agave (Anza)';
+    if (/^0\.[89]/.test(ver) || /^0\.1\./.test(ver)) return 'Firedancer (Jump)';
+    if (/^4\./.test(ver)) return 'Frankendancer';
+    if (/^2\./.test(ver)) return 'Agave (Legacy)';
+    return 'Other';
+  };
+  const clientMap = {};
+  for (const v of allVals) {
+    const client = classifyClient(v.version);
+    if (!clientMap[client]) clientMap[client] = { count: 0, stake: 0, jito: 0, nonJito: 0 };
+    clientMap[client].count++;
+    clientMap[client].stake += v.stake;
+    if (v.isJito) clientMap[client].jito++; else clientMap[client].nonJito++;
+  }
+  const clientDistribution = Object.entries(clientMap)
+    .map(([name, d]) => ({ name, ...d, pct: (d.stake / totalStake * 100).toFixed(2) }))
+    .sort((a, b) => b.stake - a.stake);
+
   // Jito
   const jitoVals = allVals.filter(v => v.isJito);
   const jitoStake = jitoVals.reduce((s, v) => s + v.stake, 0);
@@ -218,8 +239,8 @@ async function main() {
       uniqueCountries: Object.keys(countries).length,
       uniqueCities: Object.keys(cities).length,
     },
-    software: { versions: sortObj(versions) },
-    commissionDistribution: sortObj(commissions),
+    software: { versions: sortObj(versions), clients: clientDistribution },
+    commissionDistribution: sortObj(commissions).sort((a, b) => parseFloat(a.name) - parseFloat(b.name)),
     jitoStats: {
       validators: jitoVals.length,
       stake: jitoStake,
