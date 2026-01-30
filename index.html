@@ -278,16 +278,21 @@ function renderCombined() {
   const fvn = c.foundationVsNetwork || {};
   const econ = c.validatorEconomics || {};
 
+  const sfdpPct = fvn.sfdpPctOfTracked ? fvn.sfdpPctOfTracked + '%' : 'N/A';
+  const medianStake = econ.medianStakeSOL ? fmtS(econ.medianStakeSOL) : 'N/A';
+  const annualReward = econ.estAnnualRewardSOL ? fmtS(econ.estAnnualRewardSOL) : 'N/A';
+
   let html = makeCards([
     {t:'Total SFDP Stake',v:fmtS(c.totalActiveStake),s:`FiRep: ${fmtS(f.totalActive)} · mpa4: ${fmtS(m.totalActive)}`},
-    {t:'Total Validators',v:c.uniqueValidators,s:`FiRep: ${f.activeValidators} · mpa4: ${m.activeValidators} · Network: ${D.networkValidators}`},
-    {t:'Combined Nakamoto',v:c.nakamotoCoeff33,s:`FiRep: ${f.decentralization.nakamotoCoeff33} · mpa4: ${m.decentralization.nakamotoCoeff33}`},
-    {t:'SFDP % of Network',v:(fvn.sfdpPctOfTracked||'?')+'%',s:`${fmtS(fvn.trackedNetworkStake||0)} tracked network stake`},
-    {t:'Top 3 ASN Concentration',v:(infra.top3ASNPct||'?')+'%',s:`${infra.uniqueASNs||'?'} unique ASNs`},
-    {t:'Commission Compliance',v:compliance.highCommissionCount===0?'<span class="badge badge-green">✓ All ≤10%</span>':`<span class="badge badge-red">${compliance.highCommissionCount} over 10%</span>`,
-      s:`Jito >10% cap: ${compliance.jitoOverCapCount||0} validators`},
-    {t:'Deactivating',v:fmtS(f.totalDeactivating+m.totalDeactivating),s:`FiRep: ${fmtS(f.totalDeactivating)} · mpa4: ${fmtS(m.totalDeactivating)}`},
-    {t:'Validator Economics',v:fmtS(econ.medianStakeSOL||0)+' median',s:`Est. ${fmtS(econ.estAnnualRewardSOL||0)}/yr reward · ${econ.validatorsInProgram||0} in program`},
+    {t:'Total Validators in SFDP',v:c.uniqueValidators,s:`FiRep: ${f.activeValidators} · mpa4: ${m.activeValidators} · Network: ${D.networkValidators}`},
+    {t:'Combined Nakamoto Coeff.',v:c.nakamotoCoeff33,s:`FiRep: ${f.decentralization.nakamotoCoeff33} · mpa4: ${m.decentralization.nakamotoCoeff33}`},
+    {t:'SFDP % of Network',v:sfdpPct,s:`${fmtS(fvn.trackedNetworkStake||0)} total tracked stake`},
+    {t:'Top 3 ASN Concentration',v:(infra.top3ASNPct||'N/A')+'%',s:`${infra.uniqueASNs||0} unique hosting providers`},
+    {t:'Commission Compliance',
+      v: (compliance.highCommissionCount||0) === 0 ? '<span class="badge badge-green">✓ All ≤10%</span>' : `<span class="badge badge-red">${compliance.highCommissionCount} over 10%</span>`,
+      s:`Jito >10% cap: ${compliance.jitoOverCapCount||0} flagged`},
+    {t:'Deactivating Stake',v:fmtS(f.totalDeactivating+m.totalDeactivating),s:`FiRep: ${fmtS(f.totalDeactivating)} · mpa4: ${fmtS(m.totalDeactivating)}`},
+    {t:'Median Validator Stake',v:medianStake,s:`Est. ${annualReward}/yr reward · ${econ.validatorsInProgram||0} validators in program`},
   ]);
 
   html += `<div class="row2">
@@ -319,21 +324,26 @@ function renderCombined() {
 
   html += `<div class="chart-box"><h3>Top 30 Combined Validators</h3><div id="c-top30-list"></div></div>`;
 
-  const allValsLookup = [...f.validators, ...m.validators];
+  // Build a lookup map for network stake
+  const netStakeMap = {};
+  for (const v of [...f.validators, ...m.validators]) {
+    if (v.totalNetworkStake > 0 && (!netStakeMap[v.voter] || v.totalNetworkStake > netStakeMap[v.voter])) {
+      netStakeMap[v.voter] = v.totalNetworkStake;
+    }
+  }
   const rows = c.topValidators.map((v,i)=>{
-    const match = allValsLookup.find(x => x.voter === v.voter);
-    const netStake = match?.totalNetworkStake || 0;
-    const sfdpPctOfVal = netStake > 0 ? (v.totalStake / netStake * 100).toFixed(1) : '?';
+    const netStake = netStakeMap[v.voter] || 0;
+    const sfdpPctOfVal = netStake > 0 ? (v.totalStake / netStake * 100).toFixed(1) + '%' : 'N/A';
     return [
       i+1,
       `<span class="mono">${v.voter.slice(0,16)}…</span>`,
-      v.name||'—',
-      v.totalStake.toLocaleString(undefined,{maximumFractionDigits:0}),
-      netStake>0?netStake.toLocaleString(undefined,{maximumFractionDigits:0}):'—',
-      sfdpPctOfVal+'%',
-      v.pctOfTotal+'%<span class="bar" style="width:'+Math.max(2,parseFloat(v.pctOfTotal)*3)+'px"></span>',
-      v.country||'—',
-      v.commission!=null?v.commission+'%':'—',
+      (v.name && v.name !== 'null') ? v.name : '—',
+      fmt(v.totalStake) + ' SOL',
+      netStake > 0 ? fmt(netStake) + ' SOL' : 'N/A',
+      sfdpPctOfVal,
+      v.pctOfTotal + '%<span class="bar" style="width:' + Math.max(2, parseFloat(v.pctOfTotal)*3) + 'px"></span>',
+      (v.country && v.country !== 'null') ? v.country : 'N/A',
+      v.commission != null ? v.commission + '%' : 'N/A',
     ];
   });
   html += `<div class="chart-box"><h3>All Combined Validators</h3>`+
@@ -470,11 +480,11 @@ function renderCombined() {
     let compHtml = '';
     if (compliance.highCommission?.length) {
       compHtml += '<p style="color:var(--red);margin-bottom:8px"><b>Validators exceeding 10% commission:</b></p>';
-      compHtml += compliance.highCommission.map(v => `<span class="mono">${v.voter.slice(0,16)}…</span> ${v.name||''} — ${v.commission}% commission, ${fmt(v.stake)} SOL`).join('<br>');
+      compHtml += compliance.highCommission.map(v => `<span class="mono">${v.voter.slice(0,16)}…</span> ${(v.name&&v.name!=='null')?v.name:''} — ${v.commission}% commission, ${fmt(v.stake)} SOL`).join('<br>');
     }
     if (compliance.jitoOverCap?.length) {
       compHtml += '<p style="color:var(--orange);margin:8px 0"><b>Jito validators exceeding 10% (1000 bps) Jito commission:</b></p>';
-      compHtml += compliance.jitoOverCap.map(v => `<span class="mono">${v.voter.slice(0,16)}…</span> ${v.name||''} — ${v.jitoCommission} bps, ${fmt(v.stake)} SOL`).join('<br>');
+      compHtml += compliance.jitoOverCap.map(v => `<span class="mono">${v.voter.slice(0,16)}…</span> ${(v.name&&v.name!=='null')?v.name:''} — ${(v.jitoCommission/100).toFixed(0)}% Jito commission, ${fmt(v.stake)} SOL`).join('<br>');
     }
     const compEl = $('c-compliance');
     if (compEl) compEl.innerHTML = compHtml;
@@ -484,20 +494,19 @@ function renderCombined() {
   $('c-top30-list').innerHTML = `<div class="tw"><table><thead><tr>
     <th>#</th><th>Validator</th><th>SFDP Stake</th><th>Total Network Stake</th><th>SFDP % of Their Stake</th><th>% of SFDP Pool</th><th>Country</th><th>Comm.</th>
   </tr></thead><tbody>${t30.map((v,i)=>{
-    // Find this validator's total network stake
-    const allVals = [...f.validators, ...m.validators];
-    const match = allVals.find(x => x.voter === v.voter);
-    const netStake = match?.totalNetworkStake || 0;
-    const sfdpPctOfVal = netStake > 0 ? (v.totalStake / netStake * 100).toFixed(1) : '?';
+    const ns = netStakeMap[v.voter] || 0;
+    const depPct = ns > 0 ? (v.totalStake / ns * 100).toFixed(1) + '%' : 'N/A';
+    const vName = (v.name && v.name !== 'null' && v.name !== 'undefined') ? v.name : '';
+    const vCountry = (v.country && v.country !== 'null' && v.country !== 'undefined') ? v.country : 'N/A';
     return `<tr>
       <td>${i+1}</td>
-      <td>${v.name?'<b>'+v.name+'</b><br>':''}<span class="mono">${v.voter.slice(0,16)}…</span></td>
+      <td>${vName?'<b>'+vName+'</b><br>':''}<span class="mono">${v.voter.slice(0,16)}…</span></td>
       <td><b>${fmt(v.totalStake)} SOL</b></td>
-      <td>${netStake>0?fmt(netStake)+' SOL':'—'}</td>
-      <td>${sfdpPctOfVal}%<span class="bar" style="width:${Math.max(2,parseFloat(sfdpPctOfVal)*1.5)}px"></span></td>
+      <td>${ns>0?fmt(ns)+' SOL':'N/A'}</td>
+      <td>${depPct}</td>
       <td>${v.pctOfTotal}%</td>
-      <td>${v.country||'—'}</td>
-      <td>${v.commission!=null?v.commission+'%':'—'}</td>
+      <td>${vCountry}</td>
+      <td>${v.commission!=null?v.commission+'%':'N/A'}</td>
     </tr>`;
   }).join('')}</tbody></table></div>`;
 }
