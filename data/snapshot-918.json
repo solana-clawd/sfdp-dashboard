@@ -1,0 +1,3640 @@
+{
+  "timestamp": "2026-01-30T05:26:00.934Z",
+  "epoch": 918,
+  "slot": 396849154,
+  "epochPct": "63.23",
+  "accounts": {
+    "firep": {
+      "authority": "FiRep26iRQbMaKbqhhs5CqXqy7YrHn462LbnQhXzB2ps",
+      "label": "SFDP Main (FiRep)",
+      "totalAccounts": 77,
+      "emptyAccounts": 0,
+      "totalActive": 7718887.526689406,
+      "totalDeactivating": 120148.879562255,
+      "uniqueValidators": 45,
+      "activeValidators": 44,
+      "decentralization": {
+        "nakamotoCoeff33": 4,
+        "superminorityCount": 4,
+        "hhi": 0.06243960980438248,
+        "gini": 0.42717221258125576
+      },
+      "stakeStats": {
+        "mean": 175429.26197021376,
+        "median": 106749.129013159,
+        "max": 1525057.378769803,
+        "min": 28421.553445886,
+        "p10": 375228.993698666,
+        "p90": 85148.332462352
+      },
+      "stakeBuckets": [
+        {
+          "label": "<1K SOL",
+          "min": 0,
+          "max": 1000,
+          "count": 0,
+          "stake": 0
+        },
+        {
+          "label": "1K-10K",
+          "min": 1000,
+          "max": 10000,
+          "count": 0,
+          "stake": 0
+        },
+        {
+          "label": "10K-50K",
+          "min": 10000,
+          "max": 50000,
+          "count": 1,
+          "stake": 28421.553445886
+        },
+        {
+          "label": "50K-100K",
+          "min": 50000,
+          "max": 100000,
+          "count": 13,
+          "stake": 1071513.600203935
+        },
+        {
+          "label": "100K-500K",
+          "min": 100000,
+          "max": 500000,
+          "count": 28,
+          "stake": 4590796.042335912
+        },
+        {
+          "label": "500K+",
+          "min": 500000,
+          "max": null,
+          "count": 2,
+          "stake": 2028156.330703672
+        }
+      ],
+      "topValidators": [
+        {
+          "voter": "shft7Fry1js37Hm9wq4dfwcZSp2DyKszeWMvEpjYCQ1",
+          "activeStake": 1525057.378769803,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3,
+          "pctOfTotal": "19.76"
+        },
+        {
+          "voter": "2NxEEbhqqj1Qptq5LXLbDTP5tLa9f7PqkU8zNgxbGU9P",
+          "activeStake": 503098.951933869,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1,
+          "pctOfTotal": "6.52"
+        },
+        {
+          "voter": "DsiG71AvUHUEo9rMMHqM9NAWQ6ptguRAHyot6wGzLJjx",
+          "activeStake": 425537.83880108,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3,
+          "pctOfTotal": "5.51"
+        },
+        {
+          "voter": "juicQdAnksqZ5Yb8NQwCLjLWhykvXGktxnQCDvMe6Nx",
+          "activeStake": 424290.524798598,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3,
+          "pctOfTotal": "5.50"
+        },
+        {
+          "voter": "A9mzXPB6sRNUXcDF9L91oV1EvmeYQe7WzSfEL7fBdysh",
+          "activeStake": 375228.993698666,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1,
+          "pctOfTotal": "4.86"
+        },
+        {
+          "voter": "CooLbbZy5Xmdt7DiHPQ3ss2uRXawnTXXVgpMS8E8jDzr",
+          "activeStake": 339451.880276081,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3,
+          "pctOfTotal": "4.40"
+        },
+        {
+          "voter": "Ha1VoTEPWFQp1wZjbQhBNXJftuHvimu1ruzF3xKYRPDQ",
+          "activeStake": 304680.510222781,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1,
+          "pctOfTotal": "3.95"
+        },
+        {
+          "voter": "HJmfKJjKiyuuxFUuXgecgD5gdD312apCpHwZt6ETuRMU",
+          "activeStake": 203286.26226744,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1,
+          "pctOfTotal": "2.63"
+        },
+        {
+          "voter": "A5ed2x2wEuHW8KsuhbSaTFU4CYT3WgHfQcwyQXz5SdDw",
+          "activeStake": 198725.726004784,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4,
+          "pctOfTotal": "2.57"
+        },
+        {
+          "voter": "R4spmF6oFW6wMQHv9L3PCEKumkspN3nveQihWyDAdRy",
+          "activeStake": 170549.863171879,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4,
+          "pctOfTotal": "2.21"
+        },
+        {
+          "voter": "4PL2ZFoZJHgkbZ54US4qNC58X69Fa1FKtY4CaVKeuQPg",
+          "activeStake": 120668.173030732,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1,
+          "pctOfTotal": "1.56"
+        },
+        {
+          "voter": "25quQGzrtcU224Kk7G5YDJ9oJXgYsiur8pZ7pAnCMhhV",
+          "activeStake": 113521.789825745,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3,
+          "pctOfTotal": "1.47"
+        },
+        {
+          "voter": "CogentC52e7kktFfWHwsqSmr8LiS1yAtfqhHcftCPcBJ",
+          "activeStake": 107026.917826182,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1,
+          "pctOfTotal": "1.39"
+        },
+        {
+          "voter": "B1rsc6jv3RsFpkak8qvJN3PfGYSg9E3Uw1joaV1EoiFj",
+          "activeStake": 107008.493120551,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1,
+          "pctOfTotal": "1.39"
+        },
+        {
+          "voter": "GA2t11gJcmuZ4y7pShTzgYDkxVaJaVQJqkVUqojhPPsT",
+          "activeStake": 106990.063126089,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1,
+          "pctOfTotal": "1.39"
+        },
+        {
+          "voter": "masvNDXtxVVMrYSV84RMry97JyHXAFcdfTZJ5VzpSYR",
+          "activeStake": 106951.634838116,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1,
+          "pctOfTotal": "1.39"
+        },
+        {
+          "voter": "DzQHN1oTdN85Sbku2bc9Fu9yEwrgRMiu2XbRcntZ31yb",
+          "activeStake": 106807.113800616,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1,
+          "pctOfTotal": "1.38"
+        },
+        {
+          "voter": "phz34EcgWRCT9otPzRS2JtSzVHxQJk4SovqJvV1TQk8",
+          "activeStake": 106795.063575998,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1,
+          "pctOfTotal": "1.38"
+        },
+        {
+          "voter": "LAKEuKJQYVFpf4vyjX7iuf9ajHo3k9FiyewYKf6VxPV",
+          "activeStake": 106781.794590529,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1,
+          "pctOfTotal": "1.38"
+        },
+        {
+          "voter": "gridZ5cMHjWGktAQt6o36NtF7XSv19nJBrW83zmo7BM",
+          "activeStake": 106772.538133548,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1,
+          "pctOfTotal": "1.38"
+        },
+        {
+          "voter": "CwSZ17woioM2bqEbaswZJYvx5pemN6t3shBcU6zqPHyG",
+          "activeStake": 106772.275336501,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1,
+          "pctOfTotal": "1.38"
+        },
+        {
+          "voter": "tri1cHBy47fPyhCvrCf6FnR7Mz6XdSoSBah2FsZVQeT",
+          "activeStake": 106768.546084723,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1,
+          "pctOfTotal": "1.38"
+        },
+        {
+          "voter": "radYEig9KGrMTMWbWRFV7LStotQbnLgPaEFHVDsudQz",
+          "activeStake": 106749.129013159,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1,
+          "pctOfTotal": "1.38"
+        },
+        {
+          "voter": "Ehdn9LdjTAURQSMoDPERXLehtvzy7QD762wwPkzGT7RS",
+          "activeStake": 106732.035878584,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1,
+          "pctOfTotal": "1.38"
+        },
+        {
+          "voter": "CertusDeBmqN8ZawdkxK5kFGMwBXdudvWHYwtNgNhvLu",
+          "activeStake": 106706.785799911,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1,
+          "pctOfTotal": "1.38"
+        }
+      ],
+      "allValidators": [
+        {
+          "voter": "shft7Fry1js37Hm9wq4dfwcZSp2DyKszeWMvEpjYCQ1",
+          "activeStake": 1525057.378769803,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "2NxEEbhqqj1Qptq5LXLbDTP5tLa9f7PqkU8zNgxbGU9P",
+          "activeStake": 503098.951933869,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1
+        },
+        {
+          "voter": "DsiG71AvUHUEo9rMMHqM9NAWQ6ptguRAHyot6wGzLJjx",
+          "activeStake": 425537.83880108,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "juicQdAnksqZ5Yb8NQwCLjLWhykvXGktxnQCDvMe6Nx",
+          "activeStake": 424290.524798598,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "A9mzXPB6sRNUXcDF9L91oV1EvmeYQe7WzSfEL7fBdysh",
+          "activeStake": 375228.993698666,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1
+        },
+        {
+          "voter": "CooLbbZy5Xmdt7DiHPQ3ss2uRXawnTXXVgpMS8E8jDzr",
+          "activeStake": 339451.880276081,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "Ha1VoTEPWFQp1wZjbQhBNXJftuHvimu1ruzF3xKYRPDQ",
+          "activeStake": 304680.510222781,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1
+        },
+        {
+          "voter": "HJmfKJjKiyuuxFUuXgecgD5gdD312apCpHwZt6ETuRMU",
+          "activeStake": 203286.26226744,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1
+        },
+        {
+          "voter": "A5ed2x2wEuHW8KsuhbSaTFU4CYT3WgHfQcwyQXz5SdDw",
+          "activeStake": 198725.726004784,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "R4spmF6oFW6wMQHv9L3PCEKumkspN3nveQihWyDAdRy",
+          "activeStake": 170549.863171879,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "4PL2ZFoZJHgkbZ54US4qNC58X69Fa1FKtY4CaVKeuQPg",
+          "activeStake": 120668.173030732,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1
+        },
+        {
+          "voter": "25quQGzrtcU224Kk7G5YDJ9oJXgYsiur8pZ7pAnCMhhV",
+          "activeStake": 113521.789825745,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "CogentC52e7kktFfWHwsqSmr8LiS1yAtfqhHcftCPcBJ",
+          "activeStake": 107026.917826182,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1
+        },
+        {
+          "voter": "B1rsc6jv3RsFpkak8qvJN3PfGYSg9E3Uw1joaV1EoiFj",
+          "activeStake": 107008.493120551,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1
+        },
+        {
+          "voter": "GA2t11gJcmuZ4y7pShTzgYDkxVaJaVQJqkVUqojhPPsT",
+          "activeStake": 106990.063126089,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1
+        },
+        {
+          "voter": "masvNDXtxVVMrYSV84RMry97JyHXAFcdfTZJ5VzpSYR",
+          "activeStake": 106951.634838116,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1
+        },
+        {
+          "voter": "DzQHN1oTdN85Sbku2bc9Fu9yEwrgRMiu2XbRcntZ31yb",
+          "activeStake": 106807.113800616,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1
+        },
+        {
+          "voter": "phz34EcgWRCT9otPzRS2JtSzVHxQJk4SovqJvV1TQk8",
+          "activeStake": 106795.063575998,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1
+        },
+        {
+          "voter": "LAKEuKJQYVFpf4vyjX7iuf9ajHo3k9FiyewYKf6VxPV",
+          "activeStake": 106781.794590529,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1
+        },
+        {
+          "voter": "gridZ5cMHjWGktAQt6o36NtF7XSv19nJBrW83zmo7BM",
+          "activeStake": 106772.538133548,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1
+        },
+        {
+          "voter": "CwSZ17woioM2bqEbaswZJYvx5pemN6t3shBcU6zqPHyG",
+          "activeStake": 106772.275336501,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1
+        },
+        {
+          "voter": "tri1cHBy47fPyhCvrCf6FnR7Mz6XdSoSBah2FsZVQeT",
+          "activeStake": 106768.546084723,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1
+        },
+        {
+          "voter": "radYEig9KGrMTMWbWRFV7LStotQbnLgPaEFHVDsudQz",
+          "activeStake": 106749.129013159,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1
+        },
+        {
+          "voter": "Ehdn9LdjTAURQSMoDPERXLehtvzy7QD762wwPkzGT7RS",
+          "activeStake": 106732.035878584,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1
+        },
+        {
+          "voter": "CertusDeBmqN8ZawdkxK5kFGMwBXdudvWHYwtNgNhvLu",
+          "activeStake": 106706.785799911,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1
+        },
+        {
+          "voter": "punK4RDD3pFbcum79ACHatYPLLE1hr5UNnQVUGNfeyP",
+          "activeStake": 106668.478045208,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1
+        },
+        {
+          "voter": "BeachiopjxQxL7CaHNSZsynApiZCKx9QFVtcWNz3jDBo",
+          "activeStake": 106473.836322204,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1
+        },
+        {
+          "voter": "VotESBSkLKU8vebS6wTR2rzWWJsLc6YThYS6tebPxXq",
+          "activeStake": 106257.368983948,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1
+        },
+        {
+          "voter": "CAf8jfgqhia5VNrEF4A7Y9VLD3numMq9DVSceq7cPhNY",
+          "activeStake": 106252.343488681,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1
+        },
+        {
+          "voter": "MkyLHecSHN7TBdWgnh2J8KCsEHnsqqbVYSxtGmsshrk",
+          "activeStake": 100340.062273578,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1
+        },
+        {
+          "voter": "Mxv1Ubm71XoUvxrN3qjN8ii6Bh5b43NuuKywsWx6ox2",
+          "activeStake": 85340.908093373,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "mnvkHm47ZmRKoSWuQZAfXLRiDPiKCq8PWkMWrp1Wwqe",
+          "activeStake": 85339.946046155,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "nymsndUdAZyUPpWYz5VEg8Ghj9cFvwTRgciLogpmYaQ",
+          "activeStake": 85303.048476889,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "fdvtuDvWJZ89Z7TmeLjCwxgoLcmoEWNxruV48DvJtfm",
+          "activeStake": 85273.48051950501,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "57GUg9QH2LFMV11oaduuoqVJ5qHDEp7EGJ2xgkGiqAum",
+          "activeStake": 85273.238017217,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "AAAAQwH5KManM6mbxGLc1m1XnWcRBFDmdUgpZ4Ww621j",
+          "activeStake": 85273.056232688,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "PKvGYwh4efgythYddWAqGaPVuoZt8ybk7eXEoUqWxuA",
+          "activeStake": 85270.834172003,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "Cer1umMkC6cvRGKKLP3QwxsdxsgxmC1EhqMhB1mqVvYZ",
+          "activeStake": 85233.951725096,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "FN2BJjzy7WMRAqMNwzZrv5iDmHaNwukyFMfWCc6FxZDw",
+          "activeStake": 85218.383449369,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "BH2PMb9vuHxkVFMMHbH8iudCoBfUoX5tVaHfnEkKJ2gQ",
+          "activeStake": 85148.332462352,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "6q1VNp8Vy2Go12vb8CwbjUqqj2SXr2JYftJRWs71sW23",
+          "activeStake": 84756.695946254,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "capyZmRCkNE34ifDrRdfLtDB4Fi58rtLa94H9nU5z7n",
+          "activeStake": 84051.191834785,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1
+        },
+        {
+          "voter": "BARLL1NvF3jPHQ3zb82q1v5m6uewcpkgRBYVNufQMWjo",
+          "activeStake": 50030.533228249,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1
+        },
+        {
+          "voter": "8yPiZWMNYMhEqTmPSRc6LsWLFC8pewYEzmgc5kRCLTrZ",
+          "activeStake": 28421.553445886,
+          "deactivatingStake": 0,
+          "stakeAccounts": 1
+        },
+        {
+          "voter": "9e7ydfpxbtu9bA47hqi9SMHJSSHpDztkmaNxfYQ9cZKc",
+          "activeStake": 0,
+          "deactivatingStake": 120148.879562255,
+          "stakeAccounts": 1
+        }
+      ]
+    },
+    "mpa4": {
+      "authority": "mpa4abUkjQoAvPzREkh5Mo75hZhPFQ2FSH6w7dWKuQ5",
+      "label": "SFDP Matching/Residual (mpa4)",
+      "totalAccounts": 1300,
+      "emptyAccounts": 2,
+      "totalActive": 20833337.419917688,
+      "totalDeactivating": 755609.9666471966,
+      "uniqueValidators": 440,
+      "activeValidators": 435,
+      "decentralization": {
+        "nakamotoCoeff33": 109,
+        "superminorityCount": 108,
+        "hhi": 0.002563857316482417,
+        "gini": 0.18821314049604296
+      },
+      "stakeStats": {
+        "mean": 47892.729700960204,
+        "median": 51846.572404870996,
+        "max": 64192.166352841,
+        "min": 7962.150889651,
+        "p10": 64148.564379325,
+        "p90": 23581.043877502
+      },
+      "stakeBuckets": [
+        {
+          "label": "<1K SOL",
+          "min": 0,
+          "max": 1000,
+          "count": 0,
+          "stake": 0
+        },
+        {
+          "label": "1K-10K",
+          "min": 1000,
+          "max": 10000,
+          "count": 1,
+          "stake": 7962.150889651
+        },
+        {
+          "label": "10K-50K",
+          "min": 10000,
+          "max": 50000,
+          "count": 206,
+          "stake": 6781996.606070993
+        },
+        {
+          "label": "50K-100K",
+          "min": 50000,
+          "max": 100000,
+          "count": 228,
+          "stake": 14043378.66295704
+        },
+        {
+          "label": "100K-500K",
+          "min": 100000,
+          "max": 500000,
+          "count": 0,
+          "stake": 0
+        },
+        {
+          "label": "500K+",
+          "min": 500000,
+          "max": null,
+          "count": 0,
+          "stake": 0
+        }
+      ],
+      "topValidators": [
+        {
+          "voter": "voteRnv6PBzmiGP8NicWtQiqEJTwKKq2SxtqtdLUJjd",
+          "activeStake": 64192.166352841,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2,
+          "pctOfTotal": "0.31"
+        },
+        {
+          "voter": "BH2PMb9vuHxkVFMMHbH8iudCoBfUoX5tVaHfnEkKJ2gQ",
+          "activeStake": 64190.767347707,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2,
+          "pctOfTotal": "0.31"
+        },
+        {
+          "voter": "GFXVa1g8zzAVDRnSuB6o9PnHuyH25ADvy2YJPZLpATuP",
+          "activeStake": 64189.320891134,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2,
+          "pctOfTotal": "0.31"
+        },
+        {
+          "voter": "DG6fVEB2Qy1jntvHVPui3R12CMqcwNNnjYPYdsbQ9ACP",
+          "activeStake": 64188.888585763,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2,
+          "pctOfTotal": "0.31"
+        },
+        {
+          "voter": "adraBKLNY3DL3pg6SJRDYiMA8BsznaWpUdE42X41gbP",
+          "activeStake": 64188.016954387,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2,
+          "pctOfTotal": "0.31"
+        },
+        {
+          "voter": "gridZ5cMHjWGktAQt6o36NtF7XSv19nJBrW83zmo7BM",
+          "activeStake": 64187.281744149,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2,
+          "pctOfTotal": "0.31"
+        },
+        {
+          "voter": "4PL2ZFoZJHgkbZ54US4qNC58X69Fa1FKtY4CaVKeuQPg",
+          "activeStake": 64185.855493782,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2,
+          "pctOfTotal": "0.31"
+        },
+        {
+          "voter": "76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857",
+          "activeStake": 64185.462942298,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2,
+          "pctOfTotal": "0.31"
+        },
+        {
+          "voter": "6SF5cmEXFFEmnFd5BwM4J6NkZhh3WfPkgmqdoAGjLLPX",
+          "activeStake": 64185.405376648,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2,
+          "pctOfTotal": "0.31"
+        },
+        {
+          "voter": "A5ed2x2wEuHW8KsuhbSaTFU4CYT3WgHfQcwyQXz5SdDw",
+          "activeStake": 64184.169388128,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2,
+          "pctOfTotal": "0.31"
+        },
+        {
+          "voter": "7JZTyHRTmzHfmHH89uT9xKSKDVJ1VnNQ1FeTeM4iH3J2",
+          "activeStake": 64183.11882772,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2,
+          "pctOfTotal": "0.31"
+        },
+        {
+          "voter": "anza1Vgz2kcN9Qo6ECvf43v8RxBzQ7UpvxFoxJtLmGz",
+          "activeStake": 64182.551707561004,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2,
+          "pctOfTotal": "0.31"
+        },
+        {
+          "voter": "7VGU4ZwR1e1AFekqbqv2gvjeg47e1PwMPm4BfLt6rxNk",
+          "activeStake": 64182.332395145,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2,
+          "pctOfTotal": "0.31"
+        },
+        {
+          "voter": "soLStAckuvkHtNzHF1cwmeSRG1FzVxKxwsdWZ1yrHrz",
+          "activeStake": 64181.137538084,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2,
+          "pctOfTotal": "0.31"
+        },
+        {
+          "voter": "CooLbbZy5Xmdt7DiHPQ3ss2uRXawnTXXVgpMS8E8jDzr",
+          "activeStake": 64180.775328235,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2,
+          "pctOfTotal": "0.31"
+        },
+        {
+          "voter": "MkyLHecSHN7TBdWgnh2J8KCsEHnsqqbVYSxtGmsshrk",
+          "activeStake": 64180.111212634,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2,
+          "pctOfTotal": "0.31"
+        },
+        {
+          "voter": "masvNDXtxVVMrYSV84RMry97JyHXAFcdfTZJ5VzpSYR",
+          "activeStake": 64179.737267455,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2,
+          "pctOfTotal": "0.31"
+        },
+        {
+          "voter": "voEskim7SFWrPx1tV2PVisqyrJejxmDEARX11mtZ5vo",
+          "activeStake": 64178.978034309,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2,
+          "pctOfTotal": "0.31"
+        },
+        {
+          "voter": "Ac1beBKixfNdrTAac7GRaTsJTxLyvgGvJjvy4qQfvyfc",
+          "activeStake": 64178.790937614,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2,
+          "pctOfTotal": "0.31"
+        },
+        {
+          "voter": "GrefCNn5jSbcWv3uiervqZiCC87F8oX7PXz9LEBiog6s",
+          "activeStake": 64178.6088267,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2,
+          "pctOfTotal": "0.31"
+        },
+        {
+          "voter": "4vqwZsEEEsKtSqqEWbLyFAciWg66jGLP9zrbcZ1Hsrxb",
+          "activeStake": 64178.298909734,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2,
+          "pctOfTotal": "0.31"
+        },
+        {
+          "voter": "GB44NXtM7zGm6QnzQjzHZcRKSswkJbox8aJsKiXGbFJr",
+          "activeStake": 64177.843906241,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2,
+          "pctOfTotal": "0.31"
+        },
+        {
+          "voter": "VotESBSkLKU8vebS6wTR2rzWWJsLc6YThYS6tebPxXq",
+          "activeStake": 64175.504722938,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2,
+          "pctOfTotal": "0.31"
+        },
+        {
+          "voter": "radYEig9KGrMTMWbWRFV7LStotQbnLgPaEFHVDsudQz",
+          "activeStake": 64175.021978686,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2,
+          "pctOfTotal": "0.31"
+        },
+        {
+          "voter": "H2tJNyMHnRF6ahCQLQ1sSycM4FGchymuzyYzUqKEuydk",
+          "activeStake": 64174.641756368,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2,
+          "pctOfTotal": "0.31"
+        }
+      ],
+      "allValidators": [
+        {
+          "voter": "voteRnv6PBzmiGP8NicWtQiqEJTwKKq2SxtqtdLUJjd",
+          "activeStake": 64192.166352841,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "BH2PMb9vuHxkVFMMHbH8iudCoBfUoX5tVaHfnEkKJ2gQ",
+          "activeStake": 64190.767347707,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "GFXVa1g8zzAVDRnSuB6o9PnHuyH25ADvy2YJPZLpATuP",
+          "activeStake": 64189.320891134,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "DG6fVEB2Qy1jntvHVPui3R12CMqcwNNnjYPYdsbQ9ACP",
+          "activeStake": 64188.888585763,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "adraBKLNY3DL3pg6SJRDYiMA8BsznaWpUdE42X41gbP",
+          "activeStake": 64188.016954387,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "gridZ5cMHjWGktAQt6o36NtF7XSv19nJBrW83zmo7BM",
+          "activeStake": 64187.281744149,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "4PL2ZFoZJHgkbZ54US4qNC58X69Fa1FKtY4CaVKeuQPg",
+          "activeStake": 64185.855493782,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857",
+          "activeStake": 64185.462942298,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "6SF5cmEXFFEmnFd5BwM4J6NkZhh3WfPkgmqdoAGjLLPX",
+          "activeStake": 64185.405376648,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "A5ed2x2wEuHW8KsuhbSaTFU4CYT3WgHfQcwyQXz5SdDw",
+          "activeStake": 64184.169388128,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "7JZTyHRTmzHfmHH89uT9xKSKDVJ1VnNQ1FeTeM4iH3J2",
+          "activeStake": 64183.11882772,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "anza1Vgz2kcN9Qo6ECvf43v8RxBzQ7UpvxFoxJtLmGz",
+          "activeStake": 64182.551707561004,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "7VGU4ZwR1e1AFekqbqv2gvjeg47e1PwMPm4BfLt6rxNk",
+          "activeStake": 64182.332395145,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "soLStAckuvkHtNzHF1cwmeSRG1FzVxKxwsdWZ1yrHrz",
+          "activeStake": 64181.137538084,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "CooLbbZy5Xmdt7DiHPQ3ss2uRXawnTXXVgpMS8E8jDzr",
+          "activeStake": 64180.775328235,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "MkyLHecSHN7TBdWgnh2J8KCsEHnsqqbVYSxtGmsshrk",
+          "activeStake": 64180.111212634,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "masvNDXtxVVMrYSV84RMry97JyHXAFcdfTZJ5VzpSYR",
+          "activeStake": 64179.737267455,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "voEskim7SFWrPx1tV2PVisqyrJejxmDEARX11mtZ5vo",
+          "activeStake": 64178.978034309,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "Ac1beBKixfNdrTAac7GRaTsJTxLyvgGvJjvy4qQfvyfc",
+          "activeStake": 64178.790937614,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "GrefCNn5jSbcWv3uiervqZiCC87F8oX7PXz9LEBiog6s",
+          "activeStake": 64178.6088267,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "4vqwZsEEEsKtSqqEWbLyFAciWg66jGLP9zrbcZ1Hsrxb",
+          "activeStake": 64178.298909734,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "GB44NXtM7zGm6QnzQjzHZcRKSswkJbox8aJsKiXGbFJr",
+          "activeStake": 64177.843906241,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "VotESBSkLKU8vebS6wTR2rzWWJsLc6YThYS6tebPxXq",
+          "activeStake": 64175.504722938,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "radYEig9KGrMTMWbWRFV7LStotQbnLgPaEFHVDsudQz",
+          "activeStake": 64175.021978686,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "H2tJNyMHnRF6ahCQLQ1sSycM4FGchymuzyYzUqKEuydk",
+          "activeStake": 64174.641756368,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "CCxSNvJogH6LWyoiEbG7JfcWybw2FqqCExs5GuemChGr",
+          "activeStake": 64174.205588633,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "purPoSEsip98bLpbh4K7GKZYSdRmEJJKdxSvL6sg3uX",
+          "activeStake": 64170.667574231,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "4PsiLMyoUQ7QRn1FFiFCvej4hsUTFzfvJnyN4bj1tmSN",
+          "activeStake": 64169.13189085,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "9RXDftY5xyhtYyzk4z7U9ddvBF2Z8DMfXmV6P6du9dxS",
+          "activeStake": 64168.364165756,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "3hhEWRNAVzqRjmF9hW5nYkrmDMxKKzGziE11Sg7yk3iX",
+          "activeStake": 64167.989612492,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "SKRuTecmFDZHjs2DxRTJNEK7m7hunKGTWJiaZ3tMVVA",
+          "activeStake": 64167.445608758004,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "FzUNgBRnVxawDytN9GM7BFwxFfekuMs7BcAGybn4AmMk",
+          "activeStake": 64164.986284761995,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "3vwstewNgWAwN2uyuJduoZVVhmiwvAbwCxrjeJG6bASy",
+          "activeStake": 64164.414426747,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "magiCChVWbehZ1e3XqQfLh164yUfQ8LnRWgSP9i4oFp",
+          "activeStake": 64163.52856552399,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "ENVaKoD7ytn58xJ8s5htFfQ8hqQt1G9dcPUDqbSwVcgB",
+          "activeStake": 64163.233577655,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "R4spmF6oFW6wMQHv9L3PCEKumkspN3nveQihWyDAdRy",
+          "activeStake": 64160.220313795,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "DierScgiTrz5AM7mddeJLHYNvafym3XhjjdM51AnKevU",
+          "activeStake": 64159.888085001,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "57GUg9QH2LFMV11oaduuoqVJ5qHDEp7EGJ2xgkGiqAum",
+          "activeStake": 64158.195226516,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "TXTXAmsarrYrTobiCzq2r9NBqfChqRE8wEfJNsYZZ6F",
+          "activeStake": 64157.635815081005,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "hy1oJTV2kX9acsqpwk7hbteqXFw9VDbWvbxoamFEufW",
+          "activeStake": 64157.200381657,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "Simpj3KyRQmpRkXuBvCQFS7DBBG6vqw93SkZb9UD1hp",
+          "activeStake": 64157.001252678005,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "Ste11vRHQJyQjcTKrDbTWAYsTXkX6PCnoEw3mSH3u2k",
+          "activeStake": 64155.203914246,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "fdvtuDvWJZ89Z7TmeLjCwxgoLcmoEWNxruV48DvJtfm",
+          "activeStake": 64152.936330756,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "SLNDoinxE7cCgE5ga6FJZ19F4FiUaEmtzSatbY6cjWy",
+          "activeStake": 64148.564379325,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "F3scMRjzSvXUa7JoK2uwBjNsYGi5sM84sDzE7FfGBo6o",
+          "activeStake": 64147.520175382,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "8xG2YekjpQYLZLr8iWa6ZtFo79jYEhgySk5Khxq2MYbN",
+          "activeStake": 64143.600931494,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "76DafWkJ6pGK2hoD41HjrM4xTBhfKqrDYDazv13n5ir1",
+          "activeStake": 64139.063545130004,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "FahWJg2PkphJaMUUCzdYhXkD5NngUuuFRFD3YCE3BSwb",
+          "activeStake": 64138.737915566,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "GW8GgoeBpLM4TpeR2ePVcYYSoySBaKJgt2JiwoyjXRz3",
+          "activeStake": 64127.195999728996,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "26RGqX3mezgYDxJnGh94gnMM4L2k9grH1eWcTSCHnaxR",
+          "activeStake": 64123.904149623,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "GA2t11gJcmuZ4y7pShTzgYDkxVaJaVQJqkVUqojhPPsT",
+          "activeStake": 64122.641784299,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "DMSuZcavta8L1w1tSiH8bALWjz6Q6KSryGG6m6Az4Qt5",
+          "activeStake": 64115.610161691,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "4m1PbxzwLdUnEwog3T9UKxgjktgriHgE1CfAhMqDw7Xx",
+          "activeStake": 64113.416426758,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "9G19HT8xqceG7mKQVSrTRS3DGnGqDHErPyQEaEfyWEuW",
+          "activeStake": 64108.645140017004,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "21wUViiyG1g47VZ39ZZsSkFX9nu6bkyfy6jryHGD2TUB",
+          "activeStake": 64107.938169194,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "QWmexgr4teHa2ZF85tyf2hvEwBvJ6ioAEr1h8DRjoie",
+          "activeStake": 64101.789696742,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "9KgZYnDzHhQANoJ43Z8czkgXYdTjtWLRrH9nDf42gqa",
+          "activeStake": 64100.48106466499,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "EZCQcPkgsNS5rnfoAWRsVZNGEo3GoZSVV4qSdeWrXzhX",
+          "activeStake": 64091.648283588,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "ANCVpxEySGWWLqqkVKw2xWYDE9UP4fmZWMCBr5t96jch",
+          "activeStake": 64091.143747447,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "StakeyJXE1yJbEApBVswHN4JdZXcj7V5MHbzffa4dFp",
+          "activeStake": 64089.667653073004,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "vanFfAkyFXFnj6TpmVwet6pJBnS4nBWNcJiE5GEsZ4K",
+          "activeStake": 64083.350268735,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "CTDGxxJBrZVqUUHdHopLn4k4gtc2PCpcM9TB7ZEC4Hu2",
+          "activeStake": 64082.536204646996,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "CAf8jfgqhia5VNrEF4A7Y9VLD3numMq9DVSceq7cPhNY",
+          "activeStake": 64082.170588728,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "6hcGvZypizjf6PPsxboshZHRqefyQKSG9L8vZqYdm7UY",
+          "activeStake": 64081.01957347299,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "2ZP7DPXW6gwMRSY9PSXQ75fZLrk4gKWKnT85pK5sVPa5",
+          "activeStake": 64066.770439455,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "6hkfqeNAbURk7CmAQsP4Qm6WwHVF4LxHupEvQf7Tkrf1",
+          "activeStake": 64065.531817275,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "9f7dqiYNBZbgPesAnLeWnKCtxYHSfMg5x1EMZCJwVwG7",
+          "activeStake": 64063.860377856,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "DzQHN1oTdN85Sbku2bc9Fu9yEwrgRMiu2XbRcntZ31yb",
+          "activeStake": 64059.907699842995,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "Ha1VoTEPWFQp1wZjbQhBNXJftuHvimu1ruzF3xKYRPDQ",
+          "activeStake": 64057.217159627,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "34mSDco9FM8599y4QF1GJvyWUrPixeT3zRNZAvzNXF6x",
+          "activeStake": 64053.876413934006,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "THWfRpcJSC7oDrNMSCcixTZmCHVBTEVQL4qnd1UTD1x",
+          "activeStake": 64053.747085606,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "DPsW8v7gkGUbPPRnraS5e163bDepd9tD537X9S231T2j",
+          "activeStake": 64050.070468166,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "3Z1N2Fkfha4ThNiRwN8RnU6U8dkFJ92DH2TFyLWJf8cj",
+          "activeStake": 64048.232566584,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "2DNGsVZ9rg6RvT8bY4SGmGvyiVJ4xt9RL3NDd6uhfN46",
+          "activeStake": 64047.188501009005,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "FACqsS19VScz8oo2YhdMg35EsAy6xsCZ9Y58eJXGv8QJ",
+          "activeStake": 64038.08502939,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "PUFFiNkUHF2DMfbKeUcYTSQckDDtkswfxZCDv5WQqwp",
+          "activeStake": 64037.768721877,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "4ibf8qJirtoBGg7gSD7V7CeCKoFB96PBYQ3J5QjSmAob",
+          "activeStake": 64037.659601501,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "8zuMRTXThoPTTPLLvaiKiJshLLCqGMt9BdRjjCL19xBc",
+          "activeStake": 64037.125928671,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "2het6nBRLq9LLZER8fqUEk7j5pbLxq2mVGqSse2nS3tf",
+          "activeStake": 64035.280088570995,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "mintrNtxN3PhAB45Pt41XqyKghTTpqcoBkQTZqh96iR",
+          "activeStake": 64033.027911074,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "D9BcS9Fasxj7zNv3kP5rHErv7aFxihi5EBZo9xUqaHeh",
+          "activeStake": 64032.151957019996,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "punK4RDD3pFbcum79ACHatYPLLE1hr5UNnQVUGNfeyP",
+          "activeStake": 64021.135843373,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "SyNdica7qx3njeVKNgXvV7KC1NjPYNS4fyb3NxgevLH",
+          "activeStake": 64021.075567242,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "9bb63m29Xy1KiWqijLs3f8adTE4KcSmVkt1qPxGkbkna",
+          "activeStake": 64020.320918619,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "SFund7s2YPS7iCu7W2TobbuQEpVEAv9ZU7zHKiN1Gow",
+          "activeStake": 64015.911647641995,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "4udPrmxccbP1NwDJ6vChFKs5qcqyjmQff6gsKXD1mdaj",
+          "activeStake": 64015.270962215,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "BoNKvwirX136zCjcnayEM4W82vn13RKkjm1Sy3UPBdim",
+          "activeStake": 64008.905662965,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "6q1VNp8Vy2Go12vb8CwbjUqqj2SXr2JYftJRWs71sW23",
+          "activeStake": 64007.635350182994,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "74y2qkCaJ5L17hTsz3E8jftNxTBCTvdz4P2L6qTHDW59",
+          "activeStake": 64007.62656307,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "5s3vajJvaAbabQvxFdiMfg14y23b2jvK6K2Mw4PYcYK",
+          "activeStake": 64004.313092362,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "gaToR246dheK1DGAMEqxMdBJZwU4qFyt7DzhSwAHFWF",
+          "activeStake": 63991.169020343004,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "53RJBy7aBGA7Aag6AryxEmBbsHDgwfBWagLrPbGHnfvR",
+          "activeStake": 63987.492132119,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "abc1zP7ihWsgQW8z5YmfQNqMckJE5Dfx8fwUNMNVNkY",
+          "activeStake": 63984.689684802004,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "ALPHAthakWdoUxXJP6z8cjCkwrufcARXqi34EjShtFVT",
+          "activeStake": 63972.744428052,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "FwLsjPJdnSiuCvs1NXyR1cV6Sw5GRE6Lj2s1gZ9NNTmv",
+          "activeStake": 63958.535203063,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "STeaKrJdxdPMww27XJsjRBfrzqfjFT1BxotgQtFyDgx",
+          "activeStake": 63952.929027834,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "5BAi9YGCipHq4ZcXuen5vagRQqRTVTRszXNqBZC6uBPZ",
+          "activeStake": 63939.77696747299,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "bXr9MyoUAaGusQZ4gaUPmSZByHAV7RRGr1FhCW5tFh8",
+          "activeStake": 63922.55506792101,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "GREEDkpTvpKzcGvBu9qd36yk6BfjTWPShB67gLWuixMv",
+          "activeStake": 63913.607595847,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "4YykTGwg94GgHZEPSsQfbaMaEE9HHAHqSuXT65L6C6wf",
+          "activeStake": 63895.511291964,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "CV7uvPY1Hk5Avb2NvkGJoUzGnipZrEZK27j5rQJoUae9",
+          "activeStake": 63885.591295291,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "BrRf2kyJEuW8TgdeDjvJcKK4NzTzRtM9RB6WuVKXHxkN",
+          "activeStake": 63884.953900291,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "ErvMUdtMC7AX55zKdYSyy4DnWNCrTsWn5GwprSG7ocnx",
+          "activeStake": 63884.534379227,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "3ZUQekqiZoybB57y49eqtvSaoonqDwuNbeqEGwN88JkQ",
+          "activeStake": 63882.108259281,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "5iZ5PQPy5Z9XDnkfoWPi6nvUgtxWnRFwZ36WaftPuaVM",
+          "activeStake": 63873.213473441,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "DPmsofVJ1UMRZADgwYAHotJnazMwohHzRHSoomL6Qcao",
+          "activeStake": 63870.097387427,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "phz34EcgWRCT9otPzRS2JtSzVHxQJk4SovqJvV1TQk8",
+          "activeStake": 63864.501056441004,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "J4pH3yiFrzFG1AQPRGBJXo3HP72MCZwsQamtp9ym4LwN",
+          "activeStake": 63856.323397722,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "8EVaZkBcoJAAyyRZfozNAnZiEopgPvnixx5Ja5PpVDae",
+          "activeStake": 63836.719966491,
+          "deactivatingStake": 355.336765773,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "7PmWxxiTneGteGxEYvzj5pGDVMQ4nuN9DfUypEXmaA8o",
+          "activeStake": 63832.350684955,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "AbacusTT3yhEFEKkQKjGStDhKDnvSFGpg9EqBwz8FnDF",
+          "activeStake": 63812.333293933,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "Gvt8s5Bwnhg4G27VbnT1Zkfh7Jsztq6CNvZcc5anPonS",
+          "activeStake": 63758.789749389005,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "Ehdn9LdjTAURQSMoDPERXLehtvzy7QD762wwPkzGT7RS",
+          "activeStake": 63740.130855301,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "pENgUh4K9zNacyU3PXVE9KugW98XCqZsWpEvA8d8wzX",
+          "activeStake": 63716.061223533994,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "Va1idkzkB6LEmVFmxWbWU8Ao9qehC62Tjmf68L3uYKj",
+          "activeStake": 63704.454745751995,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "91413b9eEvG6UofpSgwdUgH9Lz4QBF1G3J325Bw7JwGR",
+          "activeStake": 63696.108048054004,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "HMV14UAuULSwqmZhsKHzaVkYAd94iWpEeURgbUegfQLc",
+          "activeStake": 63689.072176662004,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "HLM6hyDWrEca9QMS92nDBa2AreU1qDkppttPVuJ7E2CU",
+          "activeStake": 63642.685655124,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "323d4ZiSqS1PwGwpJwD88jNPaGqkm7YYW2tJt2T8iFzo",
+          "activeStake": 63628.373141911,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "6hZL2FZim27WkQccMfygvvXH2eow5u3wR6XUJHbMoeWP",
+          "activeStake": 63601.729665758,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "9tedbEYypEKXAMkHcg42rn3fXY1B8hB6cdE3ZTFouXLL",
+          "activeStake": 63470.215159827,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "9wQQnnnkk5b5GkQWTW9L4kEA3CjFv6CqsQd5gt6tRsHK",
+          "activeStake": 63434.673356679,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "9gANMngbGUmAaLXL1RC3JdiaLjRowJXNbzCTh53ht7mq",
+          "activeStake": 63432.830910631004,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "cover89z945JotsCRGdbjakJm4rnL5XspFSPgN1mVZj",
+          "activeStake": 63409.440632517,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "oRAnGeU5h8h2UkvbfnE5cjXnnAa4rBoaxmS4kbFymSe",
+          "activeStake": 63364.374114348,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "1234LB7uvDC23rdCQoK8C3jNwnovUNyeKxz8wC3dghJ5",
+          "activeStake": 63353.446646594,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "3QPGLackJy5LKctYYoPGmA4P8ncyE197jdxr1zP2ho8K",
+          "activeStake": 63348.552151977005,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "3xjfK9C9YNcta8MvK1US4sQ3bc6DEjoJoR3qLExGf9xE",
+          "activeStake": 63335.101006063,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "9sWYTuuR4s12Q4SuSfo5CfWaFggQwA6Z8pf8dWowN5rk",
+          "activeStake": 63307.298598962,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "VALiDsfZKafvvQM5CMHhJd6PeVx9UpeDEC4Zk3WYikz",
+          "activeStake": 63291.115895779,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "78QvBqfkWbDbyo1DMb2ku42r1UfxecwptjbPWJqxkX6E",
+          "activeStake": 63288.694176162004,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "QXmsTYFK7YT2BpP2AnvXwuRpfwmsJZpovLcUqdSjoK1",
+          "activeStake": 63203.684597384,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "5szskKdH8nfnUuHTvn9hnhH3Xuvo7RVmcDDvD5WD7yNh",
+          "activeStake": 63129.704334707,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "644K33yWfSzc32VvY5fRUfUqphw8LTaLQntCkyEpJ8h7",
+          "activeStake": 63104.208427956,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "tri1cHBy47fPyhCvrCf6FnR7Mz6XdSoSBah2FsZVQeT",
+          "activeStake": 63033.31328339,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "9Gko8QZBbV5SrEvHKtQHcMrGGSfgFP3KJUozEGifu25x",
+          "activeStake": 62971.819629895996,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "FSDKGroWxgBf7VmV6X1NLDhnncrWW2ekztwRWiJrPf3k",
+          "activeStake": 62967.631857394,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "3iPuTgpWaaC6jYEY7kd993QBthGsQTK3yPCrNJyPMhCD",
+          "activeStake": 62967.033025668,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "HeTyhZdUKswQoonJJTXqAnDN48ceyVAeFaKfYKayGPNS",
+          "activeStake": 62914.567169063004,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "BxFf75Vtzro2Hy3coFHKxFMZo5au8W7J8BmLC3gCMotU",
+          "activeStake": 62909.585774255,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "Ebm1XKkMzaFg2L5rzLPBnFHMtpDPa6SWJ7nVUzZUmXmR",
+          "activeStake": 62909.139263538,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "1KXz4xKV2viJCGpxqnQqdf2J45vQr5USdmtcJLTaHkm",
+          "activeStake": 62890.561074526995,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "4tuMshQNpAFpy1YtEHnSsE5EPN1mAT8FevWvn2UPJHNM",
+          "activeStake": 62872.018795002004,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "FnAPJkzf19s87sm24Qhv6bHZMZvZ43gjNUBRgjwXpD4v",
+          "activeStake": 62864.253782210995,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "GNZ1PAAS33davY4Q1BMEpZEpVBtRtGvSpcTH5wYVkkVt",
+          "activeStake": 62855.846320836,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "AY271jdvcyo5VzBiWsMGLEjpZFFrarq8FDydJHLmYgCG",
+          "activeStake": 62854.221602623,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "Dcoj98wWiKhA4iqxcSg7NtuR2miA7tZqtycMdkPo8XDw",
+          "activeStake": 62837.294460899,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "D3QPJm7BDzzPeRG51YZSEz3LfV7GvFNu9NkcibzURxuj",
+          "activeStake": 62800.98618229,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "Fhks5gukimP6vxKYbRY4V1aw888EgHhpdDSscD9V6bub",
+          "activeStake": 62751.307525022,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "48oxpSHQkM4sdXUY9NQ8KnEtebzZbyk8uUT7JRdVQNuf",
+          "activeStake": 62712.485769358,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "EBVj3uwSKZpqEb1K267JaPxDQhULVqCy6hYeQqjsPh81",
+          "activeStake": 62687.953363064,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "FGtsnE1HB4bBi6g4xAt5mvWtuC3qBPWPBgWVrnRmUiVH",
+          "activeStake": 62672.06318237099,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "7Eg46UwGgsufXdd9C9kF27UAyD2t4VdmCdVTtPFoqxCy",
+          "activeStake": 62641.517620487,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "NoRDTy8jpkpjPR7yxahVdoEUPngbojPhFU5jb8TtY4m",
+          "activeStake": 62584.550682327004,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "2g2QU1NDRax6i2mKzRwgRfdBFoDkMC6bj7Zp5Q3i8sCq",
+          "activeStake": 62565.599906985,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "B1w6SZcyvjyp6zEyStcc8u9AxXAh2AbYvNzMmP9rRKE9",
+          "activeStake": 62552.924923038,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "3Xn3K5zeTzs4sURj1PCRaF6rvFg2hPgT49B4SiM998f7",
+          "activeStake": 62410.856470296,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "49DJjUX3cwFvaZD5rCAwubiz7qdRWDez9xmB381XdHru",
+          "activeStake": 62377.011082796,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "6JfBwvcz5QUKQJ37BMKTLrf968DDJBtwoZLw19aHwFtQ",
+          "activeStake": 62372.035515566,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "i6PZjkPHGYmPfPE8LsJuLn5huZyusXhmysiDiHGPjxb",
+          "activeStake": 62332.988697675006,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "5iJDEVRi1nMLwKAWhYbEokZnvBAe15rgFaHGkggVEP9z",
+          "activeStake": 62325.48939393,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "Azc2uttGtHsRLorfQzd7tsMNtfaEg7LyvVEMVtckPCNN",
+          "activeStake": 62311.247005723,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "1Dadio3JRvpEjY6iSmXmhbGy9RiU8Nxh2GmoVbNusbE",
+          "activeStake": 62136.400334846,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "Cer1umMkC6cvRGKKLP3QwxsdxsgxmC1EhqMhB1mqVvYZ",
+          "activeStake": 62087.324363689004,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "NeodymeDFipD7eA1ShrLJAZTBdHWcFsDB9YkoHshZNk",
+          "activeStake": 61869.470454891,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "AAAAQwH5KManM6mbxGLc1m1XnWcRBFDmdUgpZ4Ww621j",
+          "activeStake": 61813.131315882994,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "so1arJJbp9sis5XpovLyjTZPk8bDjfs37Meghi5wXbu",
+          "activeStake": 61558.944197606,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "Mxv1Ubm71XoUvxrN3qjN8ii6Bh5b43NuuKywsWx6ox2",
+          "activeStake": 61379.905380935,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "HJmfKJjKiyuuxFUuXgecgD5gdD312apCpHwZt6ETuRMU",
+          "activeStake": 61379.830784226,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "RLMS1xvot6R9RCDbCtZN8toXGm1ceJHXnBSNC1wY3FU",
+          "activeStake": 61379.678355193,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "3VZHxnkK1A3HYeWYaqgMebHnc2acgLzRiXYwTNm3ooYM",
+          "activeStake": 61378.541734508,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "4jEHuQZTNTRYAhxRYEjV3HJ1b4wqdQjnBRdPzFWzkCft",
+          "activeStake": 61334.542400880004,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "H1kyn75BFTXr8QRmToRRvuEEmYan5n6M5APyfhMLau3b",
+          "activeStake": 61327.764028087004,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "bay3rQMjiLPy6Nvi7tfNeVK26inBCxf88hKYyeKy64H",
+          "activeStake": 60880.953076829,
+          "deactivatingStake": 1446.408258247,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "uTnZDhnbiSV3TX2obj71nFPAm2aXy83mFTFYzaBRk34",
+          "activeStake": 60840.191782481,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "5daP6pZoPSak6UEKuRg2HHjvTPpqqwB113oNamGNKuuZ",
+          "activeStake": 60048.430624810004,
+          "deactivatingStake": 546.489382486,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "vahVByZszdHguLa7U7GLz8UdUFN85mcwdkefiqVjtGt",
+          "activeStake": 59698.311332848,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "SQDSVTDfE5HqL7D6RjZk1vvZhaheWoskrDdDHCki68w",
+          "activeStake": 59377.448069692,
+          "deactivatingStake": 451.89803262,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "FN2BJjzy7WMRAqMNwzZrv5iDmHaNwukyFMfWCc6FxZDw",
+          "activeStake": 59133.172141177005,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "5CBkJdDPMWCmss3Y48B36w78Bgxur4mDib6tQ9yMKe1B",
+          "activeStake": 59114.48885043799,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "FCvNkHa4U3yh7AXWGGL2jWLWiSRouR8EtzY5WVTHKTHa",
+          "activeStake": 58872.8189825,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "GMpKrAwQ9oa4sJqEYQezLr8Z2TUAU72tXD4iMyfoJjbh",
+          "activeStake": 58772.846486792,
+          "deactivatingStake": 479.52147646000003,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "CiTYUYPAPHdcri5yEfsmqVcs54J6j8X1QaiFLgYqMVe",
+          "activeStake": 58337.413925372995,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "VNbW721iu6uVkrx246N2BiQth8u4b4SCPJwH3JvUovD",
+          "activeStake": 57846.912455916,
+          "deactivatingStake": 71.534485426,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "BDn3HiXMTym7ZQofWFxDb7ZGQX6GomQzJYKfytTAqd5g",
+          "activeStake": 57837.790914362995,
+          "deactivatingStake": 449.59513217299997,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "77i1Ryv5bLp45yNeJCwCU28f37fGYspvRtGbNyxsD6Qe",
+          "activeStake": 57715.812433281004,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "jag77EXci8uf5uGmKE5izaYvxBCS5H9U2rxWYh8BUUf",
+          "activeStake": 57421.826187809005,
+          "deactivatingStake": 579.824004019,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "34yvUa2fxfm2tUqxFEj9PHrVNwCcdzd51eo9hntWpZRs",
+          "activeStake": 57009.963318267,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "LunarE7WQyxpPwKo2hkEZZquu6UDWMNjvf3JyzGmdfp",
+          "activeStake": 56938.50505046899,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "bonkYyhB6oWHP6si4oTSXKnEQZTrrCyGZLMgt2VqgHP",
+          "activeStake": 56938.504604818,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "nymsndUdAZyUPpWYz5VEg8Ghj9cFvwTRgciLogpmYaQ",
+          "activeStake": 56938.50430572999,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "DqbRPQXbN8GDKWZkKiHnRjiSKPqE3rQaNgTPxdLGPDMK",
+          "activeStake": 56938.504038062,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "2iWXwF2Q5W6o7yntV2mkbxncB4rYHnX61y3NU8a8EFMJ",
+          "activeStake": 56938.504015444,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "juicQdAnksqZ5Yb8NQwCLjLWhykvXGktxnQCDvMe6Nx",
+          "activeStake": 56938.503583793005,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "mnvkHm47ZmRKoSWuQZAfXLRiDPiKCq8PWkMWrp1Wwqe",
+          "activeStake": 56914.303430903,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "mrgn4t2JabSgvGnrCaHXMvz8ocr4F52scsxJnkQMQsQ",
+          "activeStake": 56914.303430903,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "25quQGzrtcU224Kk7G5YDJ9oJXgYsiur8pZ7pAnCMhhV",
+          "activeStake": 56914.30343090199,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "PKvGYwh4efgythYddWAqGaPVuoZt8ybk7eXEoUqWxuA",
+          "activeStake": 56912.561153929,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "F1Ue1sePSLeztVARpgtTGzRBjEA2YJgzk7Ror4w3jjz2",
+          "activeStake": 56627.714294858,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "686JcEJ98r8fMtUiVuKiz4WRoBpJ2Sm9zMhdc2b6H4bu",
+          "activeStake": 56275.926362496,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "BiRDEYE5K1dr6rQ6memx441BaZk8bYXzCwdShwgvLjtf",
+          "activeStake": 56266.111759547995,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "2wUhcnViyzstvWmk7NAboKtjbFbqJPo4BvFBV37dacLc",
+          "activeStake": 55964.246071483,
+          "deactivatingStake": 84.025118679,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "dcntrKBwh8j5yL62Eg96Z5QjJWv3UXxMu4rqL82w6Cb",
+          "activeStake": 55795.870572222,
+          "deactivatingStake": 482.44489987099996,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "Hmq1oALENff8DejgYhJxB4njb6pyCtuMKKxotdZicB4n",
+          "activeStake": 55066.065174546,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "gVot34jauJpexBL2YUSPBKsmZ4V2ffmDcRk4yfSEnx8",
+          "activeStake": 54862.916358170994,
+          "deactivatingStake": 120.754097647,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "8vyuJTHSDkx7k1zymea4TMsgvixf3rCYBXHPDQajePkE",
+          "activeStake": 54686.930574959,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "steakxfubt37xYdvuXz7BV5Uhhhk1FyJx9zGHfDcTVr",
+          "activeStake": 54236.199178541,
+          "deactivatingStake": 319.124465999,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "2QE9X9X4tdDUTYic1DgBBJjU7cWUNPbKYGerCb9KqDQN",
+          "activeStake": 52965.978504507,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "42XzJdJvr1qE7zdEnPQhV5PsN9eyAcR45SWpTrifW1JB",
+          "activeStake": 52803.756272595,
+          "deactivatingStake": 216.64205347200001,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "H9p8zGs56CnL4b7RrbwQ6htc6V4K8PUtKvqH2m7hYAtL",
+          "activeStake": 52755.942423478,
+          "deactivatingStake": 70.060236367,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "JnGGar3XbAN6J3cKGRbNajCuhqnc9XWrk6WWr6hDmuM",
+          "activeStake": 52671.370669822,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "qjUuLxWo29QCBr7ZQw4EPLkAtmjHS2ZdZpZcH9g7fRb",
+          "activeStake": 52594.001104211995,
+          "deactivatingStake": 499.14835796399996,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "9ymU1ayh9mZVyDL4dUUtXKtX1wCaFNzZPGutLJgqzuC1",
+          "activeStake": 52552.774560044,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "Luna8BkZNpZ9DKmszrZYPvFpTr4eJJfxxTnGDwTrYkv",
+          "activeStake": 52294.742886376,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "5eJQDSbgTZSEmH3zSWDEdAKgjavUUn9BkouCFNLz1x93",
+          "activeStake": 52235.245529445,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "AYSvheimgwhpRHXossLqrTBDPwo4jHDQJ1UhMeAArTwH",
+          "activeStake": 52163.058291987996,
+          "deactivatingStake": 247.918380968,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "EcjtYtuxBuupjeyXNdttATwoQoNL5Ck7bmrqDCj3ALT4",
+          "activeStake": 52101.677668014,
+          "deactivatingStake": 233.35794046100003,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "3R4effnUPr3sDo5wdegPBnqTmKTZhKkbgL1wxYw7w4B6",
+          "activeStake": 51846.572404870996,
+          "deactivatingStake": 425.883654113,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "3Qvmhayko5Yn3sSXDsHsMzS8QjdU4CshQF2y6L276kgi",
+          "activeStake": 51823.979930863,
+          "deactivatingStake": 62.945924847,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "BSGMtRHy9qvsPbUKtT8yqd7nNqn2urTcSMVUgzj9zJVd",
+          "activeStake": 51652.815358714,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "AuBB9st3RqhHBkzZgBSm6SVnHZNJQSHeBWCSkik4bzdA",
+          "activeStake": 51389.730204113,
+          "deactivatingStake": 206.78851236199998,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "5afRnmkFn1pRU9oussqwk1RRBVyoDgUkL16Jz4qNf574",
+          "activeStake": 50770.558319751,
+          "deactivatingStake": 131.32669186,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "4FsAxdHQ6HmFrDD7yCwsKNApuA67QYSCMoLAy3NfySxJ",
+          "activeStake": 50687.525897871,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "pt1LsjkNwqCKdYYfc35ToDkqtEG9pswLTJNaMo8inft",
+          "activeStake": 50679.672297922996,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "PineDoC593nrX16W8ZLWfF5Evb6otv7fRfZMLjPAHe3",
+          "activeStake": 50530.693460878,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "sdo2QoiSsPknraeCts5GeBkV3AYDdtuxJ3VpYCS1CxR",
+          "activeStake": 50434.96848433401,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "C616NHpqpaiYpqVAv619QL73vEqKJs1mjsJLtAuCzMX6",
+          "activeStake": 50394.107659085,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "nebu1WnZBrFZz5X7sfPWuEqyb8LBSsrXpxaesnK9CRE",
+          "activeStake": 50030.93328201,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "2ayMCC4aizr8RGg5ptXYqu8uoxW1whNek1hE1zaAd58z",
+          "activeStake": 49969.53432925,
+          "deactivatingStake": 187.749553127,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "6cvBCfFXugkTqgSFVPvzhoWaLbhHWvZfSsZadWP5rryR",
+          "activeStake": 49918.035343818,
+          "deactivatingStake": 136.206577343,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "capyZmRCkNE34ifDrRdfLtDB4Fi58rtLa94H9nU5z7n",
+          "activeStake": 49794.248351494,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "SWiz8fJt7CV99Uv9VZTLGAkMP3vTpc6u7ZqNN5dsWXU",
+          "activeStake": 49790.593770759995,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "hxVjzDmta9TuN1gM981TRKnfwG2uZ9TQDGwSCs3uDow",
+          "activeStake": 49396.240089605,
+          "deactivatingStake": 366.250909238,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "7obieMdVPKKcwEhhKizSkpdLaW1HMZh2ENrUDUhdGvVr",
+          "activeStake": 49306.809069435,
+          "deactivatingStake": 69.12744126,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "J6KaKtLRj7eQGuVVL2CAz1AS9kDxsrmej9QbYkEtsiAD",
+          "activeStake": 49130.442112681005,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "GptPXjYUBUjxpRmueH6F5JcqizvjPTRDShTJQ8Vp6uN1",
+          "activeStake": 49046.591362499,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "HcbE5huUVDgsf7SURsRfQqnFMp3Zz3i49eXMddugPyAP",
+          "activeStake": 48588.454922058,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "8xV77wuFP5BkMDdb1845hRRWZNbDNAbcV75BjMuViWpf",
+          "activeStake": 48080.316848213,
+          "deactivatingStake": 75.531571159,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "AnodeNCzJGQ7QwheFqJr6EknKGa72m6XHiLtDQiXcmEc",
+          "activeStake": 48041.202720283996,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "CHiaohVV2SQCFhiYP73iQzWT6HxnZqnAZJJqAYTeLAo",
+          "activeStake": 47811.577974045,
+          "deactivatingStake": 955.316561432,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "bookLxG3LkSmt4htJ1x9zPw6E34RRMAi7sUn5mM3CNN",
+          "activeStake": 47416.700089854996,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "wifYT9aQQoKdJtzoXtBwqzjDoAytdxwv7kVLUytWug7",
+          "activeStake": 46969.946105913,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "D3DfFvmLBKkX9JJNEpJRXpM1pYTVPQ5dpPQRc9F49xk4",
+          "activeStake": 46914.473372092005,
+          "deactivatingStake": 54.633305805,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "EJ59wFK3qPrnsFFSpZ7jSwCnXe8hVQ12heXYUqry7Muc",
+          "activeStake": 46793.125040209,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "5frYQSynysBe1akCVK9tNBJ5j8jgBgUsjAXAgqHxvykJ",
+          "activeStake": 46642.298938062,
+          "deactivatingStake": 1076.815613184,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "Ec37CQZjwRgGnuMmUi3BnEBXS5Xa3siakAPxPkHtahSf",
+          "activeStake": 46355.141933329,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "DfpdmTsSCBPxCDwZwgBMfjjV8mF8xHkGRcXP8dJBVmrq",
+          "activeStake": 46235.787528454006,
+          "deactivatingStake": 69.348424081,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "fuyugZxM5S4NyV3ZYoc6ebs3fmRTrZ3X27MKCFvHpVD",
+          "activeStake": 46086.264700921,
+          "deactivatingStake": 252.91840991299998,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "7K8DVxtNJGnMtUY1CQJT5jcs8sFGSZTDiG7kowvFpECh",
+          "activeStake": 45855.371834615995,
+          "deactivatingStake": 1651.9199457729999,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "94EhHE7MaKHq4p8oFADeyizDjwYwgFn1YBYGky8mR35z",
+          "activeStake": 45720.982112132995,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "sShosKd6uA5c1ZpVMxdsE6do13TLRWSMYsXbSMmNC77",
+          "activeStake": 45625.236153155,
+          "deactivatingStake": 18413.405315882,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "6oscGUEkXE8fyWoC4czRKbM1cuLkJNtgRsX1Un6w88Vf",
+          "activeStake": 45517.177689183,
+          "deactivatingStake": 220.932070294,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "Hx4UJCvf8amGeuW9fPFfTckRoznDHxPSYiU9HuUSZKLT",
+          "activeStake": 45393.236742209,
+          "deactivatingStake": 914.286520717,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "dedxrPfNqPKBRmUyP9LDkaitpQzU6PD44jA6GP9Ndhk",
+          "activeStake": 45149.119289523,
+          "deactivatingStake": 341.932680523,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "GK9MfwWEK7BvMS8eQDaiEPnKcqMJoS7SKUiEBQY2pfxC",
+          "activeStake": 45094.333223527006,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "PoNV8asqSrjTr9vBBW4Y7f5PVWUCzUXByz2AqcTzv1j",
+          "activeStake": 44910.578595247,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "EUiPhYZ8NoWX5ZzDh2cRR1fAS4su9jjV3YE7veyactzd",
+          "activeStake": 44350.158747527,
+          "deactivatingStake": 131.120479447,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "H6rbcwuQtadcv9JvxLM7GEskF6xFXnrNT3iPkk4RfyBE",
+          "activeStake": 44238.086833419,
+          "deactivatingStake": 14425.588179400002,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "HMk1qny4fvMnajErxjXG5kT89JKV4cx1PKa9zhQBF9ib",
+          "activeStake": 44157.179795461,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "HAYEKSWg2EY21k38St9X5yM7QMW6SunKDefs5SqYSFty",
+          "activeStake": 43794.850149136,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "4QhNoG3PN1FXXFhAEA2QWdor6xjXvM9pjq6MXAUV8Zg2",
+          "activeStake": 43761.770625425,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "C8MLmDCg3LReWoNCkFdHgsscFpHx2WdtcU9ZziNfXrhd",
+          "activeStake": 43757.003219445,
+          "deactivatingStake": 93.006114762,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "noMiSdYbNQmFDrH2qMvYRXXzb5DUvjyPyDkXadzAPUV",
+          "activeStake": 43721.43667742,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "THEVb5dS9gHYnr8eu2FHCprjnyp3uqmHNofUXD8MCQp",
+          "activeStake": 43647.424821614004,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "CNcaYdqkCwxDpKSVK8in5f6kqrTiZ5SuHsHFDqx6jNvu",
+          "activeStake": 43555.733436991,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "GakAanHMN4dYY8rMKL1e6uUKjNJj2nN2sENFaxzdMEBm",
+          "activeStake": 43339.408597824004,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "b1uei1YN8YVb3qHy2JitBx4Fq9nAatLQFcNbnk6Ex8p",
+          "activeStake": 42993.07778855199,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "LNRmxHyXAzgBkgxDmb4ZefwLAnSv3fdsjPgjmThoa1T",
+          "activeStake": 42876.753959527,
+          "deactivatingStake": 262.16316865899995,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "GzjMbJQDVuBLFY69QwhhjDGDy2o5Q6nswXMuVTCWEFnp",
+          "activeStake": 42867.378275617,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "FLCrbfbwEhFARa8nK9rnZw8BVtKNAuHujh9EhWy5A4U4",
+          "activeStake": 42858.51561588201,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "7miZ2ZoXwS3YDzBRCbWcEtNVyuxk8WbbcyQwq7i5btvZ",
+          "activeStake": 42449.13352505601,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "2ZiMfQaT59j86HVWCvspuMtBotnVBeTc3BKk3kKpwgKP",
+          "activeStake": 42413.998249524,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "SWnetzxKaKtuysePKKAzdPAk3gqWgPYxg31vet69Xnz",
+          "activeStake": 42403.774733255,
+          "deactivatingStake": 333.53536836,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "sfo5vA1fFdPRsvqd8qdePtTnK97Qj6Jj3GupEzmNPjJ",
+          "activeStake": 42150.39640886801,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "eyeVhGmVEoPSWmQU2wP5WZmMihPBTCk7kMMm4VhuAKS",
+          "activeStake": 42073.622657476,
+          "deactivatingStake": 290.922004773,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "votem3UdGx5xWFbY9EFbyZ1X2pBuswfR5yd2oB3JAaj",
+          "activeStake": 42046.214097489,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "BiUSTKzDM57pkf52SqxqckEk4ap7d25y2GB4GLXxdgj7",
+          "activeStake": 42022.307202118005,
+          "deactivatingStake": 83.121475378,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "ViKLknQuks11DLEjZ7Y2aNYAAT7Q3NTKLGxs8rdnLVi",
+          "activeStake": 41789.963654027,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "roYL9AoyuGae7uEAErzZhPSSxnLLZU4TNx8wmwCk77r",
+          "activeStake": 41382.619715568995,
+          "deactivatingStake": 577.745240334,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "dstqVmt3cDH43Ux2SeTY2Hza1eVW6pwGLwehWCLfuPd",
+          "activeStake": 41362.883290903,
+          "deactivatingStake": 383.969933248,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "VaCdXKupamusfRsDf9Ai7e8Up36Z4f3MP6SqhnM7c76",
+          "activeStake": 41303.573651863,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "hnhxfrndd827LET6jvnQV4aWqpS2EedaHcT4gj8ArSu",
+          "activeStake": 41016.51912682,
+          "deactivatingStake": 604.440708834,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "1i1yax3thZfiV8id5HTA61bjsxEi4pbjmhXsqy6JePP",
+          "activeStake": 41008.363352422995,
+          "deactivatingStake": 551.768327578,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "EfnywDKqArxK6N6FS9ctsuzNdxfx3pzfXEQE5EevQ1SV",
+          "activeStake": 40991.90146124,
+          "deactivatingStake": 1015.619880356,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "5XGMWvqZSBk1fktPtxbwaMF5dhkbrtchpwd4xiXG9q8u",
+          "activeStake": 40900.787849888,
+          "deactivatingStake": 502.14389250199997,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "ChaosDKeBjU22B4nnvYWXyTRPuWTzJBR4m3QPfBw6Tta",
+          "activeStake": 40836.568350406,
+          "deactivatingStake": 136.080968936,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "HwcVgFSgmfeeF7zGFUBLoVA8Hpx8rtwyfCrJ1npBaSVC",
+          "activeStake": 40373.666709459,
+          "deactivatingStake": 225.951620343,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "GaxxAn5335dA4U3772MCFeqdyqCVEfmsQTQ47YXfC2Xi",
+          "activeStake": 40151.643794534,
+          "deactivatingStake": 338.073572944,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "53ANFYA6BCDzdtiEeWawm5bqsH1Qgmjog8oMo5N4o4wU",
+          "activeStake": 39910.932917768005,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "EnRcbgr5r7EUS2P35szncy6TW6eWA9UQiU3yQRCDbh2P",
+          "activeStake": 39856.742042945,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "mesh3Px7WMi7Dkxke4ZZBULoKHM6sp37wKtg4DwPqPY",
+          "activeStake": 39626.815481563,
+          "deactivatingStake": 338.58301573,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "novaoLcuVHSudkW3Cphuhiv82vspN5qzinGCtEbwQxz",
+          "activeStake": 39489.702908526,
+          "deactivatingStake": 270.753812464,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "4269foF8CYyT8SynFSYHiKFzHva5YL6PoAQj9pH3mQmh",
+          "activeStake": 39273.474415717006,
+          "deactivatingStake": 490.526046808,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "ACCRENAtboR1MyyoiPvwNZNkjt1GcLARrACh6hZXdddF",
+          "activeStake": 38739.126475288,
+          "deactivatingStake": 62.104332511,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "8mu3JHHF1Qkcrbqjo6KWxyWvTxarZjqptJTokR2jrDFo",
+          "activeStake": 38572.146093175004,
+          "deactivatingStake": 128.015916677,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "jntrMCSkeNagaMM437fhZxLYbFJh6pvj68bQDZx2pXf",
+          "activeStake": 38560.710983644,
+          "deactivatingStake": 336.399401806,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "NikGQUQqSLtsdHGGx7mQopojZcgd3N9uWFaZQ1r5EXn",
+          "activeStake": 38547.347339649,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "STevE9xVb1QfBHU4GgEn28r9oikAf5yxKJddF7fufwb",
+          "activeStake": 38512.351898177,
+          "deactivatingStake": 334.63824930000004,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "DCKYVqFDwUs5m2DhW9muK2EX86pootvWD8wXA4nSqDxU",
+          "activeStake": 38506.628287093,
+          "deactivatingStake": 334.301431749,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "eUkPmbsMwxMFr8v1m6sBYJ9MoZ2LpbiHNHWeZiGpFHp",
+          "activeStake": 38479.641897085,
+          "deactivatingStake": 317.31177769199996,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "A7uqmajxP3NdzbYDXiGQRGTL8d3dZ5pjS4kR9NTZcxtg",
+          "activeStake": 38450.622788734,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "nateBZg7oHVPLB2samBLkKvfzedU3ALZBexMFPMKjn1",
+          "activeStake": 38364.374807238,
+          "deactivatingStake": 331.820278035,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "5cYwwC8dmQ2tvtjDueHrU2B6NvmTHmoimsNGeGXVbkP8",
+          "activeStake": 38317.673680311,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "7X7oVv6K6wawMNzVriczSAEk18GzqyrYrvqyJbwLAY3s",
+          "activeStake": 38020.125690415,
+          "deactivatingStake": 3055.498760538,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "ZoDVQ5zCgFyVm2Y6vHhZ6boQEZNV6sMVnefev4M2Bes",
+          "activeStake": 37978.35149942099,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "chdv8H9fPfk2zFqSVaxRjsEo2qEDmswbju3BVgAHPNb",
+          "activeStake": 37717.807957707,
+          "deactivatingStake": 193.971897807,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "4MU64AyHBkRBUAYgAm91sP5vFgzUUgFHuS82CVhE8Q2Q",
+          "activeStake": 37682.93639462801,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "9gX9MV3nGHRs1R9E52Q3vMg1tNGe5NHvzdfo3AMHnr5t",
+          "activeStake": 37678.370755909,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "GdVBPczdFaPf1GXvx8ByHeA1ZHAHwwmdQEPihH74SXm9",
+          "activeStake": 37423.759847796005,
+          "deactivatingStake": 66.946219835,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "89DXJe6XTDASsmyXJoPyRetLq1csRj9N2Bwn67fNvYGt",
+          "activeStake": 37156.962491144,
+          "deactivatingStake": 66.519841653,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "7HhmcAGzjChFjG1qsN4Y9NPgDWfytXXVA7ZRBWE7eZc3",
+          "activeStake": 37031.102531325996,
+          "deactivatingStake": 1117.000457668,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "axyQeKp44XqUnvC1jVHoeuAJ3j8wVnGeWtddeAcNYcF",
+          "activeStake": 37025.735750727,
+          "deactivatingStake": 402.532936176,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "B8Jud6Mqv1FSKpjBM2hPBqoPhGMAciX2UqR9WcepDF7F",
+          "activeStake": 36904.246286231,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "o27rnqfNHPwHsRp2xPXXwWzn2q2dGxn6UD4Rt5KMU5h",
+          "activeStake": 36569.936726010004,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "sagasJDjjAHND4hien3bbo5xXkzCT5Ss6nKjyUJ45aw",
+          "activeStake": 36526.948440869,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "goJiRADNdmfnJ4iWEyft7KaYMPTVsRba2Ee1akDEBXb",
+          "activeStake": 36232.71484374,
+          "deactivatingStake": 123.532470126,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "BLX5PkLh7GsHaqCpLDxiW3UjxfT2GMyteVAhRZBYhCts",
+          "activeStake": 36205.79057655799,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "EjyNztuWsaiVFnEB3M6NSut6p6e8UHsUdE8BkmRLMHWp",
+          "activeStake": 36069.676782010996,
+          "deactivatingStake": 348.839956469,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "GuxBSrv5jnSwwPepkqnmkM7YCBSakKanbnw4BKMdda4j",
+          "activeStake": 35924.646544291,
+          "deactivatingStake": 139.663144697,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "8D8XL6ovqx15RKwC1XtFyTz6H8JYF2fUsxTnsY4b123P",
+          "activeStake": 35911.445980099,
+          "deactivatingStake": 91.432648919,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "stsaYQJUhKZDHSqndGtgo6jgbhVaHBSHhtfVWxCwrhD",
+          "activeStake": 35883.074329375006,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "1eufsJbqNgMProke17FLSw7JrD97fYhGggrnH9zyWnG",
+          "activeStake": 35224.024306841995,
+          "deactivatingStake": 4949.449745313001,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "3pBPy27F1Wz3iVydZnGkdvefStrFm8UMCDakYZii8AUZ",
+          "activeStake": 35184.097290339996,
+          "deactivatingStake": 66.560389657,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "4DW4nrbGrjXRhhj3CH3AYgocExfqEoCCSMxZ9uzc3NpK",
+          "activeStake": 35175.107466421,
+          "deactivatingStake": 68.466784867,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "CP6mfD4Qc5AYrboXBAQeHMYj5x1UnYksDXRjG7DMkHH7",
+          "activeStake": 34975.146613205,
+          "deactivatingStake": 130.389167767,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "4Q1khZnsdtNyQjUCpYPBDYyogui8b9x1MWtKNdaPiJdv",
+          "activeStake": 34543.576940994004,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "6UDU4Z9TTbYy8gcRKBd7RX3Lm2qMsSR4PMuzoyYPzLma",
+          "activeStake": 34475.900695318,
+          "deactivatingStake": 80.435513543,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "chrtyiAw8suFRvS7rTcfgcDyNu49bGPNZ2fjSPzNPFr",
+          "activeStake": 34406.122521541,
+          "deactivatingStake": 85.173919111,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "LTPVqpXFDkXh1e8afTkX5RkxyGkM198TcEUYAq7bUrK",
+          "activeStake": 34325.265401305,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "4qvFxnUXYjBdcviCwVV7gKcGJMCENEBfS82hSLJUhyvu",
+          "activeStake": 34089.788678934994,
+          "deactivatingStake": 283.447207194,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "6BUqzA7GtQJ3qZXHrViMSGFdXNvrbcD56Png1mNRqGN6",
+          "activeStake": 33644.134176177,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "GZgVV7MMweKm11hh8z8Nui9kRo3VxUVr2qgmkDdtJesa",
+          "activeStake": 33308.455192188005,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "DvFTFLrEQSfEadPQdesvf5bpYWYqXK9iaJAjq95piQBs",
+          "activeStake": 33099.761447685,
+          "deactivatingStake": 289.75656652199996,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "3a2onvgTpGynakAQwx6gigtSeL7itZewNxqb5JiAvWeA",
+          "activeStake": 32903.145192125005,
+          "deactivatingStake": 66.104496584,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "7zKQnt19j7aZ1YjzBk6UUUdr5dGb65A36kW1TYAbB6b7",
+          "activeStake": 32849.529156901,
+          "deactivatingStake": 67.008867423,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "BSRRvjdKd8SHApi3KtTGbzrdhUojitiwAt4xt4nAxbFh",
+          "activeStake": 32760.626489569,
+          "deactivatingStake": 180.007922823,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "JEJzKYzyYJJjtn6Yb1P7r6YV75TdSNmmJT49sgDoHvmk",
+          "activeStake": 32642.170558094,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "LAKEuKJQYVFpf4vyjX7iuf9ajHo3k9FiyewYKf6VxPV",
+          "activeStake": 32642.170558094,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "mythxna3hpzXSbaseyR12vu5Vvym1HxS92eCgXLvY7w",
+          "activeStake": 32559.162846889,
+          "deactivatingStake": 206.961182651,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "9NZ18GkTnXZug6eXAzpBsmyCsYfAJ7mL9bgUfSJDSAKr",
+          "activeStake": 32459.918785469003,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "BdM7KCd6ZYWcaCMmHVi8YeL4jFzDVM9cRLJUeRAGSvMS",
+          "activeStake": 32351.428138673,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "STPTPuWoyKzbWawom5DBndxkeRFAjW4PzJ2EjL1qeMW",
+          "activeStake": 32113.067706908,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "DPhzpiNGU9C6576uLsNSHmdi2AxwxpjMsRdh2iVC4TPh",
+          "activeStake": 31986.015078431,
+          "deactivatingStake": 20836.358355237,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "G1juWDqojmp5CWDhgRqtXrtpAFw9xqhjmEQAKr9faf4V",
+          "activeStake": 31415.298883743,
+          "deactivatingStake": 348.15788055499996,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "mALLoAbdQrgsnm7kWJyPrhcQcmxfT73t8DaqEkpZNd6",
+          "activeStake": 31154.576085127002,
+          "deactivatingStake": 101.918062546,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "SoLiDDVm88uWUMk2rQpG7B9wC55a6xveYEz3JnS6tzC",
+          "activeStake": 31149.929547338,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "9FZWpUMfXZ3993g2BfqSFg7xcx9iUCxQwKeYzr2WQCM1",
+          "activeStake": 31119.670993284,
+          "deactivatingStake": 66.37488893,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "sTach38ebT8jnGH8i2D1g8NDAS6An19whVMnSSWPXt4",
+          "activeStake": 31019.518158409002,
+          "deactivatingStake": 190.18248811,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "SANDhe6azby4EMLJd8N77QTk5K92n2tCi4NXba7iwuc",
+          "activeStake": 30526.36367264,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "vvvvXsU6iG2enDVvs4KeVqS4YrZczTujSv5p3dSeNHx",
+          "activeStake": 30421.822998787,
+          "deactivatingStake": 194.33778994899998,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "Ck2rHWiP22YzrMgwVSe9ngyRW81JXLRot2CUo1Bf5RFh",
+          "activeStake": 30313.40037344,
+          "deactivatingStake": 65.823319985,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "fVotEjqpmpQYgyVyBCwYm62BKqqTQNE6SpYnRmdBazH",
+          "activeStake": 30213.15922664,
+          "deactivatingStake": 469.725567536,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "CtzNnqzSLwNtkzi2yEWvq4w3GYQ5gSpCagqFZ5TbdSKb",
+          "activeStake": 30074.716037173,
+          "deactivatingStake": 219.217418868,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "pine9rHVDS1pjwdhYkx3vRyaAyRd5KPDKXZEXAqvxcX",
+          "activeStake": 30004.090871525,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "xLabsqDpN9WHXEXSJXk1yhqh5H8BgcqiBP1CR6Mkjcb",
+          "activeStake": 29859.63045646,
+          "deactivatingStake": 3103.02035944,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "Ay5AcULBRJznGEEaGm2mWziRbefETRjdfZ1kwsoXS9u",
+          "activeStake": 29823.109314615,
+          "deactivatingStake": 32.545297916,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "YE111yizdzBA7JQKMXjy9VSx1shKAczUbs3b3e6vKQH",
+          "activeStake": 29557.842270536,
+          "deactivatingStake": 261.969300073,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "prt1s9dMM15LdsUX9HugajzqPB5WVN8a2mw3frAiCfj",
+          "activeStake": 29547.780547942,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "EtMSc3MvcDXUr6ChK5GxyFVwTxYA3zqP5XzjE9jwKvSV",
+          "activeStake": 29540.436796349,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "gGQb6ZcDG7fsVLWTvXZ1LLoY348tc1zcP2wkh8kshrk",
+          "activeStake": 29269.430420299002,
+          "deactivatingStake": 31.330734512,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "odc2aCE7yWTcV8ApP1cHmVqQZTkLNduqaYyKE1XhpE3",
+          "activeStake": 29151.510498888,
+          "deactivatingStake": 116.207161481,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "wetwJSUHT5afX3gP49q75gkz8FcCfvsw2kuSQ1UjT9R",
+          "activeStake": 28963.458191617,
+          "deactivatingStake": 113.810327224,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "ySxF6XaSFSwU46iJbgyh2rAW5jagLbYULPtWvZCshrk",
+          "activeStake": 28924.680124533003,
+          "deactivatingStake": 31.061074204,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "DyDjFYB6i51FMHQvB4eKSwGHmgMxVf1i3FWwANAngqyY",
+          "activeStake": 28917.265188951,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "ExYX8UKQTCf2VPtV9jbfqikeTV6tPfhzauJ896o91wtj",
+          "activeStake": 28915.087680119002,
+          "deactivatingStake": 494.17727821,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "H4QVPxS7napq3NEYxqLhxbKi9nJ8s56dD2EQZGsyZ3sb",
+          "activeStake": 28391.198798532,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "9rwCwfL74J6AfgKbVK7s7jjMqngvHtiBcV1WTNXN8hLa",
+          "activeStake": 27950.229747015,
+          "deactivatingStake": 319.031303839,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "TKMA1fBGq4M7gF2CNnhphX6vNateFc2cm2FL2mYwq7e",
+          "activeStake": 27510.034171725,
+          "deactivatingStake": 426.20330365399997,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "kyvvvkDpDCtSxQMPhzRhmv14DgUBVEGGzn8Dnb8ircP",
+          "activeStake": 26432.633838957998,
+          "deactivatingStake": 413.755785935,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "ABREUtpzkkMiPHrBebpsYDU3mubtSohjDKZbyRoTJLae",
+          "activeStake": 26309.881958073,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "sT34kbaqmHWbPwjhyeG1GnjoX82KpXawFsnzUkzJpYX",
+          "activeStake": 26069.790583390997,
+          "deactivatingStake": 246.783487667,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "adrePWHJJQNNuMfK3QrBKXDZZuRFPRjhovMMeSr3Drz",
+          "activeStake": 25933.361580606,
+          "deactivatingStake": 217.49468952200002,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "1oH9rfyrbKoP7ucJ1Zr2HLHmDU8N6G1G6dEuruFsSqy",
+          "activeStake": 25831.568543441997,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "4RcSXeQbgG1v27M27PNNLhy9PGB6uaJACXUZ3kBVc4kF",
+          "activeStake": 25635.043887485,
+          "deactivatingStake": 219.747673932,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "Defi89YpAhk3Gst1Jpsi3Nhj7yCu5HropESh37SQ2v9g",
+          "activeStake": 25629.96050278,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "unRgBLTLNXdBmenHXNPAg3AMn3KWcV3Mk4eoZBmTrdk",
+          "activeStake": 25531.90549765,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "Gotas1PRPrkqqSNm1ZKcn8Tpx9qL8krSQzTZ5DPKzkFX",
+          "activeStake": 25179.642411032,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "vnd1jskPHR2gfMtgTtq6xCwANrAiNbQTKgVBAJHnMke",
+          "activeStake": 24753.095909498,
+          "deactivatingStake": 215.76758196900002,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "ELE2xaC6i6pmeu7bfrYjBv4whBeTAbgwcg5hf2ythiBs",
+          "activeStake": 24559.138314319,
+          "deactivatingStake": 43.409358047,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "ExCHgw3CfdZTbsrDA2phe95jswV2bDr5oSJwyKJKzEdN",
+          "activeStake": 24522.766798391,
+          "deactivatingStake": 218.816197886,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "21oUQzzytWh6y3G3SQ7ehktMh1RrbsJNA4R5pAMNyyrG",
+          "activeStake": 24456.939814065,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "LodezVTbz3v5GK6oULfWNFfcs7D4rtMZQkmRjnh65gq",
+          "activeStake": 24326.767489318998,
+          "deactivatingStake": 75.75673796,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "FH5SX1WUubW9nD1rweZMofCHGhEp8qUMx3PksLfshrk",
+          "activeStake": 24225.035973583002,
+          "deactivatingStake": 31.397920925,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "GLB3jUr5zuu79zFuEH3KP7boxtWsjHVyYRBK2SPshrk",
+          "activeStake": 24214.364513992,
+          "deactivatingStake": 30.323364338,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "c3wFuF1LCtsY5DGo7eBQCwLHhtZgAxNwNDrUCqashrk",
+          "activeStake": 24175.685466023,
+          "deactivatingStake": 30.198286556,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "FRqYRkp3tUoBc62pnabeX8SVr6p3v6HM2tzT2NVshrk",
+          "activeStake": 24175.55522078,
+          "deactivatingStake": 30.328795554,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "ksQuu3JAStVXUeDCHeW6QtVRHNMcdtgPyepUd3Yshrk",
+          "activeStake": 24174.323674429,
+          "deactivatingStake": 31.38505101,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "T6bpj6H6fr9GyKe73DcNjPbGeSk8twDsiNcU4srshrk",
+          "activeStake": 24173.164213967,
+          "deactivatingStake": 30.326720507,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "BH7asDZbKkTmT3UWiNfmMVRgQEEpXoVThGPmQfgWwDhg",
+          "activeStake": 24083.386547015998,
+          "deactivatingStake": 30.184636227,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "CarbnAxSfvsBdp6otKtoUa8XmUaX9PcsGq6R2WqZMuw2",
+          "activeStake": 23687.460482929,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "BeRtYZ7SVQozwTby6ajQzrHtKYkn4qoKyRfb3NDAedtA",
+          "activeStake": 23663.139244685,
+          "deactivatingStake": 196.20520024,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "te1exfYnykh2cFGCwGSLQu26Dpr8n2PozvBqH5Eoi3K",
+          "activeStake": 23581.043877502,
+          "deactivatingStake": 200.38053748,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "R2D2vs3bJwpNF2ejaB6UW1JdCZ5VstuAmuwxDuUUWNj",
+          "activeStake": 23512.366098767,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "Cw2b2ng2fa78ndCXHcJMT1pqvdGxUHu5EBEB8KBshrk",
+          "activeStake": 23206.619655787,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "burnn86ebxJnhtk3cfpHoZxy5nUaC3K9U8VwzgqhEEt",
+          "activeStake": 23117.277114775,
+          "deactivatingStake": 33.889936531,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "rapxbkwBSSvtqRFrsY83f51oUuZNuVXci74MuzYhiCy",
+          "activeStake": 23077.305647055,
+          "deactivatingStake": 341.407467816,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "LiFiDDUsf6GCRHwkHzW4YnR1QErj99MAU9diwb8TvWk",
+          "activeStake": 23063.283742827003,
+          "deactivatingStake": 391.57824103599995,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "DMPhNJFSvi34NmfcqR4B5rdKgDYY3kZbXpdXJBL4cJ1q",
+          "activeStake": 22801.844038713,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "DTELA4aHtJB8zcMJvKgcUjAYfkGcKdRUN77cpFoMVgxz",
+          "activeStake": 22463.174996005997,
+          "deactivatingStake": 101.796014074,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "DEgenL35vQWg3pE8rvY2vJ2SrmpMsXMecu4PmvJcCCJv",
+          "activeStake": 22210.850926714,
+          "deactivatingStake": 214.10966313,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "LunaFpQkZsZVJL2P2BUqNDJqyVYqrw9buQnjQtMLXdK",
+          "activeStake": 22163.683179884003,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "FXcZJuQwkcQpw2YrkTaxWJ6rnw4P12wvULttviMRn655",
+          "activeStake": 22116.535687633,
+          "deactivatingStake": 30.329366731,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "FH9xcL7Fqkreq1wSkn2Vf7AfnMEyo2KK7QX32LTFndt6",
+          "activeStake": 22107.339094791,
+          "deactivatingStake": 2.252116612,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "MicobSZgB9CZNvmnFSYbEtMjy7CUui5o6P3XoGTwZC5",
+          "activeStake": 22034.864317855,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "5HScvYkTWL9iojhPv26xK7GqB7oBsj9A2qHCeNRFmdyG",
+          "activeStake": 21629.384618818,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "1LinkCP4qUqGvUiNuAWhAxQyopdBxsh4vhfLBb4apyR",
+          "activeStake": 21610.699872144996,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "ParaCzYN8KHz4B7xsSeEpmTyE5EBjpWifbpSfsDkiTq",
+          "activeStake": 21569.425123913,
+          "deactivatingStake": 321.572882257,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "ReFiSbuMcV8PMYcpvm9RmHDhF9HR3qyxsHZgf359NUx",
+          "activeStake": 21176.590377887,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "P1TCHYwYPsNaNUK6fGkZzwXPjnYAMYRnUUv4c1TREee",
+          "activeStake": 20928.733983193,
+          "deactivatingStake": 285.865636492,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "EdkhvJYa3kWQkFJAPzmGsQyi1D2JA5a7vwWw4hDuwbt",
+          "activeStake": 20409.401650772998,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "G1EAMrJcvzs5SwqAQRgDTjYBEGrxxJVwNS7qiUtB3akg",
+          "activeStake": 20310.776476749,
+          "deactivatingStake": 152.955361068,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "41HgiTYQ3qDWFW8jSDkecH2mEHUqZsmwFGDPndtmyLDR",
+          "activeStake": 19015.123341781,
+          "deactivatingStake": 29.691687904,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "EATzgj3KL3NAkaSKv8JFXPJahGueMbvTdVZj4zD9nQiV",
+          "activeStake": 18921.194428372004,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "MFLKX9vSfWXa4ZcVVpp4GF64ZbNUiX9EjSqtqNMdFXB",
+          "activeStake": 18149.707476460997,
+          "deactivatingStake": 29.893216246,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "2ve7kgjvaDZhMPq2nXhvGLno8sPJ8BAEdCvza384PyC8",
+          "activeStake": 18112.104834116,
+          "deactivatingStake": 30.138384206,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "HYUU9pLdZRXsMSy3efikYHLKagtubP2UZYtmfwP9FXpu",
+          "activeStake": 17889.479337138,
+          "deactivatingStake": 102.954779016,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "DGB2xq1gP7d74HAsuVShUskoU3dmoKuotFDtoPr2kFVT",
+          "activeStake": 17862.777472837,
+          "deactivatingStake": 31.819178296,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "H7fXvnLCKtZqJBTipxeseabGfAZUdHJ9XuP6hCKrbvUb",
+          "activeStake": 17531.941882808,
+          "deactivatingStake": 220.301105975,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "Lua298Woc4rgcswL64yfWAL4EW44FgBZeLsKforf6tJ",
+          "activeStake": 16580.078294755,
+          "deactivatingStake": 30.507330804,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "etherfVmEL2ymvdhjAm3FKGdrJECFaG3cZ3ktZvQ2yX",
+          "activeStake": 15585.251520078,
+          "deactivatingStake": 29.919926497,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "5yHqB3NxovCEMUniQCboaPRMyyQ7kQQF4QqvC4vaz78z",
+          "activeStake": 15388.897268809998,
+          "deactivatingStake": 30.259798815,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "68q1YeY3QJoL3DF3umVKkCFARYh931sQTbZbRtYthGu9",
+          "activeStake": 15364.004352013,
+          "deactivatingStake": 28.8880379,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "FoXyNdpkiQBsWgrYER43PcZ5rcpzMk8jGxN3NyEx5dmB",
+          "activeStake": 15168.094612893,
+          "deactivatingStake": 29.738162957,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "GLAMvLYFVzzgXPEjwdTKFqXShckYvFaF3Z1r81Pr8UtW",
+          "activeStake": 14977.452676308001,
+          "deactivatingStake": 0,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "kaosFcskhYZCQidKKmkUSQLAqwpz3vtPpyyZ67N5NwA",
+          "activeStake": 14649.896989792,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "kawiL1oKtakS5xXsmeWKV9ubUJPtdgBrRU9EgHGDADf",
+          "activeStake": 14515.168662310001,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "D9kxpQ1Buwrt9pbVRiBwNsUEdUKzmEUj19GZf4yVrsw1",
+          "activeStake": 14080.142166417001,
+          "deactivatingStake": 30.315978051,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "647eBPzfDqmSVEg5cQofnjzeFr7PfwvHcDEcb22JWA5X",
+          "activeStake": 13946.299890852,
+          "deactivatingStake": 30.443594498,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "8cuBK2vJeqfukvSJQ2vaGDEBSnBoVD16L74SuHdnKjs8",
+          "activeStake": 13889.345000881001,
+          "deactivatingStake": 30.770885116,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "chopjqMvdGWRcrcuC1r8LmAzz9obXi1gSYPYM6zimWa",
+          "activeStake": 13839.683779988,
+          "deactivatingStake": 30.338080095,
+          "stakeAccounts": 3
+        },
+        {
+          "voter": "sENda1ZL5hoQUMpWbvRpReEfkrM4F35g9GBXPpYaZ9v",
+          "activeStake": 13374.696380561001,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "LimeNKYH66uR9BwnrPtxPbpqmkambxHVcutGoSaWPiq",
+          "activeStake": 12694.800390026,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "8uYxWYaRz9a3WPvE2LEgEp6sSfTCTRnRx54yKxdRGgsL",
+          "activeStake": 12580.645398641,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "FRTcwF2LHHLV2VxKB9nzNpqyBXjpKvkEs5aRuMXrrk8X",
+          "activeStake": 12288.688604668,
+          "deactivatingStake": 0,
+          "stakeAccounts": 4
+        },
+        {
+          "voter": "B48pw5uXH7gkCibuCBPE6nezKsCmYfFFwveCeMHpq4iv",
+          "activeStake": 7962.150889651,
+          "deactivatingStake": 0,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "86Sw9R6ynPmXnHfwUWinXtq1QoF2KHesfQQyZG5r8sXo",
+          "activeStake": 0,
+          "deactivatingStake": 46986.857170914,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "Node56Cr7y4Udym2vPt9DsRbWcBL29JivsGh2drpbKb",
+          "activeStake": 0,
+          "deactivatingStake": 59384.187925267004,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "9Q1cWVFNc4UgU7dyFy29mUyeDnNZWSDaJKYVAR5jLpaK",
+          "activeStake": 0,
+          "deactivatingStake": 13861.411053999,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "EpicsoqLdDP8qRn3wQRKTSKAXbjK9dUgFfNPRQS77MQD",
+          "activeStake": 0,
+          "deactivatingStake": 35851.251659356,
+          "stakeAccounts": 2
+        },
+        {
+          "voter": "tmpLGpgTS9X9jkdvM7nRdYWJkPANFbx2ixdS7nwZFyd",
+          "activeStake": 0,
+          "deactivatingStake": 500004,
+          "stakeAccounts": 2
+        }
+      ]
+    }
+  },
+  "combined": {
+    "totalActiveStake": 28552224.94660712,
+    "uniqueValidators": 452,
+    "nakamotoCoeff33": 41,
+    "topValidators": [
+      {
+        "voter": "shft7Fry1js37Hm9wq4dfwcZSp2DyKszeWMvEpjYCQ1",
+        "totalStake": 1525057.378769803,
+        "sources": {
+          "firep": 1525057.378769803
+        },
+        "pctOfTotal": "5.34"
+      },
+      {
+        "voter": "2NxEEbhqqj1Qptq5LXLbDTP5tLa9f7PqkU8zNgxbGU9P",
+        "totalStake": 503098.951933869,
+        "sources": {
+          "firep": 503098.951933869
+        },
+        "pctOfTotal": "1.76"
+      },
+      {
+        "voter": "juicQdAnksqZ5Yb8NQwCLjLWhykvXGktxnQCDvMe6Nx",
+        "totalStake": 481229.028382391,
+        "sources": {
+          "firep": 424290.524798598,
+          "mpa4": 56938.503583793005
+        },
+        "pctOfTotal": "1.69"
+      },
+      {
+        "voter": "DsiG71AvUHUEo9rMMHqM9NAWQ6ptguRAHyot6wGzLJjx",
+        "totalStake": 425537.83880108,
+        "sources": {
+          "firep": 425537.83880108
+        },
+        "pctOfTotal": "1.49"
+      },
+      {
+        "voter": "CooLbbZy5Xmdt7DiHPQ3ss2uRXawnTXXVgpMS8E8jDzr",
+        "totalStake": 403632.655604316,
+        "sources": {
+          "firep": 339451.880276081,
+          "mpa4": 64180.775328235
+        },
+        "pctOfTotal": "1.41"
+      },
+      {
+        "voter": "A9mzXPB6sRNUXcDF9L91oV1EvmeYQe7WzSfEL7fBdysh",
+        "totalStake": 375228.993698666,
+        "sources": {
+          "firep": 375228.993698666
+        },
+        "pctOfTotal": "1.31"
+      },
+      {
+        "voter": "Ha1VoTEPWFQp1wZjbQhBNXJftuHvimu1ruzF3xKYRPDQ",
+        "totalStake": 368737.727382408,
+        "sources": {
+          "firep": 304680.510222781,
+          "mpa4": 64057.217159627
+        },
+        "pctOfTotal": "1.29"
+      },
+      {
+        "voter": "HJmfKJjKiyuuxFUuXgecgD5gdD312apCpHwZt6ETuRMU",
+        "totalStake": 264666.093051666,
+        "sources": {
+          "firep": 203286.26226744,
+          "mpa4": 61379.830784226
+        },
+        "pctOfTotal": "0.93"
+      },
+      {
+        "voter": "A5ed2x2wEuHW8KsuhbSaTFU4CYT3WgHfQcwyQXz5SdDw",
+        "totalStake": 262909.895392912,
+        "sources": {
+          "firep": 198725.726004784,
+          "mpa4": 64184.169388128
+        },
+        "pctOfTotal": "0.92"
+      },
+      {
+        "voter": "R4spmF6oFW6wMQHv9L3PCEKumkspN3nveQihWyDAdRy",
+        "totalStake": 234710.083485674,
+        "sources": {
+          "firep": 170549.863171879,
+          "mpa4": 64160.220313795
+        },
+        "pctOfTotal": "0.82"
+      },
+      {
+        "voter": "4PL2ZFoZJHgkbZ54US4qNC58X69Fa1FKtY4CaVKeuQPg",
+        "totalStake": 184854.028524514,
+        "sources": {
+          "firep": 120668.173030732,
+          "mpa4": 64185.855493782
+        },
+        "pctOfTotal": "0.65"
+      },
+      {
+        "voter": "masvNDXtxVVMrYSV84RMry97JyHXAFcdfTZJ5VzpSYR",
+        "totalStake": 171131.372105571,
+        "sources": {
+          "firep": 106951.634838116,
+          "mpa4": 64179.737267455
+        },
+        "pctOfTotal": "0.60"
+      },
+      {
+        "voter": "GA2t11gJcmuZ4y7pShTzgYDkxVaJaVQJqkVUqojhPPsT",
+        "totalStake": 171112.70491038798,
+        "sources": {
+          "firep": 106990.063126089,
+          "mpa4": 64122.641784299
+        },
+        "pctOfTotal": "0.60"
+      },
+      {
+        "voter": "gridZ5cMHjWGktAQt6o36NtF7XSv19nJBrW83zmo7BM",
+        "totalStake": 170959.819877697,
+        "sources": {
+          "firep": 106772.538133548,
+          "mpa4": 64187.281744149
+        },
+        "pctOfTotal": "0.60"
+      },
+      {
+        "voter": "radYEig9KGrMTMWbWRFV7LStotQbnLgPaEFHVDsudQz",
+        "totalStake": 170924.150991845,
+        "sources": {
+          "firep": 106749.129013159,
+          "mpa4": 64175.021978686
+        },
+        "pctOfTotal": "0.60"
+      },
+      {
+        "voter": "DzQHN1oTdN85Sbku2bc9Fu9yEwrgRMiu2XbRcntZ31yb",
+        "totalStake": 170867.021500459,
+        "sources": {
+          "firep": 106807.113800616,
+          "mpa4": 64059.907699842995
+        },
+        "pctOfTotal": "0.60"
+      },
+      {
+        "voter": "punK4RDD3pFbcum79ACHatYPLLE1hr5UNnQVUGNfeyP",
+        "totalStake": 170689.613888581,
+        "sources": {
+          "firep": 106668.478045208,
+          "mpa4": 64021.135843373
+        },
+        "pctOfTotal": "0.60"
+      },
+      {
+        "voter": "phz34EcgWRCT9otPzRS2JtSzVHxQJk4SovqJvV1TQk8",
+        "totalStake": 170659.564632439,
+        "sources": {
+          "firep": 106795.063575998,
+          "mpa4": 63864.501056441004
+        },
+        "pctOfTotal": "0.60"
+      },
+      {
+        "voter": "Ehdn9LdjTAURQSMoDPERXLehtvzy7QD762wwPkzGT7RS",
+        "totalStake": 170472.166733885,
+        "sources": {
+          "firep": 106732.035878584,
+          "mpa4": 63740.130855301
+        },
+        "pctOfTotal": "0.60"
+      },
+      {
+        "voter": "25quQGzrtcU224Kk7G5YDJ9oJXgYsiur8pZ7pAnCMhhV",
+        "totalStake": 170436.093256647,
+        "sources": {
+          "firep": 113521.789825745,
+          "mpa4": 56914.30343090199
+        },
+        "pctOfTotal": "0.60"
+      },
+      {
+        "voter": "VotESBSkLKU8vebS6wTR2rzWWJsLc6YThYS6tebPxXq",
+        "totalStake": 170432.87370688602,
+        "sources": {
+          "firep": 106257.368983948,
+          "mpa4": 64175.504722938
+        },
+        "pctOfTotal": "0.60"
+      },
+      {
+        "voter": "CAf8jfgqhia5VNrEF4A7Y9VLD3numMq9DVSceq7cPhNY",
+        "totalStake": 170334.514077409,
+        "sources": {
+          "firep": 106252.343488681,
+          "mpa4": 64082.170588728
+        },
+        "pctOfTotal": "0.60"
+      },
+      {
+        "voter": "tri1cHBy47fPyhCvrCf6FnR7Mz6XdSoSBah2FsZVQeT",
+        "totalStake": 169801.859368113,
+        "sources": {
+          "firep": 106768.546084723,
+          "mpa4": 63033.31328339
+        },
+        "pctOfTotal": "0.59"
+      },
+      {
+        "voter": "MkyLHecSHN7TBdWgnh2J8KCsEHnsqqbVYSxtGmsshrk",
+        "totalStake": 164520.173486212,
+        "sources": {
+          "firep": 100340.062273578,
+          "mpa4": 64180.111212634
+        },
+        "pctOfTotal": "0.58"
+      },
+      {
+        "voter": "57GUg9QH2LFMV11oaduuoqVJ5qHDEp7EGJ2xgkGiqAum",
+        "totalStake": 149431.433243733,
+        "sources": {
+          "firep": 85273.238017217,
+          "mpa4": 64158.195226516
+        },
+        "pctOfTotal": "0.52"
+      }
+    ]
+  }
+}
