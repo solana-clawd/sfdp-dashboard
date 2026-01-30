@@ -215,13 +215,14 @@ function renderAccountView(containerId, data, color) {
     map: 'world',
     backgroundColor: 'transparent',
     regionStyle: {
-      initial: { fill: '#21262d', stroke: '#30363d', strokeWidth: 0.4 },
-      hover: { fill: '#30363d' },
+      initial: { fill: '#1b1f24', stroke: '#444c56', strokeWidth: 0.5 },
+      hover: { fill: '#2d333b', cursor: 'pointer' },
     },
-    series: { regions: [{ values: cStakes, scale: ['#1a3a5c', color||'#58a6ff'], normalizeFunction: 'polynomial' }] },
+    series: { regions: [{ values: cStakes, scale: ['#2ea043', '#f0e442', '#e5534b'], normalizeFunction: 'polynomial' }] },
     onRegionTooltipShow(evt, tip, code) {
       const s = cStakes[code];
-      if (s) tip.text(tip.text() + '<br><b>' + fmt(s) + ' SOL</b>');
+      if (s) tip.text(tip.text() + ': ' + fmt(s) + ' SOL (' + (s/data.totalActive*100).toFixed(1) + '%)');
+      else tip.text(tip.text() + ': No SFDP stake');
     },
   });
   // Country legend
@@ -320,20 +321,20 @@ function renderCombined() {
     map: 'world',
     backgroundColor: 'transparent',
     regionStyle: {
-      initial: { fill: '#21262d', stroke: '#30363d', strokeWidth: 0.4 },
-      hover: { fill: '#30363d' },
+      initial: { fill: '#1b1f24', stroke: '#444c56', strokeWidth: 0.5 },
+      hover: { fill: '#2d333b', cursor: 'pointer' },
     },
     series: {
       regions: [{
         values: countryStakes,
-        scale: ['#1a3a5c', '#58a6ff'],
+        scale: ['#2ea043', '#f0e442', '#e5534b'],
         normalizeFunction: 'polynomial',
-        legend: { vertical: true, title: 'Stake (SOL)', cssClass: 'map-legend' },
       }]
     },
     onRegionTooltipShow(evt, tip, code) {
       const s = countryStakes[code];
-      if (s) tip.text(tip.text() + '<br><b>' + fmt(s) + ' SOL</b>');
+      if (s) tip.text(tip.text() + ': ' + fmt(s) + ' SOL (' + (s/c.totalActiveStake*100).toFixed(1) + '%)');
+      else tip.text(tip.text() + ': No SFDP stake');
     },
   });
 
