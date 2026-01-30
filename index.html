@@ -67,6 +67,22 @@ tr:hover td{background:rgba(88,166,255,.04)}
 let D;
 const $ = id => document.getElementById(id);
 
+// Country to continent mapping
+const COUNTRY_CONTINENT = {
+  'United States':'North America','Canada':'North America','Mexico':'North America',
+  'Brazil':'South America','Argentina':'South America','Chile':'South America','Colombia':'South America','Peru':'South America',
+  'Germany':'Europe','Netherlands':'Europe','France':'Europe','United Kingdom':'Europe','Ireland':'Europe',
+  'Sweden':'Europe','Norway':'Europe','Poland':'Europe','Ukraine':'Europe','Romania':'Europe','Spain':'Europe',
+  'Austria':'Europe','Bulgaria':'Europe','Czech Republic':'Europe','Estonia':'Europe','Latvia':'Europe',
+  'Luxembourg':'Europe','Russia':'Europe','Republic of Lithuania':'Europe','Slovak Republic':'Europe',
+  'Finland':'Europe','Denmark':'Europe','Belgium':'Europe','Portugal':'Europe','Italy':'Europe',
+  'Switzerland':'Europe','Lithuania':'Europe','Turkey':'Europe',
+  'Japan':'Asia','Singapore':'Asia','Hong Kong':'Asia','South Korea':'Asia','India':'Asia',
+  'Thailand':'Asia','Indonesia':'Asia','Taiwan':'Asia','Philippines':'Asia','Vietnam':'Asia','Israel':'Asia',
+  'South Africa':'Africa',
+  'Australia':'Oceania','New Zealand':'Oceania',
+};
+
 // Country name to ISO 2-letter code mapping
 const COUNTRY_ISO = {
   'United States':'US','Germany':'DE','Netherlands':'NL','France':'FR','United Kingdom':'GB',
@@ -271,14 +287,16 @@ function renderCombined() {
     <div class="chart-box"><h3>Decentralization Comparison</h3><canvas id="c-decent"></canvas></div>
   </div>`;
 
-  html += `<div class="row2">
-    <div class="chart-box"><h3>🌍 Geographic Distribution — Combined SFDP Stake</h3><div id="c-map" style="width:100%;height:360px"></div>
-      <div id="c-map-legend" style="margin-top:12px;font-size:12px;color:var(--dim)"></div></div>
+  html += `<div class="chart-box"><h3>🌍 Geographic Distribution — Combined SFDP Stake</h3><div id="c-map" style="width:100%;height:360px"></div>
+    <div id="c-map-legend" style="margin-top:12px;font-size:12px;color:var(--dim)"></div></div>
+  <div class="row3">
+    <div class="chart-box"><h3>🌍 Stake by Continent</h3><canvas id="c-continent-pie"></canvas></div>
     <div class="chart-box"><h3>🌍 Stake by Country</h3><canvas id="c-country-pie"></canvas></div>
+    <div class="chart-box"><h3>🏢 ASN Distribution (Top 10)</h3><canvas id="c-asn-pie"></canvas></div>
   </div>
   <div class="row2">
     <div class="chart-box"><h3>💰 Commission Comparison</h3><canvas id="c-commissions"></canvas></div>
-    <div class="chart-box"><h3>🏢 ASN Distribution (Top 10)</h3><canvas id="c-asn-pie"></canvas></div>
+    <div class="chart-box"><h3>📊 Decentralization Comparison</h3><canvas id="c-decent"></canvas></div>
   </div>`;
 
   html += `<div class="chart-box"><h3>Top 30 Combined Validators</h3><div id="c-top30-list"></div></div>`;
@@ -359,6 +377,19 @@ function renderCombined() {
   $('c-map-legend').innerHTML = '<table style="width:100%"><thead><tr><th>Country</th><th>Total Stake</th><th>FiRep</th><th>mpa4</th><th>% of Combined</th></tr></thead><tbody>' +
     legendRows.map(r => `<tr><td>${r.name}</td><td>${fmt(r.total)} SOL</td><td>${fmt(r.firep)} SOL</td><td>${fmt(r.mpa4)} SOL</td><td>${(r.total/c.totalActiveStake*100).toFixed(1)}%</td></tr>`).join('') +
     '</tbody></table>';
+
+  // Continent pie chart
+  const continents = {};
+  for (const r of legendRows) {
+    const cont = COUNTRY_CONTINENT[r.name] || 'Other';
+    if (!continents[cont]) continents[cont] = 0;
+    continents[cont] += r.total;
+  }
+  const contSorted = Object.entries(continents).sort((a,b) => b[1] - a[1]);
+  pieChart('c-continent-pie',
+    contSorted.map(([name,s]) => name + ' (' + (s/c.totalActiveStake*100).toFixed(1) + '%)'),
+    contSorted.map(([,s]) => s),
+    ['#58a6ff','#3fb950','#bc8cff','#d29922','#f85149','#39d353']);
 
   // Country pie chart
   pieChart('c-country-pie',
