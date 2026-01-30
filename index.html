@@ -337,7 +337,7 @@ function renderCombined() {
     const sfdpPctOfVal = netStake > 0 ? (v.totalStake / netStake * 100).toFixed(1) + '%' : 'N/A';
     return [
       i+1,
-      `<span class="mono">${v.voter.slice(0,16)}…</span>`,
+      `<span class="mono" style="cursor:pointer;user-select:all" title="Click to select">${v.voter}</span>`,
       (v.name && v.name !== 'null') ? v.name : '—',
       fmt(v.totalStake) + ' SOL',
       netStake > 0 ? fmt(netStake) + ' SOL' : 'N/A',
@@ -516,7 +516,7 @@ function renderCombined() {
     const vCountry = (v.country && v.country !== 'null' && v.country !== 'undefined') ? v.country : 'N/A';
     return `<tr>
       <td>${i+1}</td>
-      <td>${vName?'<b>'+vName+'</b><br>':''}<span class="mono">${v.voter.slice(0,16)}…</span></td>
+      <td>${vName?'<b>'+vName+'</b><br>':''}<span class="mono" style="cursor:pointer;user-select:all" title="Click to select">${v.voter}</span></td>
       <td><b>${fmt(v.totalStake)} SOL</b></td>
       <td>${ns>0?fmt(ns)+' SOL':'N/A'}</td>
       <td>${depPct}</td>
