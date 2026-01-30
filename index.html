@@ -6,11 +6,9 @@
 <title>SFDP Stake Decentralization Dashboard</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
-<script src="https://unpkg.com/jsvectormap@1.6.0/dist/jsvectormap.min.js"></script>
-<script src="https://unpkg.com/jsvectormap@1.6.0/dist/maps/world.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/jsvectormap@1.6.0/dist/css/jsvectormap.min.css">
+<!-- map libs removed -->
 <style>
-.jvm-tooltip { background: #161b22 !important; border: 1px solid #58a6ff !important; color: #e6edf3 !important; font-family: inherit !important; font-size: 13px !important; padding: 8px 12px !important; border-radius: 8px !important; box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important; line-height: 1.6 !important; }
+
 </style>
 <style>
 :root{--bg:#0d1117;--surface:#161b22;--border:#30363d;--text:#e6edf3;--dim:#8b949e;--accent:#58a6ff;--green:#3fb950;--red:#f85149;--purple:#bc8cff;--orange:#d29922;--yellow:#e3b341}
@@ -85,18 +83,6 @@ const COUNTRY_CONTINENT = {
 };
 
 // Country name to ISO 2-letter code mapping
-const COUNTRY_ISO = {
-  'United States':'US','Germany':'DE','Netherlands':'NL','France':'FR','United Kingdom':'GB',
-  'Canada':'CA','Japan':'JP','Singapore':'SG','Ireland':'IE','Sweden':'SE','Norway':'NO',
-  'Brazil':'BR','Poland':'PL','Ukraine':'UA','Romania':'RO','Spain':'ES','Hong Kong':'HK',
-  'Argentina':'AR','Austria':'AT','Bulgaria':'BG','Chile':'CL','Czech Republic':'CZ',
-  'Estonia':'EE','Latvia':'LV','Luxembourg':'LU','Mexico':'MX','Russia':'RU',
-  'Republic of Lithuania':'LT','Slovak Republic':'SK','South Africa':'ZA','Unknown':'XX',
-  'Australia':'AU','India':'IN','South Korea':'KR','Italy':'IT','Switzerland':'CH',
-  'Finland':'FI','Denmark':'DK','Belgium':'BE','Portugal':'PT','Turkey':'TR',
-  'Thailand':'TH','Indonesia':'ID','Colombia':'CO','Peru':'PE','Taiwan':'TW',
-  'Philippines':'PH','Vietnam':'VN','Israel':'IL','New Zealand':'NZ','Lithuania':'LT',
-};
 const fmt = (n,d=1) => n>=1e6?(n/1e6).toFixed(d)+'M':n>=1e3?(n/1e3).toFixed(d)+'K':n.toFixed(d);
 const fmtS = n => fmt(n)+' SOL';
 const pct = (a,b) => b>0?((a/b)*100).toFixed(2)+'%':'0%';
@@ -173,14 +159,10 @@ function renderAccountView(containerId, data, color) {
   // Charts row: geo + commission
   const cid = containerId.replace('view-','');
   html += `<div class="row2">
-    <div class="chart-box"><h3>🌍 Geographic Distribution</h3><div id="${cid}-map" style="width:100%;height:320px"></div>
-      <div id="${cid}-map-legend" style="margin-top:10px;font-size:12px;color:var(--dim)"></div></div>
     <div class="chart-box"><h3>🏢 ASN Distribution (Top 10)</h3><canvas id="${cid}-asn"></canvas></div>
+    <div class="chart-box"><h3>💰 Commission Distribution</h3><canvas id="${cid}-commission"></canvas></div>
   </div>
   <div class="row2">
-    <div class="chart-box"><h3>💰 Commission Distribution</h3><canvas id="${cid}-commission"></canvas></div>`;
-
-  html += `<div class="row2">
     <div class="chart-box"><h3>📊 Stake Buckets</h3><canvas id="${cid}-buckets"></canvas></div>
     <div class="chart-box"><h3>🖥️ Software Versions</h3><canvas id="${cid}-versions"></canvas></div>
   </div>`;
@@ -212,43 +194,6 @@ function renderAccountView(containerId, data, color) {
 
   // Render charts
   const geo = data.geographic;
-
-  // Country map
-  const cStakes = {};
-  for (const c of geo.countries) {
-    const iso = COUNTRY_ISO[c.name];
-    if (iso && iso !== 'XX') cStakes[iso] = c.stake;
-  }
-  new jsVectorMap({
-    selector: '#'+cid+'-map',
-    map: 'world',
-    backgroundColor: 'transparent',
-    regionStyle: {
-      initial: { fill: '#1b1f24', stroke: '#444c56', strokeWidth: 0.5 },
-      hover: { fill: '#2d333b', cursor: 'pointer' },
-    },
-    series: { regions: [{ values: cStakes, scale: ['#2ea043', '#f0e442', '#e5534b'], normalizeFunction: 'polynomial' }] },
-    onRegionTooltipShow(evt, tip, code) {
-      const s = cStakes[code];
-      const name = tip.text();
-      if (s) {
-        const pctVal = (s/data.totalActive*100).toFixed(1);
-        const cEntry = geo.countries.find(c=>COUNTRY_ISO[c.name]===code);
-        const valCount = cEntry ? cEntry.count : '?';
-        let html = '<b>'+name+'</b><br>';
-        html += 'Stake: <b>'+fmt(s)+' SOL</b> ('+pctVal+'%)<br>';
-        html += 'Validators: '+valCount;
-        tip.text(html, true);
-      } else {
-        tip.text('<b>'+name+'</b><br>No SFDP stake', true);
-      }
-    },
-  });
-  // Country legend
-  const cSorted = [...geo.countries].sort((a,b)=>b.stake-a.stake);
-  $(cid+'-map-legend').innerHTML = cSorted.slice(0,15).map(c =>
-    `<span style="margin-right:12px"><b>${c.name}</b>: ${fmt(c.stake)} SOL (${c.pct}%)</span>`
-  ).join('');
 
   const topASN = geo.topASNs.slice(0,10);
   barChart(`${cid}-asn`, topASN.map(a=>a.name.length>22?a.name.slice(0,20)+'…':a.name), [{label:'Stake (SOL)',data:topASN.map(a=>a.stake),backgroundColor:color||'#58a6ff'}], {horizontal:true,xLabel:'Stake (SOL)'});
@@ -301,11 +246,8 @@ function renderCombined() {
     <div class="chart-box"><h3>⚡ Jito vs Non-Jito</h3><canvas id="c-jito"></canvas></div>
   </div>`;
 
-  html += `<div class="chart-box"><h3>🌍 Geographic Distribution — Combined SFDP Stake</h3><div id="c-map" style="width:100%;height:360px"></div>
-    <div id="c-map-legend" style="margin-top:12px;font-size:12px;color:var(--dim)"></div></div>
-  <div class="row3">
+  <div class="row2">
     <div class="chart-box"><h3>🌍 Stake by Continent</h3><canvas id="c-continent-pie"></canvas></div>
-    <div class="chart-box"><h3>🌍 Stake by Country</h3><canvas id="c-country-pie"></canvas></div>
     <div class="chart-box"><h3>🏢 ASN Distribution (Top 10)</h3><canvas id="c-asn-pie"></canvas></div>
   </div>
   <div class="row3">
@@ -374,61 +316,14 @@ function renderCombined() {
     [jitoStake, nonJitoStake],
     ['#3fb950','#30363d']);
 
-  // Country map — combined stake
+  // Continent pie chart
   const fCountryMap = Object.fromEntries(f.geographic.countries.map(c=>[c.name,c.stake]));
   const mCountryMap = Object.fromEntries(m.geographic.countries.map(c=>[c.name,c.stake]));
   const allCountries = [...new Set([...f.geographic.countries.map(c=>c.name),...m.geographic.countries.map(c=>c.name)])];
-  const countryStakes = {};
-  let maxStake = 0;
-  const legendRows = [];
-  for (const name of allCountries) {
-    const iso = COUNTRY_ISO[name];
-    const total = (fCountryMap[name]||0) + (mCountryMap[name]||0);
-    if (iso && iso !== 'XX') countryStakes[iso] = total;
-    if (total > maxStake) maxStake = total;
-    legendRows.push({name, iso, total, firep: fCountryMap[name]||0, mpa4: mCountryMap[name]||0});
-  }
-  legendRows.sort((a,b) => b.total - a.total);
+  const legendRows = allCountries.map(name => ({
+    name, total: (fCountryMap[name]||0) + (mCountryMap[name]||0)
+  })).sort((a,b) => b.total - a.total);
 
-  new jsVectorMap({
-    selector: '#c-map',
-    map: 'world',
-    backgroundColor: 'transparent',
-    regionStyle: {
-      initial: { fill: '#1b1f24', stroke: '#444c56', strokeWidth: 0.5 },
-      hover: { fill: '#2d333b', cursor: 'pointer' },
-    },
-    series: {
-      regions: [{
-        values: countryStakes,
-        scale: ['#2ea043', '#f0e442', '#e5534b'],
-        normalizeFunction: 'polynomial',
-      }]
-    },
-    onRegionTooltipShow(evt, tip, code) {
-      const s = countryStakes[code];
-      const name = tip.text();
-      if (s) {
-        const pctVal = (s/c.totalActiveStake*100).toFixed(1);
-        const fVal = Object.entries(fCountryMap).find(([n])=>COUNTRY_ISO[n]===code);
-        const mVal = Object.entries(mCountryMap).find(([n])=>COUNTRY_ISO[n]===code);
-        let html = '<b>'+name+'</b><br>';
-        html += '🔵 Total: <b>'+fmt(s)+' SOL</b> ('+pctVal+'%)<br>';
-        if (fVal) html += '  FiRep: '+fmt(fVal[1])+' SOL<br>';
-        if (mVal) html += '  mpa4: '+fmt(mVal[1])+' SOL';
-        tip.text(html, true);
-      } else {
-        tip.text('<b>'+name+'</b><br>No SFDP stake', true);
-      }
-    },
-  });
-
-  // Country legend table
-  $('c-map-legend').innerHTML = '<table style="width:100%"><thead><tr><th>Country</th><th>Total Stake</th><th>FiRep</th><th>mpa4</th><th>% of Combined</th></tr></thead><tbody>' +
-    legendRows.map(r => `<tr><td>${r.name}</td><td>${fmt(r.total)} SOL</td><td>${fmt(r.firep)} SOL</td><td>${fmt(r.mpa4)} SOL</td><td>${(r.total/c.totalActiveStake*100).toFixed(1)}%</td></tr>`).join('') +
-    '</tbody></table>';
-
-  // Continent pie chart
   const continents = {};
   for (const r of legendRows) {
     const cont = COUNTRY_CONTINENT[r.name] || 'Other';
@@ -440,11 +335,6 @@ function renderCombined() {
     contSorted.map(([name,s]) => name + ' (' + (s/c.totalActiveStake*100).toFixed(1) + '%)'),
     contSorted.map(([,s]) => s),
     ['#58a6ff','#3fb950','#bc8cff','#d29922','#f85149','#39d353']);
-
-  // Country pie chart
-  pieChart('c-country-pie',
-    legendRows.slice(0,12).map(r => r.name + ' (' + (r.total/c.totalActiveStake*100).toFixed(1) + '%)'),
-    legendRows.slice(0,12).map(r => r.total));
 
   // Combined ASN pie
   const allASNs = {};
