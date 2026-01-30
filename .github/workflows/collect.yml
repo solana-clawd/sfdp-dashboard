@@ -1,0 +1,24 @@
+name: Collect SFDP Data
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Every 6 hours
+  workflow_dispatch:
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Collect data
+        env:
+          HELIUS_RPC: ${{ secrets.HELIUS_RPC }}
+        run: node collect-enhanced.js
+      - name: Commit & push
+        run: |
+          git config user.name "solana-clawd"
+          git config user.email "solana-clawd@users.noreply.github.com"
+          git add data/
+          git diff --staged --quiet || (git commit -m "Update SFDP data [automated]" && git push)
