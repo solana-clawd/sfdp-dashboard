@@ -454,6 +454,12 @@ function renderCombined() {
     asnSorted.map(([n,s]) => (n.length>25?n.slice(0,23)+'…':n) + ' (' + (s/c.totalActiveStake*100).toFixed(1) + '%)'),
     asnSorted.map(([,s]) => s));
 
+  // Decentralization comparison
+  barChart('c-decent',['Nakamoto Coeff','Validators','HHI × 10k','Gini × 100'],[
+    {label:'FiRep',data:[f.decentralization.nakamotoCoeff33,f.activeValidators,(f.decentralization.hhi*10000),(f.decentralization.gini*100)],backgroundColor:'#58a6ff'},
+    {label:'mpa4',data:[m.decentralization.nakamotoCoeff33,m.activeValidators,(m.decentralization.hhi*10000),(m.decentralization.gini*100)],backgroundColor:'#bc8cff'},
+  ], {isCount:true, yLabel:'Value'});
+
   // Stake sources pie
   if (c.stakeSources && c.stakeSources.length > 0) {
     const srcTotal = c.stakeSources.reduce((s,v) => s + v.stake, 0);
