@@ -1,0 +1,9 @@
+{
+  "name": "sfdp-dashboard",
+  "version": "1.0.0",
+  "scripts": {
+    "collect": "node collect-enhanced.js",
+    "dev": "npx serve .",
+    "build": "node collect-enhanced.js"
+  }
+}
