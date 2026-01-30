@@ -145,6 +145,19 @@ function renderAccountView(containerId, data, color) {
   const dec = data.decentralization;
   const ss = data.stakeStats;
 
+  // Compute per-pool independence metrics
+  const poolIndependent = data.validators.filter(v => {
+    const netStake = v.totalNetworkStake || 0;
+    const externalStake = netStake - v.activeStake;
+    return externalStake >= 50000;
+  }).length;
+  const poolActiveVals = data.validators.filter(v => v.activeStake > 0);
+  const poolDepPcts = poolActiveVals.map(v => {
+    const netStake = v.totalNetworkStake || 0;
+    return netStake > 0 ? (v.activeStake / netStake * 100) : 100;
+  });
+  const poolAvgDep = poolDepPcts.length > 0 ? (poolDepPcts.reduce((a,b) => a+b, 0) / poolDepPcts.length).toFixed(1) : 'N/A';
+
   let html = makeCards([
     {t:'Active Stake',v:fmtS(data.totalActive),s:`${fmtS(data.totalDeactivating)} deactivating`},
     {t:'Active Validators',v:data.activeValidators,s:`${data.totalAccounts} stake accounts`},
@@ -152,7 +165,8 @@ function renderAccountView(containerId, data, color) {
     {t:'HHI Index',v:dec.hhi.toFixed(6),s:dec.hhi<0.01?'<span class="badge badge-green">Low concentration</span>':'<span class="badge badge-red">Concentrated</span>'},
     {t:'Gini Coefficient',v:dec.gini.toFixed(4),s:dec.gini<0.3?'<span class="badge badge-green">Fairly equal</span>':'Moderate inequality'},
     {t:'Top Validator Share',v:dec.topValidatorPct.toFixed(1)+'%',s:`Top 10: ${dec.top10Pct.toFixed(1)}%`},
-    {t:'Mean / Median Stake',v:fmtS(ss.mean),s:`Median: ${fmtS(ss.median)}`},
+    {t:'Independent Validators (≥50k non-SFDP)',v:poolIndependent,s:`of ${poolActiveVals.length} active validators`},
+    {t:'Avg SFDP Dependency',v:poolAvgDep+'%',s:'avg % of validator stake from SFDP'},
     {t:'Jito Validators',v:`${data.jitoStats.validators} (${data.jitoStats.pct}%)`,s:`${fmtS(data.jitoStats.stake)} staked`},
   ]);
 
@@ -228,18 +242,69 @@ function renderCombined() {
   const medianStake = econ.medianStakeSOL ? fmtS(econ.medianStakeSOL) : 'N/A';
   const annualReward = econ.estAnnualRewardSOL ? fmtS(econ.estAnnualRewardSOL) : 'N/A';
 
+  // Compute independence metrics across all SFDP validators
+  const allVals = [...f.validators, ...m.validators];
+  const seenVoters = {};
+  const uniqueVals = [];
+  for (const v of allVals) {
+    if (v.activeStake <= 0) continue;
+    if (!seenVoters[v.voter]) {
+      seenVoters[v.voter] = { voter: v.voter, sfdpStake: 0, totalNetworkStake: v.totalNetworkStake || 0 };
+      uniqueVals.push(seenVoters[v.voter]);
+    }
+    seenVoters[v.voter].sfdpStake += v.activeStake;
+    if (v.totalNetworkStake > seenVoters[v.voter].totalNetworkStake) {
+      seenVoters[v.voter].totalNetworkStake = v.totalNetworkStake;
+    }
+  }
+  const independentCount = uniqueVals.filter(v => (v.totalNetworkStake - v.sfdpStake) >= 50000).length;
+  const dependentCount = uniqueVals.filter(v => v.totalNetworkStake > 0 && (v.sfdpStake / v.totalNetworkStake) > 0.5).length;
+  const independentPct = uniqueVals.length > 0 ? (independentCount / uniqueVals.length * 100).toFixed(1) : '0';
+  const totalSFDPStake = uniqueVals.reduce((s,v) => s + v.sfdpStake, 0);
+  const totalNetStake = uniqueVals.reduce((s,v) => s + v.totalNetworkStake, 0);
+  const sfdpShareOfNet = totalNetStake > 0 ? (totalSFDPStake / totalNetStake * 100).toFixed(2) : 'N/A';
+
+  // Dependency buckets
+  const depBuckets = [0,0,0,0]; // 0-25, 25-50, 50-75, 75-100
+  for (const v of uniqueVals) {
+    const dep = v.totalNetworkStake > 0 ? (v.sfdpStake / v.totalNetworkStake * 100) : 100;
+    if (dep <= 25) depBuckets[0]++;
+    else if (dep <= 50) depBuckets[1]++;
+    else if (dep <= 75) depBuckets[2]++;
+    else depBuckets[3]++;
+  }
+
+  // Independence breakdown
+  const indepBreakdown = {independent: 0, emerging: 0, dependent: 0};
+  for (const v of uniqueVals) {
+    const ext = v.totalNetworkStake - v.sfdpStake;
+    if (ext >= 50000) indepBreakdown.independent++;
+    else if (ext >= 10000) indepBreakdown.emerging++;
+    else indepBreakdown.dependent++;
+  }
+
+  // External vs SFDP stake totals
+  const totalExternalStake = uniqueVals.reduce((s,v) => s + Math.max(0, v.totalNetworkStake - v.sfdpStake), 0);
+
   let html = makeCards([
     {t:'Total SFDP Stake',v:fmtS(c.totalActiveStake),s:`FiRep: ${fmtS(f.totalActive)} · mpa4: ${fmtS(m.totalActive)}`},
     {t:'Total Validators in SFDP',v:c.uniqueValidators,s:`FiRep: ${f.activeValidators} · mpa4: ${m.activeValidators} · Network: ${D.networkValidators}`},
     {t:'Combined Nakamoto Coeff.',v:c.nakamotoCoeff33,s:`FiRep: ${f.decentralization.nakamotoCoeff33} · mpa4: ${m.decentralization.nakamotoCoeff33}`},
     {t:'SFDP % of Network',v:sfdpPct,s:`${fmtS(fvn.trackedNetworkStake||0)} total tracked stake`},
-    {t:'Top 3 ASN Concentration',v:(infra.top3ASNPct||'N/A')+'%',s:`${infra.uniqueASNs||0} unique hosting providers`},
+    {t:'Independent Validators',v:`${independentCount} <span style="font-size:14px;color:var(--dim)">(${independentPct}%)</span>`,s:`≥50k SOL non-SFDP stake · ${dependentCount} SFDP-dependent (>50%)`},
+    {t:'SFDP Share of Validator Stake',v:sfdpShareOfNet+'%',s:`${fmtS(totalSFDPStake)} SFDP / ${fmtS(totalNetStake)} total`},
     {t:'Commission Compliance',
       v: (compliance.highCommissionCount||0) === 0 ? '<span class="badge badge-green">✓ All ≤10%</span>' : `<span class="badge badge-red">${compliance.highCommissionCount} over 10%</span>`,
       s:`Jito >10% cap: ${compliance.jitoOverCapCount||0} flagged`},
-    {t:'Deactivating Stake',v:fmtS(f.totalDeactivating+m.totalDeactivating),s:`FiRep: ${fmtS(f.totalDeactivating)} · mpa4: ${fmtS(m.totalDeactivating)}`},
     {t:'Median Validator Stake',v:medianStake,s:`Est. ${annualReward}/yr reward · ${econ.validatorsInProgram||0} validators in program`},
   ]);
+
+  html += `<div class="section">🎯 Validator Independence Metrics</div>`;
+  html += `<div class="row3">
+    <div class="chart-box"><h3>📊 SFDP Dependency Distribution</h3><canvas id="c-dep-dist"></canvas></div>
+    <div class="chart-box"><h3>🏅 Independence Breakdown</h3><canvas id="c-indep-break"></canvas></div>
+    <div class="chart-box"><h3>💎 External vs SFDP Stake</h3><canvas id="c-ext-vs-sfdp"></canvas></div>
+  </div>`;
 
   html += `<div class="row2">
     <div class="chart-box"><h3>🖥️ Software Versions</h3><canvas id="c-versions"></canvas></div>
@@ -349,6 +414,24 @@ function renderCombined() {
     {label:'FiRep',data:[f.decentralization.nakamotoCoeff33,f.activeValidators,(f.decentralization.hhi*10000),(f.decentralization.gini*100)],backgroundColor:'#58a6ff'},
     {label:'mpa4',data:[m.decentralization.nakamotoCoeff33,m.activeValidators,(m.decentralization.hhi*10000),(m.decentralization.gini*100)],backgroundColor:'#bc8cff'},
   ], {isCount:true, yLabel:'Value'});
+
+  // Independence charts
+  barChart('c-dep-dist', ['0-25%','25-50%','50-75%','75-100%'], [
+    {label:'Validators',data:depBuckets,backgroundColor:['#3fb950','#58a6ff','#d29922','#f85149']}
+  ], {isCount:true, xLabel:'% of Stake from SFDP', yLabel:'Validator Count'});
+
+  pieChart('c-indep-break',
+    [`Independent: ${indepBreakdown.independent} (≥50k non-SFDP)`,
+     `Emerging: ${indepBreakdown.emerging} (10k-50k non-SFDP)`,
+     `Dependent: ${indepBreakdown.dependent} (<10k non-SFDP)`],
+    [indepBreakdown.independent, indepBreakdown.emerging, indepBreakdown.dependent],
+    ['#3fb950','#d29922','#f85149']);
+
+  pieChart('c-ext-vs-sfdp',
+    [`SFDP Stake (${(totalSFDPStake/(totalSFDPStake+totalExternalStake)*100).toFixed(1)}%)`,
+     `External Stake (${(totalExternalStake/(totalSFDPStake+totalExternalStake)*100).toFixed(1)}%)`],
+    [totalSFDPStake, totalExternalStake],
+    ['#58a6ff','#3fb950']);
 
   // Stake sources pie
   if (c.stakeSources && c.stakeSources.length > 0) {
