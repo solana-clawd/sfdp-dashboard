@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solana Network Decentralization Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script src="https://unpkg.com/jsvectormap@1.6.0/dist/jsvectormap.min.js"></script>
+<script src="https://unpkg.com/jsvectormap@1.6.0/dist/maps/world.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/jsvectormap@1.6.0/dist/css/jsvectormap.min.css">
+<style>
+:root{--bg:#0d1117;--surface:#161b22;--border:#30363d;--text:#e6edf3;--dim:#8b949e;--accent:#58a6ff;--green:#3fb950;--red:#f85149;--purple:#bc8cff;--orange:#d29922}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+.container{max-width:1440px;margin:0 auto;padding:24px}
+header{margin-bottom:24px}
+h1{font-size:22px;font-weight:600}
+h1 span{color:var(--accent)}
+.meta{color:var(--dim);font-size:12px;margin-top:4px}
+.nav{margin-bottom:20px;font-size:13px}
+.nav a{color:var(--accent);text-decoration:none;margin-right:16px}
+.nav a:hover{text-decoration:underline}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:20px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px}
+.card h3{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.card .val{font-size:24px;font-weight:700}
+.card .sub{font-size:12px;color:var(--dim);margin-top:2px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:20px}
+@media(max-width:900px){.row2,.row3{grid-template-columns:1fr}}
+.chart-box{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:16px}
+.chart-box h3{font-size:14px;margin-bottom:12px}
+canvas{max-height:350px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;padding:8px 10px;border-bottom:2px solid var(--border);color:var(--dim);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.3px;position:sticky;top:0;background:var(--surface)}
+td{padding:6px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:rgba(88,166,255,.04)}
+.mono{font-family:'SF Mono',Monaco,Consolas,monospace;font-size:12px;cursor:pointer;user-select:all}
+.bar{display:inline-block;height:5px;border-radius:3px;background:var(--accent);min-width:2px;vertical-align:middle;margin-left:4px}
+.tw{max-height:600px;overflow-y:auto;border-radius:10px}
+.search{padding:6px 12px;background:var(--surface);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:13px;width:300px;margin-bottom:8px}
+.search:focus{outline:none;border-color:var(--accent)}
+.badge{display:inline-block;padding:2px 6px;border-radius:4px;font-size:11px;font-weight:500}
+.badge-green{background:rgba(63,185,80,.15);color:var(--green)}
+.badge-red{background:rgba(248,81,73,.15);color:var(--red)}
+.badge-orange{background:rgba(210,153,34,.15);color:var(--orange)}
+.jvm-tooltip{background:#161b22!important;border:1px solid #58a6ff!important;color:#e6edf3!important;font-family:inherit!important;font-size:13px!important;padding:8px 12px!important;border-radius:8px!important;line-height:1.6!important}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>🌐 Solana <span>Network</span> — Decentralization Dashboard</h1>
+<div class="meta" id="meta"></div>
+</header>
+<div class="nav"><a href="index.html">← SFDP Dashboard</a> <a href="network.html"><b>Network Dashboard</b></a></div>
+<div id="content"></div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const COUNTRY_ISO={'United States':'US','Germany':'DE','Netherlands':'NL','France':'FR','United Kingdom':'GB','Canada':'CA','Japan':'JP','Singapore':'SG','Ireland':'IE','Sweden':'SE','Norway':'NO','Brazil':'BR','Poland':'PL','Ukraine':'UA','Romania':'RO','Spain':'ES','Hong Kong':'HK','Argentina':'AR','Austria':'AT','Bulgaria':'BG','Chile':'CL','Czech Republic':'CZ','Estonia':'EE','Latvia':'LV','Luxembourg':'LU','Mexico':'MX','Russia':'RU','Republic of Lithuania':'LT','Slovak Republic':'SK','South Africa':'ZA','Australia':'AU','India':'IN','South Korea':'KR','Italy':'IT','Switzerland':'CH','Finland':'FI','Denmark':'DK','Belgium':'BE','Portugal':'PT','Turkey':'TR','Thailand':'TH','Indonesia':'ID','Colombia':'CO','Taiwan':'TW','Philippines':'PH','Vietnam':'VN','Israel':'IL','New Zealand':'NZ','Lithuania':'LT'};
+const fmt=(n,d=1)=>n>=1e6?(n/1e6).toFixed(d)+'M':n>=1e3?(n/1e3).toFixed(d)+'K':n.toFixed(d);
+const fmtS=n=>fmt(n)+' SOL';
+const palette=n=>{const p=['#58a6ff','#3fb950','#bc8cff','#d29922','#f85149','#39d353','#f778ba','#79c0ff','#56d364','#e3b341','#ff7b72','#a5d6ff','#7ee787','#d2a8ff','#ffa657'];return Array.from({length:n},(_,i)=>p[i%p.length])};
+
+function pieChart(id,labels,data,colors){
+  new Chart($(id),{type:'doughnut',data:{labels,datasets:[{data,backgroundColor:colors||palette(labels.length),borderWidth:0}]},options:{responsive:true,plugins:{legend:{position:'right',labels:{color:'#e6edf3',font:{size:11},boxWidth:12}}}}});
+}
+function barChart(id,labels,datasets,opts={}){
+  const fmtSOL=v=>typeof v==='number'?fmt(v,0)+' SOL':v;
+  const fmtCnt=v=>typeof v==='number'?v.toLocaleString():v;
+  const defFmt=opts.isCount?fmtCnt:fmtSOL;
+  new Chart($(id),{type:'bar',data:{labels,datasets},options:{responsive:true,indexAxis:opts.horizontal?'y':'x',scales:{x:{stacked:opts.stacked,title:{display:!!opts.xLabel,text:opts.xLabel||'',color:'#8b949e'},ticks:{color:'#8b949e',callback:opts.horizontal?defFmt:undefined,maxRotation:opts.horizontal?0:45},grid:{color:'#30363d22'}},y:{stacked:opts.stacked,title:{display:!!opts.yLabel,text:opts.yLabel||'',color:'#8b949e'},ticks:{color:'#8b949e',callback:opts.horizontal?undefined:defFmt},grid:{color:'#30363d22'}}},plugins:{legend:{display:datasets.length>1,labels:{color:'#e6edf3',font:{size:11}}}}}});
+}
+
+function filterT(id,q){document.querySelectorAll('#'+id+' tbody tr').forEach(r=>{r.style.display=r.textContent.toLowerCase().includes(q.toLowerCase())?'':'none'})}
+
+async function init(){
+  const D=await(await fetch('data/network-latest.json')).json();
+  $('meta').textContent=`Epoch ${D.epoch} (${D.epochPct}%) · ${new Date(D.timestamp).toLocaleString()} · ${D.totalValidators} validators (${D.delinquentValidators} delinquent) · ${fmtS(D.totalStake)} total stake`;
+
+  const dec=D.decentralization, ss=D.stakeStats, infra=D.infraConcentration;
+  const el=$('content');
+
+  // Cards
+  let html='<div class="grid">';
+  const cards=[
+    {t:'Total Network Stake',v:fmtS(D.totalStake),s:`${D.currentValidators} active · ${D.delinquentValidators} delinquent`},
+    {t:'Nakamoto Coefficient',v:dec.nakamotoCoeff33,s:`${dec.superminorityCount} validators to halt (33%)`},
+    {t:'HHI Index',v:dec.hhi.toFixed(6),s:dec.hhi<0.015?'<span class="badge badge-green">Moderate</span>':'<span class="badge badge-red">Concentrated</span>'},
+    {t:'Gini Coefficient',v:dec.gini.toFixed(4),s:dec.gini>0.7?'<span class="badge badge-orange">High inequality</span>':'Moderate'},
+    {t:'Top Validator',v:dec.topValidatorPct.toFixed(1)+'%',s:`Top 10: ${dec.top10Pct.toFixed(1)}% · Top 20: ${dec.top20Pct.toFixed(1)}% · Top 50: ${dec.top50Pct.toFixed(1)}%`},
+    {t:'Mean / Median Stake',v:fmtS(ss.mean),s:`Median: ${fmtS(ss.median)}`},
+    {t:'Top 3 ASN Concentration',v:infra.top3ASNPct+'%',s:`${infra.uniqueASNs} ASNs · ${infra.uniqueCountries} countries`},
+    {t:'Jito Validators',v:`${D.jitoStats.validators} (${D.jitoStats.pct}%)`,s:fmtS(D.jitoStats.stake)+' staked'},
+  ];
+  html+=cards.map(c=>`<div class="card"><h3>${c.t}</h3><div class="val">${c.v}</div><div class="sub">${c.s||''}</div></div>`).join('')+'</div>';
+
+  // Charts row 1: versions + jito
+  html+=`<div class="row2">
+    <div class="chart-box"><h3>🖥️ Software Versions</h3><canvas id="n-versions"></canvas></div>
+    <div class="chart-box"><h3>⚡ Jito vs Non-Jito</h3><canvas id="n-jito"></canvas></div>
+  </div>`;
+
+  // Map
+  html+=`<div class="chart-box"><h3>🌍 Geographic Distribution — All Network Stake</h3><div id="n-map" style="width:100%;height:400px"></div></div>`;
+
+  // Geo row
+  html+=`<div class="row3">
+    <div class="chart-box"><h3>🌍 Stake by Continent</h3><canvas id="n-continent"></canvas></div>
+    <div class="chart-box"><h3>🌍 Stake by Country (Top 15)</h3><canvas id="n-country"></canvas></div>
+    <div class="chart-box"><h3>🏢 ASN Distribution (Top 12)</h3><canvas id="n-asn"></canvas></div>
+  </div>`;
+
+  // Commission + buckets
+  html+=`<div class="row2">
+    <div class="chart-box"><h3>💰 Commission Rate Distribution</h3><canvas id="n-commission"></canvas></div>
+    <div class="chart-box"><h3>📊 Stake Buckets</h3><canvas id="n-buckets"></canvas></div>
+  </div>`;
+
+  // Infra table
+  html+=`<div class="chart-box"><h3>🏗️ Infrastructure Concentration (Top 20 ASNs)</h3><div id="n-infra"></div></div>`;
+
+  // Top 50 chart
+  html+=`<div class="chart-box"><h3>Top 50 Validators by Stake</h3><canvas id="n-top50" style="max-height:600px"></canvas></div>`;
+
+  // Validator table
+  html+=`<div class="chart-box"><h3>All Validators (${D.totalValidators})</h3>
+    <input class="search" placeholder="Search name, vote key, country..." oninput="filterT('n-table',this.value)">
+    <div class="tw"><table id="n-table"><thead><tr>
+      <th>#</th><th>Vote Account</th><th>Name</th><th>Stake (SOL)</th><th>% Network</th><th>Commission</th><th>Country</th><th>ASN</th><th>Version</th><th>Skip%</th><th>Jito</th><th>Super-minority</th>
+    </tr></thead><tbody>${D.validators.map((v,i)=>{
+      const p=parseFloat(v.pctOfTotal);
+      const vn=(v.name&&v.name!=='null')?v.name:'—';
+      return `<tr>
+        <td>${i+1}</td>
+        <td><span class="mono">${v.voter}</span></td>
+        <td>${vn}</td>
+        <td>${fmt(v.stake)} SOL</td>
+        <td>${p.toFixed(2)}%<span class="bar" style="width:${Math.max(2,p*20)}px"></span></td>
+        <td>${v.commission!=null?v.commission+'%':'N/A'}</td>
+        <td>${v.country||'N/A'}</td>
+        <td>${v.asnOrg?(v.asnOrg.length>20?v.asnOrg.slice(0,18)+'…':v.asnOrg):'N/A'}</td>
+        <td>${v.version||'N/A'}</td>
+        <td>${v.skipRate!=null?v.skipRate.toFixed(1)+'%':'N/A'}</td>
+        <td>${v.isJito?'✅':'—'}</td>
+        <td>${v.isSuperminority?'<span class="badge badge-red">Yes</span>':'—'}</td>
+      </tr>`}).join('')}</tbody></table></div></div>`;
+
+  el.innerHTML=html;
+
+  // Render charts
+  const ver=D.software.versions;
+  pieChart('n-versions',ver.slice(0,8).map(v=>v.name+' ('+v.pct+'%)'),ver.slice(0,8).map(v=>v.stake));
+
+  const nonJito=D.totalStake-D.jitoStats.stake;
+  pieChart('n-jito',[`Jito (${D.jitoStats.validators}, ${D.jitoStats.pct}%)`,`Non-Jito (${D.totalValidators-D.jitoStats.validators})`],[D.jitoStats.stake,nonJito],['#3fb950','#30363d']);
+
+  // Map
+  const cStakes={};
+  D.geographic.countries.forEach(c=>{const iso=COUNTRY_ISO[c.name];if(iso)cStakes[iso]=c.stake});
+  new jsVectorMap({selector:'#n-map',map:'world',backgroundColor:'transparent',
+    regionStyle:{initial:{fill:'#1b1f24',stroke:'#444c56',strokeWidth:0.5},hover:{fill:'#2d333b',cursor:'pointer'}},
+    series:{regions:[{values:cStakes,scale:['#2ea043','#f0e442','#e5534b'],normalizeFunction:'polynomial'}]},
+    onRegionTooltipShow(evt,tip,code){
+      const s=cStakes[code];const name=tip.text();
+      tip.text(s?'<b>'+name+'</b><br>'+fmt(s)+' SOL ('+(s/D.totalStake*100).toFixed(1)+'%)':'<b>'+name+'</b><br>No stake',true);
+    }});
+
+  // Continent
+  const cont=D.geographic.continents;
+  pieChart('n-continent',cont.map(c=>c.name+' ('+c.pct+'%)'),cont.map(c=>c.stake));
+
+  // Country
+  const ctry=D.geographic.countries.slice(0,15);
+  pieChart('n-country',ctry.map(c=>c.name+' ('+c.pct+'%)'),ctry.map(c=>c.stake));
+
+  // ASN
+  const asn=D.geographic.topASNs.slice(0,12);
+  pieChart('n-asn',asn.map(a=>(a.name.length>22?a.name.slice(0,20)+'…':a.name)+' ('+a.pct+'%)'),asn.map(a=>a.stake));
+
+  // Commission
+  const comm=D.commissionDistribution;
+  barChart('n-commission',comm.map(c=>c.name+'%'),[{label:'Validators',data:comm.map(c=>c.count),backgroundColor:'#58a6ff'}],{isCount:true,xLabel:'Commission Rate',yLabel:'Validators'});
+
+  // Buckets
+  const bk=D.stakeBuckets;
+  barChart('n-buckets',bk.map(b=>b.label+' SOL'),[{label:'Validators',data:bk.map(b=>b.count),backgroundColor:'#58a6ff'}],{isCount:true,xLabel:'Stake Range',yLabel:'Validators'});
+
+  // Infra table
+  $('n-infra').innerHTML=`<table><thead><tr><th>Hosting Provider</th><th>Validators</th><th>Stake</th><th>% Network</th><th>Risk</th></tr></thead><tbody>${
+    D.geographic.topASNs.slice(0,20).map(a=>{
+      const p=parseFloat(a.pct);
+      const risk=p>15?'<span class="badge badge-red">HIGH</span>':p>10?'<span class="badge badge-orange">MEDIUM</span>':'<span class="badge badge-green">LOW</span>';
+      return `<tr><td>${a.name}</td><td>${a.count}</td><td>${fmt(a.stake)} SOL</td><td>${a.pct}%<span class="bar" style="width:${Math.max(2,p*3)}px;background:${p>15?'var(--red)':p>10?'var(--orange)':'var(--green)'}"></span></td><td>${risk}</td></tr>`;
+    }).join('')}</tbody></table>`;
+
+  // Top 50
+  const t50=D.validators.slice(0,50);
+  barChart('n-top50',t50.map(v=>((v.name&&v.name!=='null')?v.name:v.voter.slice(0,8)+'…').slice(0,18)),[
+    {label:'Stake (SOL)',data:t50.map(v=>v.stake),backgroundColor:t50.map(v=>v.isSuperminority?'#f85149':'#58a6ff')}
+  ],{horizontal:true,xLabel:'Stake (SOL)'});
+}
+init();
+</script>
+</body>
+</html>

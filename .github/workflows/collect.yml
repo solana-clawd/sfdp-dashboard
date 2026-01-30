@@ -15,7 +15,9 @@ jobs:
       - name: Collect data
         env:
           HELIUS_RPC: ${{ secrets.HELIUS_RPC }}
-        run: node collect-enhanced.js
+        run: |
+          node collect-enhanced.js
+          node collect-network.js
       - name: Commit & push
         run: |
           git config user.name "solana-clawd"
